@@ -63,9 +63,9 @@ $app->register(new MongoDBODMServiceProvider(), array(
         0 => array(
             'type' => 'annotation',
             'path' => array(
-                 'src/Todos/Entities'
+                 'src/Annonces/Entities'
             ),
-            'namespace' => 'Todos\Entities',
+            'namespace' => 'Annonces\Entities',
             'alias'     => 'docs',
         ),
     ),

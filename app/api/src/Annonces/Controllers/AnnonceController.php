@@ -1,35 +1,35 @@
 <?php
-namespace Todos\Controllers;
+namespace Annonces\Controllers;
 
 use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
-use Todos\Entities\Todo;
+use Annonces\Entities\Annonce;
 
 
-class TodoController {
+class AnnonceController {
 
 
 
     public function getAllAction(Application $app)
     {
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Todos\\Entities\\Todo')->findAll());
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Annonces\\Entities\\Annonce')->findAll());
       
     }
 
 
     public function getOneAction($id, Application $app)
     {
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Todos\\Entities\\Todo')->findOneBy(array('id' => $id)));
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Annonces\\Entities\\Annonce')->findOneBy(array('id' => $id)));
     }
 
     public function deleteOneAction($id, Application $app)
     {
 
         $dm = $app['doctrine.odm.mongodb.dm'];
-        $todo = $dm->getRepository('Todos\\Entities\\Todo')->findOneBy(array('id' => $id));
-        $dm->remove($todo); 
+        $annonce = $dm->getRepository('Annonces\\Entities\\Annonce')->findOneBy(array('id' => $id));
+        $dm->remove($annonce); 
         $dm->flush();
 
         return new JsonResponse(200);
@@ -39,25 +39,25 @@ class TodoController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        $todo = new Todo($payload->name);
+        $annonce = new Annonce($payload->name);
 
-          $dm->persist($todo);
+          $dm->persist($annonce);
           $dm->flush();
 
-        return new JsonResponse($todo, 201);
+        return new JsonResponse($annonce, 201);
     }
 
     public function editOneAction($id, Application $app, Request $request)
     {
 
         $dm = $app['doctrine.odm.mongodb.dm'];
-        $todo = $dm->getRepository('Todos\\Entities\\Todo')->findOneBy(array('id' => $id));
+        $annonce = $dm->getRepository('Annonces\\Entities\\Annonce')->findOneBy(array('id' => $id));
         $payload = json_decode($request->getContent());
 
-        $todo->setName($payload->name);
-        $dm->flush($todo);
+        $annonce->setName($payload->name);
+        $dm->flush($annonce);
 
 
-        return new JsonResponse($todo);
+        return new JsonResponse($annonce);
     }
 }
