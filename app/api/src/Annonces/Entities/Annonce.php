@@ -1,6 +1,6 @@
 <?php
 
-namespace Todos\Entities;
+namespace Annonces\Entities;
 
 use JsonSerializable;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -8,7 +8,7 @@ use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use DateTime;
 
 /** @ODM\Document */
-class Todo implements JsonSerializable
+class Annonce implements JsonSerializable
 {
     /** @ODM\Id */
     private $id;
@@ -34,6 +34,7 @@ class Todo implements JsonSerializable
 
     public function jsonSerialize()
     {
+    	
         return array(
             'id' => $this->id,
             'name' => $this->name
