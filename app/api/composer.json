@@ -1,0 +1,29 @@
+{
+    "name": "lduboeuf/todosilexangular",
+    "description": "Example of Silex Resource provider for Angular js",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Lionel Duboeuf",
+            "email": "lionel.duboeuf@gmail.com"
+        }
+    ],
+    "require": {
+        "silex/silex": "1.3.4",
+        "doctrine/dbal": "2.5.2",
+        "symfony/yaml":"3.0.0",
+        "symfony/config":"2.8.0",
+        "monolog/monolog": "^1.17",
+        "neutron/mongo-odm-silex-provider": "^0.1.3"
+    },
+    "autoload": {
+        "psr-0": {
+            "": "src/"
+        }
+    },
+    "require-dev": {
+        "symfony/browser-kit": "^3.0",
+        "symfony/css-selector": "^3.0",
+        "phpunit/phpunit": "^4.8"
+    }
+}
