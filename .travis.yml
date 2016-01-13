@@ -1,0 +1,28 @@
+env:
+- PHP_DIR=app/api
+language: php
+php:
+- '5.6'
+services:
+  - mongodb
+before_install:
+- phpenv config-add $PHP_DIR/config.ini
+- npm install -g bower grunt-cli
+- composer self-update
+install:
+- npm install
+- bower install
+- composer install -d $PHP_DIR
+script:
+- grunt
+deploy:
+  provider: releases
+  api_key:
+    secure: AjMdqUoGKyL1PrQwA32qBNpL3gMZ0JpRtslXYUb2kZnVNNPhu/bxcbrW8YcLimKb5m0Bgif4JVKtrcbxIYh4ez3Jw5f+V19G4B5CaVdQZogJa5BVTSikcE/z8Zp20yR3+RDrhPvFGKkmLm3edAZe81AYL3hEa3VNuIfSn7v26JCj4OnMrXqAubxSOFP4RPkwfar3kLo2/y5EEq6W14pPsy3ZPgxdracN8V2UZM1hF/8ZvErbi6ZIHX9va7yznKH3/l3EwwRZty8//tOWcdA3EIyeoCj7vAAPMf3kukwDSlwmdMqgVVQA9pCAhkXkva+rPwGlcE5OZCMTS6//GaPdHuCLWPMoxmfjSp4QyUb2yXy1Bgrwmak7MPAKRQw3pu5/YWfAk1brzdEgxNUKy5Pgp+5JMTPHfWm35uDerD+RxTfaHNkHtsWYDrg8Nd5qQ2wNtpXyRhr84zC7/Dk4uBfkEFn23JVDlqeMNkAnwoSsnrE4b5fKNSIE3KZOuANAGzEQf7HpGDl+z2IZ1CFJScTxB62OQQxYTQqYrll2EQYxmmhLij457uaXuJ9Xm8GbsBQHdpz51S9aWODUR9eQujL3cHsHvvhqL8VRd5KIdmThXE5VBCXanoc+ot5yAV2vfUb638l4cBynPHxYgJvJG7NZQleQ9a/cBUvrn+kuC1VVkP4=
+  file: release.zip
+  on:
+    repo: afpa-stbrieuc/silex-angular-bootstrap
+    tags: true
+    branch: master
+notifications:
+  slack: afpa-dev-22:LPlanFBGehjXv16VZtbTT9o9

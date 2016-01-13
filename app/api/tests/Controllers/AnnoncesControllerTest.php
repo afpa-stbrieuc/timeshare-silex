@@ -14,7 +14,7 @@ class TodoTest extends WebTestCase
 	public function createApplication()
     {
         
-        $dbName = 'todos-test';
+        $dbName = 'timeshare-test';
 
 		$app = require __DIR__.'/../../config-init.php';
 
@@ -35,7 +35,7 @@ class TodoTest extends WebTestCase
 	public function testGetAll()
 	{
 	    $client = $this->createClient();
-	    $crawler = $client->request('GET', '/api/todos/');
+	    $crawler = $client->request('GET', '/api/annonces/');
 
 	    //$payload = json_decode($client->getResponse()->getContent());
 	    
@@ -61,7 +61,7 @@ class TodoTest extends WebTestCase
         //     '/api/todos/',
         //     array('name' => 'kikou')
         // );
-    	$resp = $client->request('POST', '/api/todos/', array(),
+    	$resp = $client->request('POST', '/api/annonces/', array(),
         	array(),
         	array('CONTENT_TYPE' => 'application/json'),
         	'{"name":"kikou"}');
@@ -77,7 +77,7 @@ class TodoTest extends WebTestCase
 
     	//update
 
-    	$resp = $client->request('PUT', '/api/todos/'.$id, array(),
+    	$resp = $client->request('PUT', '/api/annonces/'.$id, array(),
         	array(),
         	array('CONTENT_TYPE' => 'application/json'),
         	'{"name":"mijo"}');
@@ -96,7 +96,7 @@ class TodoTest extends WebTestCase
 
     	//delete
     	$client = $this->createClient();
-   		$crawler = $client->request('DELETE', '/api/todos/'.$id);
+   		$crawler = $client->request('DELETE', '/api/annonces/'.$id);
    		$this->assertEquals($client->getResponse()->getStatusCode(), 200);
 
 
