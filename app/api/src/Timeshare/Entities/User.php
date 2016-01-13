@@ -29,7 +29,7 @@ class User implements JsonSerializable
 
 
 #fait le contructeur d'un objet (ici user et construit ses attributs). nom prenom
-    public function __construct($surname, $firstname, $address, $CP, $town) {
+    public function __construct($surname, $firstname, $town, $timebalance) {
      	$this->surname            = $surname;
         $this->firstname          = $firstname;
         $this->town               = $town;

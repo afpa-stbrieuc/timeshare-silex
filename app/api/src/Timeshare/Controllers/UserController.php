@@ -2,11 +2,11 @@
 
 namespace Timeshare\Controllers;
 
-#compenents qu'on a besoin
+//compenents qu'on a besoin
 use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-#utiliser l'entite user dans Timeshare\Entities\User pour choper l'objet pour effectuer ce controller
+//utiliser l'entite user dans Timeshare\Entities\User pour choper l'objet pour effectuer ce controller
 use Timeshare\Entities\User;
 
 
