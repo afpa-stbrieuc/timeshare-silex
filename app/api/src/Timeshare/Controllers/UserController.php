@@ -16,52 +16,51 @@ class UserController {
 
 
 
-    public function getAllAction(Application $app)
+    public function getAllUser(Application $app)
     {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findAll());
-      
     }
 
 
-    // public function getOneAction($id, Application $app)
-    // {
-    //     return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
-    // }
-
-    // public function deleteOneAction($id, Application $app)
-    // {
-
-    //     $dm = $app['doctrine.odm.mongodb.dm'];
-    //     $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
-    //     $dm->remove($user); 
-    //     $dm->flush();
-
-    //     return new JsonResponse(200);
-    // }
-
-    // public function addOneAction(Application $app, Request $request)
-    // {
-    //     $dm = $app['doctrine.odm.mongodb.dm'];
-    //     $payload = json_decode($request->getContent());
-    //     $user = new User($payload->name);
-
-    //       $dm->persist($user);
-    //       $dm->flush();
-
-    //     return new JsonResponse($user, 201);
+    public function getOneUser($id, Application $app)
+    {
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
     }
 
-    // public function editOneAction($id, Application $app, Request $request)
-    // {
+    public function deleteOneUser($id, Application $app)
+    {
 
-    //     $dm = $app['doctrine.odm.mongodb.dm'];
-    //     $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
-    //     $payload = json_decode($request->getContent());
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
+        $dm->remove($user); 
+        $dm->flush();
 
-    //     $user->setName($payload->name);
-    //     $dm->flush($user);
+        return new JsonResponse(200);
+    }
+
+    public function addOneUser(Application $app, Request $request)
+    {
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $payload = json_decode($request->getContent());
+        $user = new User($payload->name);
+
+          $dm->persist($user);
+          $dm->flush();
+
+        return new JsonResponse($user, 201);
+    }
+
+    public function editOneUser($id, Application $app, Request $request)
+    {
+
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
+        $payload = json_decode($request->getContent());
+
+        $user->setName($payload->name);
+        $dm->flush($user);
 
 
-    //     return new JsonResponse($user);
-    // }
+        return new JsonResponse($user);
+    }
 }
