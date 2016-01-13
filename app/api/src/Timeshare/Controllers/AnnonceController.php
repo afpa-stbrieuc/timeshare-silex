@@ -6,7 +6,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 use Timeshare\Entities\Annonce;
-use User\Entities\User;
+use Timeshare\Entities\User;
 
 
 class AnnonceController {
@@ -66,6 +66,14 @@ class AnnonceController {
         $payload = json_decode($request->getContent());
 
         $annonce->setName($payload->name);
+        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user));
+        $annonce->setUser($user);
+        $annonce->setDate(new \DateTime($payload->date));
+        $annonce->setDemande($payload->demande);
+        $annonce->setDateValiditeDebut(new \DateTime($payload->date_validite_debut));
+        $annonce->setDateValiditeFin(new \DateTime($payload->date_validite_fin));
+        $annonce->setLocation($payload->location);
+        $annonce->setcategory($payload->category);
         $dm->flush($annonce);
 
 
