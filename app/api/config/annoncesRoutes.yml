@@ -1,24 +1,24 @@
 getAll:
   path: /
-  defaults: { _controller: 'Annonces\Controllers\AnnonceController::getAllAction' }
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::getAllAction' }
   methods:  [GET]
 
 getOne:
   path: /{id}
-  defaults: { _controller: 'Annonces\Controllers\AnnonceController::getOneAction' }
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::getOneAction' }
   methods:  [GET]
 
 deleteOne:
   path: /{id}
-  defaults: { _controller: 'Annonces\Controllers\AnnonceController::deleteOneAction' }
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::deleteOneAction' }
   methods:  [DELETE]
 
 addOne:
   path: /
-  defaults: { _controller: 'Annonces\Controllers\AnnonceController::addOneAction' }
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::addOneAction' }
   methods:  [POST]
 
 editOne:
   path: /{id}
-  defaults: { _controller: 'Annonces\Controllers\AnnonceController::editOneAction' }
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::editOneAction' }
   methods:  [PUT]

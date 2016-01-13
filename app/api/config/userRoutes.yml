@@ -1,0 +1,26 @@
+#pour chaq demande url path/   path/XXDFSDF   donner la route suivante
+getAllUser:
+  path: /
+  defaults: { _controller: 'Timeshare\Controllers\UserController::getAllAction' }
+  methods:  [GET]
+
+getOneUser:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\UserController::getOneAction' }
+  methods:  [GET]
+
+deleteOneUser:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\UserController::deleteOneAction' }
+  methods:  [DELETE]
+
+addOneUser:
+  path: /
+  defaults: { _controller: 'Timeshare\Controllers\UserController::addOneAction' }
+  methods:  [POST]
+
+editOneUser:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\UserController::editOneAction' }
+  methods:  [PUT]
+

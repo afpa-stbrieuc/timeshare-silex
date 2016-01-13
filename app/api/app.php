@@ -1,5 +1,5 @@
 <?php
-$dbName = 'todos';
+$dbName = 'timeshare';
 
 $app = require __DIR__.'/config-init.php';
 

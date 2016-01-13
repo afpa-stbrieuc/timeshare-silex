@@ -1,3 +1,7 @@
 annnonces:
   prefix: /api/annonces
   resource: annoncesRoutes.yml
+
+users:
+  prefix: /api/user
+  resource: userRoutes.yml
