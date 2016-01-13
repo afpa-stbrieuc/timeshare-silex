@@ -63,11 +63,19 @@ $app->register(new MongoDBODMServiceProvider(), array(
         0 => array(
             'type' => 'annotation',
             'path' => array(
-                 'src/Annonces/Entities'
+                 'src/Timeshare/Entities'
             ),
-            'namespace' => 'Annonces\Entities',
-            'alias'     => 'docs',
+            'namespace' => 'Timeshare\Entities',
+            'alias'     => 'ann',
         ),
+//     		1 => array(
+//     				'type' => 'annotation',
+//     				'path' => array(
+//     						'src/Timeshare/Entities'
+//     				),
+//     				'namespace' => 'Timeshare\Entities',
+//     				'alias'     => 'docs',
+    		//),
     ),
     'doctrine.odm.mongodb.proxies_dir'             => 'cache/doctrine/odm/mongodb/Proxy',
     'doctrine.odm.mongodb.proxies_namespace'       => 'DoctrineMongoDBProxy',
