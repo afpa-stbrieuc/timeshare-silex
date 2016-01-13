@@ -34,11 +34,23 @@ $app['routes'] = $app->extend(
 
 
 
+
 //register logger
 $app->register(new Silex\Provider\MonologServiceProvider(), array(
     'monolog.logfile' => __DIR__.'/log/dev.log',
     //TODO uotput to console in dev mode
 ));
+
+foreach ($app['routes'] as $name => $route) {
+    $requirements = array();
+    foreach ($route->getRequirements() as $key => $requirement) {
+        $requirements[] = $key . ' => ' . $requirement;
+    }
+
+    $r=  $name.'=>'.$route->getPath().' '.join(', ', $requirements);
+    //echo $r;
+
+}
 
 
 if (!isset($dbName)) {

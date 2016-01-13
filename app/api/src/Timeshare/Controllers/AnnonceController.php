@@ -18,7 +18,6 @@ class AnnonceController {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findAll());
     }
 
-
     public function getOneAction($id, Application $app)
     {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $id)));

@@ -84,9 +84,9 @@ class User implements JsonSerializable
     public function jsonSerialize()
     {
         return array(
-            'id' => $this->id,
-            'firstname' => $this->firstname,
+            'id' => $this->id,          
             'surname' => $this->surname,
+            'firstname' => $this->firstname,
             'town' => $this->town,
             'timebalance' => $this->timebalance,
         );

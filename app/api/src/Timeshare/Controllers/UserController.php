@@ -7,6 +7,7 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 //utiliser l'entite user dans Timeshare\Entities\User pour choper l'objet pour effectuer ce controller
+
 use Timeshare\Entities\User;
 
 
@@ -21,11 +22,10 @@ class UserController {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findAll());
     }
 
-
     public function getOneUser($id, Application $app)
-    {
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
-    }
+        {
+            return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
+        }
 
     public function deleteOneUser($id, Application $app)
     {
@@ -57,7 +57,10 @@ class UserController {
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
         $payload = json_decode($request->getContent());
 
-        $user->setName($payload->name);
+        $user->setFirstname($payload->firstname);
+        $user->setSurname($payload->surname);
+        $user->setTown($payload->town);
+        $user->setTimebalance($payload->timebalance);
         $dm->flush($user);
 
 
