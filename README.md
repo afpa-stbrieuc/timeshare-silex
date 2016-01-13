@@ -1,13 +1,13 @@
 #timeshare-silex
 
+[![Build Status](https://travis-ci.org/afpa-stbrieuc/timeshare-silex.svg?branch=master)](https://travis-ci.org/afpa-stbrieuc/timeshare-silex)
+
 ##pre-requisite
 php >5.4, mongo driver and enabled in php.ini http://php.net/manual/fr/mongo.installation.php
 
 ##install
 
 ```shell
-  git clone https://github.com/afpa-stbrieuc/silex-angular-bootstrap
-  cd silex-angular-bootstrap
   npm install
   bower install
   composer install -d app/api
