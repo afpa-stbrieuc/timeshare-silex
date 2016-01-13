@@ -1,0 +1,16 @@
+
+
+getService:
+  path: /
+  defaults: { _controller: 'Timeshare\Controllers\ServiceController::getService' }
+  methods:  [GET]
+
+createService:
+  path: /
+  defaults: { _controller: 'Timeshare\Controllers\ServiceController::addService' }
+  methods:  [POST]
+  
+updateservice:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\ServiceController::setTime' }
+  methods:  [PUT]  
