@@ -1,7 +1,8 @@
 [![Stories in Ready](https://badge.waffle.io/afpa-stbrieuc/timeshare-silex.png?label=ready&title=Ready)](https://waffle.io/afpa-stbrieuc/timeshare-silex)
-#timeshare-silex
 
 [![Build Status](https://travis-ci.org/afpa-stbrieuc/timeshare-silex.svg?branch=master)](https://travis-ci.org/afpa-stbrieuc/timeshare-silex)
+
+#timeshare-silex
 
 ##pre-requisite
 php >5.4, mongo driver and enabled in php.ini http://php.net/manual/fr/mongo.installation.php
@@ -14,10 +15,6 @@ php >5.4, mongo driver and enabled in php.ini http://php.net/manual/fr/mongo.ins
   composer install -d app/api
 ```
 
-<<<<<<< HEAD
-=======
-
->>>>>>> user
 ##development
 
 ```shell
