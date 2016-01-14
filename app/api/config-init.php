@@ -41,16 +41,7 @@ $app->register(new Silex\Provider\MonologServiceProvider(), array(
     //TODO uotput to console in dev mode
 ));
 
-foreach ($app['routes'] as $name => $route) {
-    $requirements = array();
-    foreach ($route->getRequirements() as $key => $requirement) {
-        $requirements[] = $key . ' => ' . $requirement;
-    }
 
-    $r=  $name.'=>'.$route->getPath().' '.join(', ', $requirements);
-    //echo $r;
-
-}
 
 
 if (!isset($dbName)) {

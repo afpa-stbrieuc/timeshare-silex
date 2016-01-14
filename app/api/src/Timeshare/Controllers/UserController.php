@@ -23,9 +23,9 @@ class UserController {
     }
 
     public function getOneUser($id, Application $app)
-        {
-            return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
-        }
+    {
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
+    }
 
     public function deleteOneUser($id, Application $app)
     {
@@ -42,7 +42,10 @@ class UserController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        $user = new User($payload->name);
+        $user = new User($payload->surname,
+                         $payload->firstname,
+                         $payload->town,
+                         $payload->timebalance);
 
           $dm->persist($user);
           $dm->flush();
@@ -62,7 +65,6 @@ class UserController {
         $user->setTown($payload->town);
         $user->setTimebalance($payload->timebalance);
         $dm->flush($user);
-
 
         return new JsonResponse($user);
     }

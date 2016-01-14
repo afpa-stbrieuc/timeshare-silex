@@ -30,10 +30,10 @@ class User implements JsonSerializable
 
 #fait le contructeur d'un objet (ici user et construit ses attributs). nom prenom
     public function __construct($surname, $firstname, $town, $timebalance) {
-     	$this->surname            = $surname;
+        $this->surname            = $surname;
         $this->firstname          = $firstname;
         $this->town               = $town;
-        $timebalance->timebalance = $timebalance;
+        $this->timebalance = $timebalance;
  	}
 
 
@@ -61,21 +61,21 @@ class User implements JsonSerializable
 
 
 
-
-    public function setFirstname() {
-        return $this->firstname;
+#faut que tu lui envoies la valeur a changer dans $firstname
+    public function setFirstname($firstname) {
+        return $this->firstname = $firstname;
     }
 
-    public function setSurname() {
-        return $this->surname;
+    public function setSurname($surname) {
+        return $this->surname = $surname;
     }
 
-    public function setTown() {
-        return $this->town;
+    public function setTown($town) {
+        return $this->town = $town;
     }
 
-    public function setTimeBalance() {
-        return $this->timebalance;
+    public function setTimeBalance($timebalance) {
+        return $this->timebalance = $timebalance;
     }
 
 
@@ -88,8 +88,7 @@ class User implements JsonSerializable
             'surname' => $this->surname,
             'firstname' => $this->firstname,
             'town' => $this->town,
-            'timebalance' => $this->timebalance,
-        );
+            'timebalance' => $this->timebalance);
     }
 
 
