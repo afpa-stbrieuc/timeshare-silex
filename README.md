@@ -13,6 +13,10 @@ php >5.4, mongo driver and enabled in php.ini http://php.net/manual/fr/mongo.ins
   composer install -d app/api
 ```
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> user
 ##development
 
 ```shell

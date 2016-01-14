@@ -5,6 +5,17 @@ $dbName = 'timeshare';
 $app = require __DIR__.'/config-init.php';
 $app['debug'] = true;
 
+//debug routes
+foreach ($app['routes'] as $name => $route) {
+    $requirements = array();
+    foreach ($route->getRequirements() as $key => $requirement) {
+        $requirements[] = $key . ' => ' . $requirement;
+    }
+
+    $r=  $name.'=>'.$route->getPath().' '.join(', ', $requirements);
+    $app['monolog']->addInfo($r);
+}
+
 
 //Allow PHP's built-in server to serve our static content 
 $filename = dirname(__DIR__).preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
