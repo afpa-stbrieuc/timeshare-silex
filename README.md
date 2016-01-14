@@ -1,3 +1,4 @@
+[![Stories in Ready](https://badge.waffle.io/afpa-stbrieuc/timeshare-silex.png?label=ready&title=Ready)](https://waffle.io/afpa-stbrieuc/timeshare-silex)
 #timeshare-silex
 
 [![Build Status](https://travis-ci.org/afpa-stbrieuc/timeshare-silex.svg?branch=master)](https://travis-ci.org/afpa-stbrieuc/timeshare-silex)
