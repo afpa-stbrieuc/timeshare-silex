@@ -494,7 +494,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('test', [
     'clean:server',
-    //'phpunit', disable for now
+    'phpunit',
     'concurrent:test',
     'autoprefixer',
     'connect:test',
