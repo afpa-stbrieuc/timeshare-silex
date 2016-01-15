@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Routing\Loader\YamlFileLoader;
 use Symfony\Component\Routing\RouteCollection;
+use Symfony\Component\HttpKernel\Exception\HttpException;  
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 use Neutron\Silex\Provider\MongoDBODMServiceProvider;
 
@@ -16,7 +18,7 @@ $app = new Silex\Application();
 
 //serve index as default
 $app->get('/', function () use ($app) {
-    return $app->sendFile(dirname(__DIR__).'/index.html');
+    return $app->sendFile(dirname(__DIR__).'/public/index.html');
  });
 
 
@@ -108,6 +110,24 @@ $app->register(new MongoDBODMServiceProvider(), array(
 //     // ...
 // ));
 
+
+// Exception management.
+$app->error(function(\Exception $e) use ($app) {
+   // 404 - Page not found
+   if ($e instanceof NotFoundHttpException) {
+     return $app->sendFile(dirname(__DIR__).'/public/404.html', 404);
+   // Other Error - 500
+   }
+   //  elseif ($e instanceof HttpException) {
+   //    return new Response($app['twig']->render('500.html.twig', array(
+   //       'meta' => array('title' => 'Internal error - Error 500'),
+   //       'page' => array(
+   //          'title'   => 'Internal error - Error 500',
+   //          'content' => 'An internal error occur during page generation.',
+   //       ),
+   //    )), 500);
+   // }
+});
 
 
 
