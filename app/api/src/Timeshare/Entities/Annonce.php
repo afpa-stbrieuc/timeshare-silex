@@ -13,7 +13,7 @@ class Annonce implements JsonSerializable
     /** @ODM\Id */
     private $id;
     
-    /** @ODM\ReferenceOne(targetDocument="User") */
+    /** @ODM\ReferenceOne(targetDocument="User"), simple=true */
     private $user;
     
     /** @ODM\Field(type="string") */
@@ -61,6 +61,9 @@ class Annonce implements JsonSerializable
     public function setUser($user) {
     	$this->user = $user;
     }
+    public function getUser() {
+       return $this->user;
+    }
 	public function getDate() {
 		return $this->date;
 	}
@@ -100,9 +103,9 @@ class Annonce implements JsonSerializable
     public function jsonSerialize()
     {
         return array(
-            '_id' => $this->id,
+            'id' => $this->id,
             'name' => $this->name,
-        	'user' => $this->user->getId(),
+        	'user' => $this->user,
         	'date' => date_format($this->date, 'Y-m-d H:i:s'),
         	'demande' => $this->demande,
         	'location' => $this->location,
