@@ -10,10 +10,7 @@ use Timeshare\Entities\User;
 class UserTest extends WebTestCase
 {
 
-
     private $user;
-
-
 
     //this will be called first
 	public function createApplication()
@@ -25,17 +22,12 @@ class UserTest extends WebTestCase
 
 		$app['debug'] = true;
 
-
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
-
         $this->user = new User('Des Bois', 'Toto', 'Singapour', 200);
 
-
 		return $app;
-
-
 
 	 //    return $app;
     }
@@ -48,7 +40,6 @@ class UserTest extends WebTestCase
 
 	    //$payload = json_decode($client->getResponse()->getContent());
 	    
-
 	    $this->assertTrue($client->getResponse()->headers->contains(
         'Content-Type',
         'application/json'
@@ -93,7 +84,6 @@ class UserTest extends WebTestCase
 
         $data = json_decode($client->getResponse()->getContent());
 
-
         $this->assertEquals('mijo', $data->surname);
 
         //delete
@@ -101,13 +91,7 @@ class UserTest extends WebTestCase
         $crawler = $client->request('DELETE', '/api/user/'.$currentId);
         $this->assertEquals($client->getResponse()->getStatusCode(), 200);
 
-
-
     }
-
-
-
-    
 
     // public function testAddUpdateDelete(){
 

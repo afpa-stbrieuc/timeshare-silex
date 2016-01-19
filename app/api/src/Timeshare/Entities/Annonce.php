@@ -13,7 +13,7 @@ class Annonce implements JsonSerializable
     /** @ODM\Id */
     private $id;
     
-    /** @ODM\ReferenceOne(targetDocument="User"), simple=true */
+    /** @ODM\ReferenceOne(targetDocument="User", simple=true) */
     private $user;
     
     /** @ODM\Field(type="string") */
@@ -29,24 +29,25 @@ class Annonce implements JsonSerializable
     private $category;
     
     /** @ODM\Field(type="date") */
-    private $date_validite_debut;
+    private $dateValiditeDebut;
     
     /** @ODM\Field(type="date") */
-    private $date_validite_fin;
+    private $dateValiditeFin;
     
     /** @ODM\Field(type="boolean") */
     private $demande;
 
-    public function __construct($name, $user, $date_validite_debut, $date_validite_fin, $location, $category) {
+    public function __construct($name, User $user, $dateValiditeDebut, $dateValiditeFin, $location, $category, $demande) {
      	$this->name = $name;
      	$this->user = $user;
      	$this->date = new DateTime("now");
-     	//$this->date_validite_debut = DateTime::createFromFormat("Y-m-d H:i:s", $date_validite_debut);
-     	//$this->date_validite_fin = DateTime::createFromFormat("Y-m-d H:i:s", $date_validite_fin);
-     	$this->date_validite_debut =  $date_validite_debut;
-     	$this->date_validite_fin = $date_validite_fin;
+     	//$this->dateValiditeDebut = DateTime::createFromFormat("Y-m-d H:i:s", $dateValiditeDebut);
+     	//$this->dateValiditeFin = DateTime::createFromFormat("Y-m-d H:i:s", $dateValiditeFin);
+     	$this->dateValiditeDebut =  $dateValiditeDebut;
+     	$this->dateValiditeFin = $dateValiditeFin;
      	$this->location = $location;
      	$this->category = $category;
+     	$this->demande = $demande;
  	}
 
     public function getName() {
@@ -62,7 +63,7 @@ class Annonce implements JsonSerializable
     	$this->user = $user;
     }
     public function getUser() {
-       return $this->user;
+        return $this->user;
     }
 	public function getDate() {
 		return $this->date;
@@ -71,16 +72,16 @@ class Annonce implements JsonSerializable
 		$this->date = $date;
 	}
 	public function setDateValiditeDebut($date) {
-		$this->date_validite_debut = $date;
+		$this->dateValiditeDebut = $date;
 	}
 	public function getDateValiditeDebut($date) {
-		return $this->date_validite_debut;
+		return $this->dateValiditeDebut;
 	}
 	public function setDateValiditeFin($date) {
-		$this->date_validite_fin = $date;
+		$this->dateValiditeFin = $date;
 	}
 	public function getDateValiditeFin($date) {
-		return $this->date_validite_fin;
+		return $this->dateValiditeFin;
 	}
 	public function getDemande() {
 		return $this->demande;
@@ -96,7 +97,7 @@ class Annonce implements JsonSerializable
 	}
 	public function setCategory($category) {
 		$this->category = $category;
-	} 
+	}
 	public function getCategory() {
 		return $this->category;
 	}
@@ -105,7 +106,7 @@ class Annonce implements JsonSerializable
         return array(
             'id' => $this->id,
             'name' => $this->name,
-        	'user' => $this->user,
+        	'user' => $this->user, //->getId(),
         	'date' => date_format($this->date, 'Y-m-d H:i:s'),
         	'demande' => $this->demande,
         	'location' => $this->location,
@@ -114,6 +115,5 @@ class Annonce implements JsonSerializable
         	'date_validite_fin' => date_format($this->date_validite_fin, 'Y-m-d H:i:s')
         );
     }
-
 
 }
