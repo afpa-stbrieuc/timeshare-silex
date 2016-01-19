@@ -107,11 +107,11 @@ class Annonce implements JsonSerializable
 				'name' => $this->name,
 				'user' => $this->user->getId(),
 				'date' => date_format ( $this->date, 'Y-m-d H:i:s' ),
-				'demande' => $this->demande,
 				'location' => $this->location,
 				'category' => $this->category,
 				'dateValiditeDebut' => date_format ( $this->dateValiditeDebut, 'Y-m-d H:i:s' ),
-				'dateValiditeFin' => date_format ( $this->dateValiditeFin, 'Y-m-d H:i:s' ) 
+				'dateValiditeFin' => date_format ( $this->dateValiditeFin, 'Y-m-d H:i:s' ),
+				'demande' => $this->demande,
 		);
 	}
 }
