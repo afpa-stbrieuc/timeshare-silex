@@ -12,12 +12,10 @@ use Timeshare\Entities\User;
 class AnnonceController {
 
 
-
     public function getAllAction(Application $app)
     {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findAll());
     }
-
 
     public function getOneAction($id, Application $app)
     {
@@ -44,13 +42,17 @@ class AnnonceController {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user));
+        if ($user === NULL) {
+            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
+        }
         $annonce = new Annonce(
         		$payload->name,
         		$user, 
         		new \DateTime($payload->date_validite_debut),
         		new \DateTime($payload->date_validite_fin),
         		$payload->location,
-        		$payload->category);
+        		$payload->category,
+        		$payload->demande);
 
           $dm->persist($annonce);
           $dm->flush();
@@ -68,14 +70,12 @@ class AnnonceController {
         $annonce->setName($payload->name);
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user));
         $annonce->setUser($user);
-        $annonce->setDate(new \DateTime($payload->date));
         $annonce->setDemande($payload->demande);
         $annonce->setDateValiditeDebut(new \DateTime($payload->date_validite_debut));
         $annonce->setDateValiditeFin(new \DateTime($payload->date_validite_fin));
         $annonce->setLocation($payload->location);
         $annonce->setcategory($payload->category);
         $dm->flush($annonce);
-
 
         return new JsonResponse($annonce);
     }
