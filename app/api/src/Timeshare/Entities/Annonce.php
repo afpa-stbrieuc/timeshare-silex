@@ -63,7 +63,7 @@ class Annonce implements JsonSerializable
     	$this->user = $user;
     }
     public function getUser() {
-    	return $this->user;
+        return $this->user;
     }
 	public function getDate() {
 		return $this->date;
@@ -101,17 +101,19 @@ class Annonce implements JsonSerializable
 	public function getCategory() {
 		return $this->category;
 	}
-	public function jsonSerialize() {
-		return array(
-				'id' => $this->id,
-				'name' => $this->name,
-				'user' => $this->user->getId(),
-				'date' => date_format ( $this->date, 'Y-m-d H:i:s' ),
-				'location' => $this->location,
-				'category' => $this->category,
-				'dateValiditeDebut' => date_format ( $this->dateValiditeDebut, 'Y-m-d H:i:s' ),
-				'dateValiditeFin' => date_format ( $this->dateValiditeFin, 'Y-m-d H:i:s' ),
-				'demande' => $this->demande,
-		);
-	}
+    public function jsonSerialize()
+    {
+        return array(
+            'id' => $this->id,
+            'name' => $this->name,
+        	'user' => $this->user, //->getId(),
+        	'date' => date_format($this->date, 'Y-m-d H:i:s'),
+        	'demande' => $this->demande,
+        	'location' => $this->location,
+        	'category' => $this->category,
+        	'date_validite_debut' => date_format($this->date_validite_debut, 'Y-m-d H:i:s'),
+        	'date_validite_fin' => date_format($this->date_validite_fin, 'Y-m-d H:i:s')
+        );
+    }
+
 }
