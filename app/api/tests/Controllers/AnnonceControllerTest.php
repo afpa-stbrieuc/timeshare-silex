@@ -1,18 +1,22 @@
 <?php
 namespace Timeshare\Tests;
 
-#lui dit d'utiliser les clases suivantes prefaites
 use Silex\WebTestCase;
 use Silex\Application;
 
+use Timeshare\Entities\Annonce;
 use Timeshare\Entities\User;
 
-class UserTest extends WebTestCase
+
+class AnnonceTest extends WebTestCase
 {
 
-    private $user;
 
-    //this will be called first
+    private $annonce;
+
+
+
+    //this will be called first creer l'application pour faire les tests
 	public function createApplication()
     {
         
@@ -22,10 +26,22 @@ class UserTest extends WebTestCase
 
 		$app['debug'] = true;
 
+
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
+
         $this->user = new User('Des Bois', 'Toto', 'Singapour', 200);
+
+        $this->annonce = new Annonce('Pelouse tondre',
+                                     $this->user,
+                                     \DateTime::createFromFormat("Y-m-d H:i:s", "2016-01-17 19:37:00"),
+                                     \DateTime::createFromFormat("Y-m-d H:i:s", "2016-02-17 19:37:00"),
+                                     'hennebont', 
+                                     'true',
+                                     'jardinage',
+                                     true);
+
 
 		return $app;
 
@@ -36,7 +52,7 @@ class UserTest extends WebTestCase
 	public function testGetAll()
 	{
 	    $client = $this->createClient();
-	    $crawler = $client->request('GET', '/api/user/');
+	    $crawler = $client->request('GET', '/api/annonces/');
 
 	    //$payload = json_decode($client->getResponse()->getContent());
 	    
@@ -46,52 +62,65 @@ class UserTest extends WebTestCase
     	));
 
 	    $this->assertTrue($client->getResponse()->isOk());
-
     }
 
 
-    public function testCRUD(){
+    public function testCRUD()
+    {
         $client = $this->createClient();
 
-
-        $resp = $client->request('POST', '/api/user/', array(),
+        //create
+        $resp = $client->request('POST', '/api/annonces/', array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
-            json_encode($this->user)
+            json_encode($this->annonce)
         );
-
+        //verif create
         $this->assertEquals($client->getResponse()->getStatusCode(), 201);
-
         $data = json_decode($client->getResponse()->getContent());
 
+        //read + verif pour chaque attributs de Annonce:
+        $this->assertEquals($this->annonce->getName(), $data->name);
 
-        $this->assertEquals($this->user->getSurname(), $data->surname);
+        // $this->assertEquals($this->annonce->getUser(), $data->user);
+        // $this->assertEquals($this->annonce->getDate(), $data->date);
+        $this->assertEquals($this->annonce->getLocation(), $data->location);
+        $this->assertEquals($this->annonce->getCategory(), $data->category);
+        // $this->assertEquals($this->annonce->getDateValiditeDebut, $data->date_validite_debut);
+        // $this->assertEquals($this->annonce->getDate_validite_fin(), $data->date_validite_fin);
+        $this->assertEquals($this->annonce->getDemande(), $data->demande);
 
-        $currentId= $data->id;
+        $currentId = $data->id;
 
         //update
-        $this->user->setSurname('mijo');
+        $this->annonce->setName('mijo');
 
-         $resp = $client->request('PUT', '/api/user/'.$currentId, array(),
+
+         $resp = $client->request('PUT', '/api/annonces/'.$currentId, array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
-            json_encode($this->user)
+            json_encode($this->annonce)
         );
-   
 
+        
 
         $this->assertEquals($client->getResponse()->getStatusCode(), 200);
 
         $data = json_decode($client->getResponse()->getContent());
 
-        $this->assertEquals('mijo', $data->surname);
+        //verif update
+        $this->assertEquals('mijo', $data->name);
 
         //delete
         $client = $this->createClient();
-        $crawler = $client->request('DELETE', '/api/user/'.$currentId);
+        $crawler = $client->request('DELETE', '/api/annonces/'.$currentId);
+        //verif delete
         $this->assertEquals($client->getResponse()->getStatusCode(), 200);
-
     }
+
+
+
+    
 
     // public function testAddUpdateDelete(){
 
@@ -125,14 +154,7 @@ class UserTest extends WebTestCase
     // 	$client = $this->createClient();
    	// 	$crawler = $client->request('DELETE', '/api/annonces/'.$id);
    	// 	$this->assertEquals($client->getResponse()->getStatusCode(), 200);
-
-
-
-
-
     // }
-
-   
 
 
 

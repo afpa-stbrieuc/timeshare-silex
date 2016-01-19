@@ -1,0 +1,3 @@
+annnonces:
+  prefix: /api/annonces
+  resource: annoncesRoutes.yml
