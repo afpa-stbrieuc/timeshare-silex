@@ -74,7 +74,7 @@ class AnnonceController {
         $annonce->setDateValiditeDebut(new \DateTime($payload->date_validite_debut));
         $annonce->setDateValiditeFin(new \DateTime($payload->date_validite_fin));
         $annonce->setLocation($payload->location);
-        $annonce->setcategory($payload->category);
+        $annonce->setCategory($payload->category);
         $dm->flush($annonce);
 
         return new JsonResponse($annonce);
