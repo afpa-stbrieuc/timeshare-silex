@@ -5,6 +5,12 @@ getService:
   defaults: { _controller: 'Timeshare\Controllers\ServiceController::getService' }
   methods:  [GET]
 
+
+getOneservice:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\ServiceController::getOneService' }
+  methods:  [GET] 
+  
 createService:
   path: /
   defaults: { _controller: 'Timeshare\Controllers\ServiceController::addService' }

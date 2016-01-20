@@ -1,5 +1,5 @@
 <?php
-//TODO use config file
+//timeshare use config file
 $dbName = 'timeshare';
 
 $app = require __DIR__.'/config-init.php';
