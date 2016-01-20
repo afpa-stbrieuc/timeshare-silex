@@ -32,7 +32,6 @@ class ServiceController {
         $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $payload->annonce));
                
         $service = new Services(
-                                $payload->name,
                                 $annonce->getUser(),
                                 $crediteur,
                                 $annonce,

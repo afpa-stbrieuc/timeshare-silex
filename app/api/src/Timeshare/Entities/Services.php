@@ -14,9 +14,6 @@ class Services implements JsonSerializable
 {
     /** @ODM\Id */
     private $id;
-    
-    /** @ODM\Field(type="string") */
-    private $name;
      
     /** @ODM\Field(type="int") */
     private $time;
@@ -34,9 +31,8 @@ class Services implements JsonSerializable
     private $annonce;
             
             
-    function __construct($name, User $debiteur, User $crediteur, Annonce $annonce, $note, $time) {
-   
-        $this->name = $name;        
+    function __construct(User $debiteur, User $crediteur, Annonce $annonce, $note, $time) {
+
         $this->debiteur = $debiteur;
         $this->crediteur = $crediteur;
         $this->annonce = $annonce;
@@ -46,10 +42,6 @@ class Services implements JsonSerializable
     
     function getId() {
         return $this->id;
-    }
-
-    function getName() {
-        return $this->name;
     }
 
     function getTime() {
@@ -76,10 +68,6 @@ class Services implements JsonSerializable
         $this->id = $id;
     }
 
-    function setName($name) {
-        $this->name = $name;
-    }
-
     function setTime($time) {
         $this->time = $time;
     }
@@ -104,7 +92,7 @@ class Services implements JsonSerializable
          
         return array(
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => $this->annonce->getName(),
             'debiteur' => $this->debiteur,
             'crediteur' => $this->crediteur, 
             'annonce'=>$this->annonce,     
