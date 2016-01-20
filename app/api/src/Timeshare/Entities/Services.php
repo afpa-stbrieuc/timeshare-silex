@@ -12,7 +12,7 @@ class Services implements JsonSerializable
     /** @ODM\Id */
     private $id;
     
-    /** @ODM\Field(type="string") */
+    /** @ODM\ReferenceOne(targetDocument="Annonce", simple=true) */
     private $name;
      
     /** @ODM\Field(type="int") */
@@ -20,11 +20,23 @@ class Services implements JsonSerializable
     
     /** @ODM\Field(type="int") */
     private $note;
+    
+    /** @ODM\ReferenceOne(targetDocument="Annonce", simple=true) */
+    private $debiteur;
+    
+    /** @ODM\ReferenceOne(targetDocument="User",simple=true) */
+    private $crediteur;
+    
+     /** @ODM\ReferenceOne(targetDocument="Annonce", simple=true) */
+    private $annonce;
             
             
-    function __construct($name, $time, $note) {
+    function __construct($name,$debiteur,$crediteur,$annonce,$time,$note) {
    
-        $this->name = $name;
+        $this->name = $name;        
+        $this->debiteur = $debiteur;
+        $this->crediteur = $crediteur;
+        $this->annonce = $annonce;
         $this->time = $time;
         $this->note = $note;
     }
@@ -45,6 +57,22 @@ class Services implements JsonSerializable
         return $this->note;
     }
 
+    function getDebiteur() {
+        return $this->debiteur;
+    }
+
+    function getCrediteur() {
+        return $this->crediteur;
+    }
+
+    function getAnnonce() {
+        return $this->annonce;
+    }
+
+    function setId($id) {
+        $this->id = $id;
+    }
+
     function setName($name) {
         $this->name = $name;
     }
@@ -57,14 +85,33 @@ class Services implements JsonSerializable
         $this->note = $note;
     }
 
+    function setDebiteur($debiteur) {
+        $this->debiteur = $debiteur;
+    }
+
+    function setCrediteur($crediteur) {
+        $this->crediteur = $crediteur;
+    }
+
+    function setAnnonce($annonce) {
+        $this->annonce = $annonce;
+    }
+
+                
     
-    
-        public function jsonSerialize() {
-             return array(
+    public function jsonSerialize() {
+         
+        return array(
+            
             'id' => $this->id,
             'name' => $this->name,
+            'debiteur' => $this->debiteur,
+            'crediteur' => $this->crediteur, 
+            'annonce'=>$this->annonce,     
             'time' => $this->time,
-            'note' => $this->note     
+            'note' => $this->note,
+              
+            
         );
         
     }
