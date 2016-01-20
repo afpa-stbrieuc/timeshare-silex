@@ -6,13 +6,16 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use DateTime;
 
+use Timeshare\Entities\Annonce;
+use Timeshare\Entities\User;
+
 /** @ODM\Document */
 class Services implements JsonSerializable
 {
     /** @ODM\Id */
     private $id;
     
-    /** @ODM\ReferenceOne(targetDocument="Annonce", simple=true) */
+    /** @ODM\Field(type="string") */
     private $name;
      
     /** @ODM\Field(type="int") */
@@ -21,7 +24,7 @@ class Services implements JsonSerializable
     /** @ODM\Field(type="int") */
     private $note;
     
-    /** @ODM\ReferenceOne(targetDocument="Annonce", simple=true) */
+    /** @ODM\ReferenceOne(targetDocument="User", simple=true) */
     private $debiteur;
     
     /** @ODM\ReferenceOne(targetDocument="User",simple=true) */
@@ -31,7 +34,7 @@ class Services implements JsonSerializable
     private $annonce;
             
             
-    function __construct($name,$debiteur,$crediteur,$annonce,$time,$note) {
+    function __construct($name, User $debiteur, User $crediteur, Annonce $annonce, $note, $time) {
    
         $this->name = $name;        
         $this->debiteur = $debiteur;
@@ -97,21 +100,16 @@ class Services implements JsonSerializable
         $this->annonce = $annonce;
     }
 
-                
-    
     public function jsonSerialize() {
          
         return array(
-            
             'id' => $this->id,
             'name' => $this->name,
             'debiteur' => $this->debiteur,
             'crediteur' => $this->crediteur, 
             'annonce'=>$this->annonce,     
             'time' => $this->time,
-            'note' => $this->note,
-              
-            
+            'note' => $this->note,  
         );
         
     }

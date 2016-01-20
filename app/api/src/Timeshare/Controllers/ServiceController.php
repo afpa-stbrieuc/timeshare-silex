@@ -7,10 +7,6 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 use Timeshare\Entities\Services;
-use Timeshare\Entities\Annonce;
-use Timeshare\Entities\User;
-
-
 
 class ServiceController {
     
@@ -31,14 +27,13 @@ class ServiceController {
     public function addService(Application $app, Request $request){
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        $name =  $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $payload->name));
-        $debiteur = $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('user' => $payload->debiteur));
+       
         $crediteur = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->crediteur));
         $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $payload->annonce));
                
         $service = new Services(
-                                $name,
-                                $debiteur,
+                                $payload->name,
+                                $annonce->getUser(),
                                 $crediteur,
                                 $annonce,
                                 $payload->note,
