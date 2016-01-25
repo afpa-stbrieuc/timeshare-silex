@@ -48,8 +48,8 @@ class AnnonceController {
         $annonce = new Annonce(
         		$payload->name,
         		$user, 
-        		new \DateTime($payload->date_validite_debut),
-        		new \DateTime($payload->date_validite_fin),
+        		new \DateTime($payload->dateValiditeDebut),
+        		new \DateTime($payload->dateValiditeFin),
         		$payload->location,
         		$payload->category,
         		$payload->demande);
@@ -71,8 +71,8 @@ class AnnonceController {
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user));
         $annonce->setUser($user);
         $annonce->setDemande($payload->demande);
-        $annonce->setDateValiditeDebut(new \DateTime($payload->date_validite_debut));
-        $annonce->setDateValiditeFin(new \DateTime($payload->date_validite_fin));
+        $annonce->setDateValiditeDebut(new \DateTime($payload->dateValiditeDebut));
+        $annonce->setDateValiditeFin(new \DateTime($payload->dateValiditeFin));
         $annonce->setLocation($payload->location);
         $annonce->setCategory($payload->category);
         $dm->flush($annonce);
