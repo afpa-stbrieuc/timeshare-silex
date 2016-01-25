@@ -40,9 +40,9 @@ class Annonce implements JsonSerializable
     public function __construct($name, User $user, $dateValiditeDebut, $dateValiditeFin, $location, $category, $demande) {
      	$this->name = $name;
      	$this->user = $user;
-     	$this->date = new DateTime("now");
-     	//$this->dateValiditeDebut = DateTime::createFromFormat("Y-m-d H:i:s", $dateValiditeDebut);
-     	//$this->dateValiditeFin = DateTime::createFromFormat("Y-m-d H:i:s", $dateValiditeFin);
+     	$this->date = new DateTime('now');
+     	//$this->dateValiditeDebut = DateTime::createFromFormat('Y-m-d H:i:s', $dateValiditeDebut);
+     	//$this->dateValiditeFin = DateTime::createFromFormat('Y-m-d H:i:s', $dateValiditeFin);
      	$this->dateValiditeDebut =  $dateValiditeDebut;
      	$this->dateValiditeFin = $dateValiditeFin;
      	$this->location = $location;
@@ -74,13 +74,13 @@ class Annonce implements JsonSerializable
 	public function setDateValiditeDebut($date) {
 		$this->dateValiditeDebut = $date;
 	}
-	public function getDateValiditeDebut($date) {
+	public function getDateValiditeDebut() {
 		return $this->dateValiditeDebut;
 	}
 	public function setDateValiditeFin($date) {
 		$this->dateValiditeFin = $date;
 	}
-	public function getDateValiditeFin($date) {
+	public function getDateValiditeFin() {
 		return $this->dateValiditeFin;
 	}
 	public function getDemande() {
