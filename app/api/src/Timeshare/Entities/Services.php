@@ -6,35 +6,42 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ODM\MongoDB\Mapping\Annotations as ODM;
 use DateTime;
 
+use Timeshare\Entities\Annonce;
+use Timeshare\Entities\User;
+
 /** @ODM\Document */
 class Services implements JsonSerializable
 {
     /** @ODM\Id */
     private $id;
-    
-    /** @ODM\Field(type="string") */
-    private $name;
      
     /** @ODM\Field(type="int") */
     private $time;
     
     /** @ODM\Field(type="int") */
     private $note;
+    
+    /** @ODM\ReferenceOne(targetDocument="User", simple=true) */
+    private $debiteur;
+    
+    /** @ODM\ReferenceOne(targetDocument="User",simple=true) */
+    private $crediteur;
+    
+     /** @ODM\ReferenceOne(targetDocument="Annonce", simple=true) */
+    private $annonce;
             
             
-    function __construct($name, $time, $note) {
-   
-        $this->name = $name;
+    function __construct(User $debiteur, User $crediteur, Annonce $annonce, $note, $time) {
+
+        $this->debiteur = $debiteur;
+        $this->crediteur = $crediteur;
+        $this->annonce = $annonce;
         $this->time = $time;
         $this->note = $note;
     }
     
     function getId() {
         return $this->id;
-    }
-
-    function getName() {
-        return $this->name;
     }
 
     function getTime() {
@@ -45,8 +52,20 @@ class Services implements JsonSerializable
         return $this->note;
     }
 
-    function setName($name) {
-        $this->name = $name;
+    function getDebiteur() {
+        return $this->debiteur;
+    }
+
+    function getCrediteur() {
+        return $this->crediteur;
+    }
+
+    function getAnnonce() {
+        return $this->annonce;
+    }
+
+    function setId($id) {
+        $this->id = $id;
     }
 
     function setTime($time) {
@@ -57,14 +76,28 @@ class Services implements JsonSerializable
         $this->note = $note;
     }
 
-    
-    
-        public function jsonSerialize() {
-             return array(
+    function setDebiteur($debiteur) {
+        $this->debiteur = $debiteur;
+    }
+
+    function setCrediteur($crediteur) {
+        $this->crediteur = $crediteur;
+    }
+
+    function setAnnonce($annonce) {
+        $this->annonce = $annonce;
+    }
+
+    public function jsonSerialize() {
+         
+        return array(
             'id' => $this->id,
-            'name' => $this->name,
+            'name' => $this->annonce->getName(),
+            'debiteur' => $this->debiteur,
+            'crediteur' => $this->crediteur, 
+            'annonce'=>$this->annonce,     
             'time' => $this->time,
-            'note' => $this->note     
+            'note' => $this->note,  
         );
         
     }
