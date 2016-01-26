@@ -34,7 +34,7 @@ class AnnonceController {
 	        return new JsonResponse(200);
         }
 
-        return new JsonResponse(300);
+        return new JsonResponse(404);
     }
 
     public function addOneAction(Application $app, Request $request)
