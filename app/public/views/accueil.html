@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="fr" ng-app="TimeshareSilex">
+    <head>
+        <title>Timeshare Silex</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link style="text/css" rel="stylesheet" href="../styles/bootstrap.min.css" />
+        <link style="text/css" rel="stylesheet" href="../styles/cover.css" />
+    </head>
+    <body>
+        <div class="site-wrapper">
+            <div class="site-wrapper-inner">
+                <div class="cover-container">
+                    <div class="masthead clearfix">
+                        <div class="inner">
+                            <h3 class="masthead-brand">Timeshare Silex</h3>
+                            <nav>
+                                <ul class="nav masthead-nav">
+                                    <li><a href="login.html">Se connecter</a></li>
+                                    <li><a href="register">S'inscrire</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="inner-cover">
+                        <h1 class='cover-heading'>Catégories d'annonces</h1>
+                        <select id='categories'>
+                            <option ng-repeat="cat in categories">{{ cat.name }}</option>
+                        </select>
+                        <h1>Localistation</h1>
+                        <select id='localisation'>
+                            <option ng-repeat="ville in villes">{{ ville.name }}</option>
+                        </select>
+                        <br /><br />
+                        <p class="lead">
+                            <a class='btn btn-lg btn-default' href='search'>Chercher</a>
+                        </p>
+                    </div>
+                    <div class="mastfoot"></div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
