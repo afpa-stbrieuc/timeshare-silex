@@ -123,7 +123,7 @@ module.exports = function(grunt) {
                 '<%= project.appPublic %>/bower_components',
                 connect.static('<%= project.appPublic %>/bower_components')
               ),
-              connect.static(appConfig.app)
+              connect.static(appConfig.appPublic)
             ].concat(proxyMiddleware(connect, options));
           }
         }
@@ -139,7 +139,7 @@ module.exports = function(grunt) {
                 '<%= project.appPublic %>/bower_components',
                 connect.static('<%= project.appPublic %>/bower_components')
               ),
-              connect.static(appConfig.app)
+              connect.static(appConfig.appPublic)
             ].concat(proxyMiddleware(connect, options));
           }
         }
@@ -163,7 +163,7 @@ module.exports = function(grunt) {
       },
       server: {
         options: {
-          base: '<%= project.appApi %>',
+          base: '<%= project.appPublic %>',
         }
       },
       dist: {
