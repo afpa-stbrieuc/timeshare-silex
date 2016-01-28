@@ -79,4 +79,18 @@ class AnnonceController {
 
         return new JsonResponse($annonce);
     }
+    
+    public function getAllCat(Application $app){
+        
+       $dm = $app['doctrine.odm.mongodb.dm'];
+       $category = $dm->createQueryBuilder('Timeshare\\Entities\\Annonce')
+        ->distinct('category')
+        ->getQuery()
+        ->execute();
+       //var_dump($category);
+       
+        return new JsonResponse(iterator_to_array($category, false));
+
+        
+    }
 }
