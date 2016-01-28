@@ -10,3 +10,6 @@ users:
   prefix: /api/user
   resource: userRoutes.yml
 
+categorie:
+  prefix: /api/categorie
+  resource: categorieRoutes.yml
