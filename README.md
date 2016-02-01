@@ -5,14 +5,15 @@
 #timeshare-silex
 
 ##pre-requisite
-php >5.4, mongo driver and enabled in php.ini http://php.net/manual/fr/mongo.installation.php
+php >5.4, mongo driver installed and enabled in php.ini http://php.net/manual/fr/mongo.installation.php
 
 ##install
 
 ```shell
-  npm install
-  bower install
-  composer install -d app/api
+  cd timeshare-silex
+  npm install #this will install the required Grunt dependencies
+  bower install #will load all client libraries
+  composer install -d app/api #to install php apps dependencies
 ```
 
 ##development
@@ -27,5 +28,6 @@ php >5.4, mongo driver and enabled in php.ini http://php.net/manual/fr/mongo.ins
 ```
 
 ## test api
-`php -S localhost:8080 -t . api/app-dev.php`
+ `cd app` 
+ `php -S localhost:8080 -t . api/app-dev.php`
 
