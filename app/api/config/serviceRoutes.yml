@@ -16,3 +16,13 @@ createService:
   defaults: { _controller: 'Timeshare\Controllers\ServiceController::addService' }
   methods:  [POST]
   
+editService:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\ServiceController::setTime' }
+  methods:  [PUT]
+  
+deleteService:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\ServiceController::deleteOneService' }
+  methods:  [DELETE]  
+  

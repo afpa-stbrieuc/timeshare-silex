@@ -25,16 +25,32 @@ class ServiceController {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Services')->findOneBy(array('id' => $id)));
     }
     
+    //delete a service
+        public function deleteOneService($id, Application $app)
+    {
+
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $annonce = $dm->getRepository('Timeshare\\Entities\\Services')->findOneBy(array('id' => $id));
+
+        if ($annonce !== NULL) {
+        	$dm->remove($annonce); 
+	        $dm->flush();
+	        return new JsonResponse(200);
+        }
+
+        return new JsonResponse(404);
+    }
+    
     //Ajout d'un service à la base de donnée
     public function addService(Application $app, Request $request){
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
        
-        $crediteur = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->crediteur));
-        $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $payload->annonce));
-               
+        $crediteur = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->crediteur->id));
+        $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $payload->annonce->id));
+                      
         $service = new Services(
-                                $annonce,
+                                $annonce->getUser(),
                                 $crediteur,
                                 $annonce,
                                 $payload->note,
@@ -46,6 +62,7 @@ class ServiceController {
 
         return new JsonResponse($service, 201);
     }
+   
     
     //Ajout de la durée d'un service rendu
     public function setTime($id, Application $app, Request $request){

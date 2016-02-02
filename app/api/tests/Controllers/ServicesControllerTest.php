@@ -69,7 +69,8 @@ class ServicesTest extends WebTestCase
         //create the user
         $dm = $this->app['doctrine.odm.mongodb.dm'];
         $dm->persist($this->user);
-        $dm->persist($this->user1);
+        $dm->flush();
+        $dm->persist($this->user1);       
         $dm->persist($this->annonce);
         $dm->flush();
         // create the advert
@@ -81,22 +82,26 @@ class ServicesTest extends WebTestCase
                                       5,
                                       120
                 );
+                var_dump(json_encode($this->service));
         $resp = $client->request('POST', '/api/services/', array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
             json_encode($this->service)
+                
         );
+        
         //verif create
         $this->assertEquals($client->getResponse()->getStatusCode(), 201);
         $data = json_decode($client->getResponse()->getContent());
-
+        var_dump($data);
         //read + verif 
-        $this->assertEquals($this->servive->getNote(), $data->note);
-
+        $this->assertEquals($this->service->getNote(), $data->note);
+        
         $currentId = $data->id;
 
         //update
         $this->service->setNote(3);
+        $this->service->setTime(50);
 
 
          $resp = $client->request('PUT', '/api/services/'.$currentId, array(),
