@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
 use Timeshare\Entities\Services;
+use Timeshare\Entities\User;
+use Timeshare\Entities\Annonce;
 
 class ServiceController {
     
@@ -32,7 +34,7 @@ class ServiceController {
         $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findOneBy(array('id' => $payload->annonce));
                
         $service = new Services(
-                                $annonce->getUser(),
+                                $annonce,
                                 $crediteur,
                                 $annonce,
                                 $payload->note,
