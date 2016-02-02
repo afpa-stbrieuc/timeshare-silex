@@ -1,0 +1,6 @@
+getAlllocation:
+  path: /
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::getAllLocation' }
+  methods:  [GET]  
+
+

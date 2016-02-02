@@ -13,3 +13,8 @@ users:
 categorie:
   prefix: /api/categorie
   resource: categorieRoutes.yml
+  
+localisation:
+  prefix: /api/location
+  resource: LocalisationRoutes.yml  
+  

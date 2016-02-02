@@ -93,4 +93,17 @@ class AnnonceController {
 
         
     }
+        public function getAllLocation(Application $app){
+        
+       $dm = $app['doctrine.odm.mongodb.dm'];
+       $category = $dm->createQueryBuilder('Timeshare\\Entities\\Annonce')
+        ->distinct('location')
+        ->getQuery()
+        ->execute();
+       //var_dump($category);
+       
+        return new JsonResponse(iterator_to_array($category, false));
+
+        
+    }
 }

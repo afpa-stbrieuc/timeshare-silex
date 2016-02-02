@@ -1,6 +1,6 @@
 'use strict';
 //register all modules
-angular.module('mytodoApp', [
+angular.module('TimeShareSilex', [
   'ngRoute',
   'ngCookies',
   'ngResource',
@@ -14,7 +14,7 @@ angular.module('mytodoApp', [
   .config(['$routeProvider', function($routeProvider){
     $routeProvider
       .when('/', {
-        templateUrl: 'views/todos.html',
+        templateUrl: 'components/annonces/templates/accueil.html',
         controller: 'MainCtrl'
       })
       .otherwise({
@@ -39,13 +39,7 @@ angular.module('mytodoApp', [
     });
 
   }])
-  .factory('Todo', ['$resource', function($resource){
-      return $resource('/api/todos/:id', {id:'@id'}, {
-        update: {
-          method: 'PUT' // this method issues a PUT request
-        }
-      });
-    }])
+
   .run(function(editableOptions) {
       editableOptions.theme = 'bs3'; // bootstrap3 theme. Can be also 'bs2', 'default'
     });

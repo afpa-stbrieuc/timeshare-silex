@@ -1,4 +1,4 @@
-updateservice:
+getAllCategories:
   path: /
   defaults: { _controller: 'Timeshare\Controllers\AnnonceController::getAllCat' }
   methods:  [GET]  

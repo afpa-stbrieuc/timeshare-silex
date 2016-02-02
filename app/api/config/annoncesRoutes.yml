@@ -22,3 +22,8 @@ editOne:
   path: /{id}
   defaults: { _controller: 'Timeshare\Controllers\AnnonceController::editOneAction' }
   methods:  [PUT]
+  
+editOne:
+  path: /{id}
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::editOneAction' }
+  methods:  [PUT]  
