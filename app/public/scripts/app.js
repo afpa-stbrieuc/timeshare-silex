@@ -20,7 +20,8 @@ angular.module('TimeShareSilex', [
 
       .when('/user', {
         templateUrl: 'components/users/templates/user.html',
-        controller: 'userCtrl'})
+        controller: 'userCtrl'
+      })
 
       .otherwise({
         redirectTo: '/'
