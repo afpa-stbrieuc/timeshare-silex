@@ -1,7 +1,5 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+
 <html class="timeShareApp">
   <head>
     <meta charset="utf-8">
@@ -21,38 +19,45 @@
     <link rel="stylesheet" href="styles/main.css">
     <!-- endbuild -->
   </head>
+
+
+
+
+
   <body ng-app="TimeShareSilex">
-            <div class="site-wrapper">
-            <div class="site-wrapper-inner">
-                <div class="cover-container">
-                    <div class="masthead clearfix">
-                        <div class="inner">
-                            <h3 class="masthead-brand">Timeshare Silex</h3>
+   <div class="site-wrapper">
+<!--             <div class="site-wrapper-inner">
+                <div class="cover-container"> 
+                    <div class="masthead clearfix"> 
+                        <div class="inner"> -->
+
+
+
+
+                        <header>
+                            <h3 class="masthead-brand"> <a ng-href="http://127.0.0.1:9000/#/index.html/{{hash}}"><img src="images/timeshare-logo.png" width=200;></a> </h3>
                             <nav>
                                 <ul class="nav masthead-nav">
                                     <li><a href="login.html">Se connecter</a></li>
                                     <li><a href="register">S'inscrire</a></li>
+                                    <li><a href="http://127.0.0.1:9000/#/user">voir profil</a></li>
+                                    </li>
                                 </ul>
                             </nav>
-                            <div  ng-view ></div>
-                        </div>
-                    </div>
+                        </header>  
+
+                        <div class="container" ng-view="" style="margin-top:100px;"></div>
+
+
+
+                            
+                    <!-- </div> -->
+<!--                     </div>
                 </div>
             </div>
-        </div>
-    <!--[if lt IE 7]>
-      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
+        </div> -->
     
-
-    <!-- Add your site or application content here -->
     
-
-    <!--[if lt IE 9]>
-    <script src="bower_components/es5-shim/es5-shim.js"></script>
-    <script src="bower_components/json3/lib/json3.min.js"></script>
-    <![endif]-->
-
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
@@ -76,6 +81,7 @@
         <script src="scripts/app.js"></script>
         <script src="components/annonces/controllers/accueil.js"></script>
         <script src="components/users/controllers/usersController.js"></script>
+        <script src="components/authentification/controllers/authentificationController.js"></script>
         <!-- endbuild -->
 
          <script src="http://localhost:35729/livereload.js"></script>
