@@ -25,37 +25,33 @@
 
 
   <body ng-app="TimeShareSilex">
-   <div class="site-wrapper">
-<!--             <div class="site-wrapper-inner">
+    <div class="site-wrapper">
+<!--        <div class="site-wrapper-inner">
                 <div class="cover-container"> 
                     <div class="masthead clearfix"> 
                         <div class="inner"> -->
 
+                            <header>
+                                <h3 class="masthead-brand"> 
+                                <a ng-href="http://127.0.0.1:9000/#/index.html/{{hash}}"><img src="images/timeshare-logo.png" width=200;></a> 
+                                </h3>
+                                <nav>
+                                    <ul class="nav masthead-nav">
+                                        <li><a href="login.html">Se connecter</a></li>
+                                        <li><a href="register">S'inscrire</a></li>
+                                        <li><a href="http://127.0.0.1:9000/#/user">voir profil</a></li>
+                                    </ul>
+                                </nav>
+                            </header>  
 
-
-
-                        <header>
-                            <h3 class="masthead-brand"> <a ng-href="http://127.0.0.1:9000/#/index.html/{{hash}}"><img src="images/timeshare-logo.png" width=200;></a> </h3>
-                            <nav>
-                                <ul class="nav masthead-nav">
-                                    <li><a href="login.html">Se connecter</a></li>
-                                    <li><a href="register">S'inscrire</a></li>
-                                    <li><a href="http://127.0.0.1:9000/#/user">voir profil</a></li>
-                                    </li>
-                                </ul>
-                            </nav>
-                        </header>  
-
-                        <div class="container" ng-view="" style="margin-top:100px;"></div>
-
-
+                            <div class="container" ng-view="" style="margin-top:100px;"></div>
 
                             
                     <!-- </div> -->
-<!--                     </div>
+<!--                 </div>
                 </div>
-            </div>
-        </div> -->
+            </div> -->
+    </div> 
     
     
     <!-- build:js scripts/vendor.js -->

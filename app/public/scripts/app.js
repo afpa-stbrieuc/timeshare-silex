@@ -23,6 +23,11 @@ angular.module('TimeShareSilex', [
         controller: 'userCtrl'
       })
 
+      // .when('/login', {
+      //   templateUrl: 'components/login/templates/login.html',
+      //   controller: 'userCtrl'
+      // })
+
       .otherwise({
         redirectTo: '/'
       });
