@@ -62,12 +62,12 @@ body {
     color: #fff;
 }
 @media (min-width: 768px) {
-.masthead-brand {
-    float: left;
-}
-.masthead-nav {
-    float: right;
-}
+    .masthead-brand {
+        float: left;
+    }
+    .masthead-nav {
+        float: right;
+    }
 }
 .cover {
     padding: 0 20px;
@@ -79,24 +79,25 @@ body {
 .mastfoot {
     color: rgba(255, 255, 255, 0.5);
 }
+
 @media (min-width: 768px) {
-.masthead {
-    position: fixed;
-    top: 0;
-}
-.mastfoot {
-    bottom: 0;
-    position: fixed;
-}
-.site-wrapper-inner {
-    vertical-align: middle;
-}
-.masthead, .mastfoot, .cover-container {
-    width: 100%;
-}
+    .masthead {
+        position: fixed;
+        top: 0;
+    }
+    .mastfoot {
+        bottom: 0;
+        position: fixed;
+    }
+    .site-wrapper-inner {
+        vertical-align: middle;
+    }
+    .masthead, .mastfoot, .cover-container {
+        width: 100%;
+    }
 }
 @media (min-width: 992px) {
-.masthead, .mastfoot, .cover-container {
-    width: 700px;
-}
+    .masthead, .mastfoot, .cover-container {
+        width: 700px;
+    }
 }
