@@ -58,6 +58,13 @@ body {
 .marketing p + h4 {
   margin-top: 28px;
 }
+#categories{
+    color: black;
+}
+
+#separator {
+    weight:100px;
+}
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
