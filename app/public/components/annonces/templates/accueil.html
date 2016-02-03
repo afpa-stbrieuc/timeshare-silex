@@ -1,18 +1,20 @@
 
 
-                    <div class="inner-cover" ng-app="TimeShareSilex" ng-controller="MainCtrl">
-                        <h1 class='cover-heading'>Catégories d'annonces</h1>
-                        <select id='categories'>
-                            <option  ng-repeat="category in categories">{{ category }}</option>
-                        </select>
-                        <h1>Localisation</h1>
-                        <select id='localisation'>
-                            <option ng-repeat="location in locations">{{ location }}</option>
-                        </select>
-                        <br /><br />
-                        <p class="lead">
-                            <a class='btn btn-lg btn-default' href='search'>Chercher</a>
-                        </p>
-                    </div>
-                <div class="mastfoot"></div>
+    <div class="inner-cover" ng-app="TimeShareSilex" >
+        <div class="row" id="separator"></div>
+
+        <h3 class='cover-heading'>Catégories d'annonces</h3>
+        <select id='categories'>
+            <option class="form-control"  ng-repeat="category in categories">{{ category }}</option>
+        </select>
+        <h3>Localisation</h3>
+        <select id='categories'>
+            <option class="form-control" ng-repeat="location in locations">{{ location }}</option>
+        </select>
+        <br /><br />
+        <p class="lead">
+            <a class='btn btn-lg btn-default' href='search'>Chercher</a>                                          
+        </p>
+    </div>
+<div class="mastfoot"></div>
      

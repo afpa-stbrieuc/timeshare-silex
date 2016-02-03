@@ -15,25 +15,29 @@ angular.module('TimeShareSilex')
 //    );
     //get all categories
     
-    $http({
-        method : "GET",
-        url : "/api/categorie"
-    }).then(function (response){
-        $scope.categories = response.data;
-    },function(response){
-        $scope.categories = response.statusText;
-    });
+//    $http({
+//        method : "GET",
+//        url : "/api/categorie"
+//    }).then(function (response){
+//        $scope.categories = response.data;
+//    },function(response){
+//        $scope.categories = response.statusText;
+//    });
     
     //get all location
     
-        $http({
-        method : "GET",
-        url : "/api/location"
-    }).then(function (response){
-        $scope.locations = response.data;
-    },function(response){
-        $scope.locations = response.statusText;
-    });
+//        $http({
+//        method : "GET",
+//        url : "/api/location"
+//    }).then(function (response){
+//        $scope.locations = response.data;
+//    },function(response){
+//        $scope.locations = response.statusText;
+//    });
+  $scope.categories =["jardinage","mécanique","construction","demenagement","aide à la personne","babysitting"];
+  
+  $scope.locations = ["Lannion","Paris", "Rennes" , "Saint-Brieuc" , "Nantes"];
+  
   });
   
 
