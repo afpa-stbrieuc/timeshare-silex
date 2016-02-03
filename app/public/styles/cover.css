@@ -68,7 +68,6 @@ body {
 .masthead-nav {
     float: right;
 }
-}
 .cover {
     padding: 0 20px;
 }
@@ -94,9 +93,9 @@ body {
 .masthead, .mastfoot, .cover-container {
     width: 100%;
 }
-}
+
 @media (min-width: 992px) {
 .masthead, .mastfoot, .cover-container {
     width: 700px;
 }
-}
+
