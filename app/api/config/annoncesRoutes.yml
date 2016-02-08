@@ -23,7 +23,7 @@ editOne:
   defaults: { _controller: 'Timeshare\Controllers\AnnonceController::editOneAction' }
   methods:  [PUT]
   
-editOne:
-  path: /{id}
-  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::editOneAction' }
-  methods:  [PUT]  
+sortAction:
+  path: /{category}/{lieu}
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::sortAnnonce' }
+  methods:  [GET]  

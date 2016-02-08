@@ -106,4 +106,10 @@ class AnnonceController {
 
         
     }
+    
+    public function sortAnnonce($category,$lieu,Application $app){
+
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu)));
+        
+    }
 }
