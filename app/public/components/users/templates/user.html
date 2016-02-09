@@ -1,9 +1,26 @@
 <div>
 	<div class="container">
-	Hey {{$username}}
-		<div ng-repeat="user in users">
-		Nom utilisateur: {{user.firstname}}
-		Prénom utilisateur: {{user.surname}}
-		Ville: {{user.town}}
-		</div>
+	<ul class="nav nav-pills">
+		<li ng-class="{active:isSelected(1)}">
+			<a href ng-click="selectTab(1)">Profil</a>
+		</li>
+		<li ng-class="{active:isSelected(2)}">
+			<a href ng-click="selectTab(2)">Activités</a>
+		</li>
+		<li ng-class="{active:isSelected(3)}">
+			<a href ng-click="selectTab(3)">Editer profil</a>
+		</li>
+	</ul>
+	<div class="panel" ng-show="isSelectedTab(1)">
+		<p>Prénom: {{user.surname}}</p>
+		<p>Nom: {{user.lastname}}</p>
+		<p>Ville: {{user.town}}</p>
+	</div>	
+	<div class="panel" ng-show="isSelectedTab(2)">
+		<p>Tab 2</p>
+	</div>
+	<div class="panel" ng-show="isSelectedTab(3)">
+		<p>Tab 3</p>
+	</div>
+</div>
 </div>
