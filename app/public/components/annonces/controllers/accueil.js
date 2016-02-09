@@ -38,6 +38,6 @@ angular.module('TimeShareSilex')
   
   $scope.locations = ['Lannion','Paris', 'Rennes' , 'Saint-Brieuc' , 'Nantes'];
   
-  });
+});
   
 

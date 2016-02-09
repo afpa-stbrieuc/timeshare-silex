@@ -15,12 +15,12 @@ angular.module('TimeShareSilex')
     $http({
       method : 'GET',
       url : '/api/user'
-   }).then(function (response){
-       $scope.users = response.data;
-   },function(response){
+    }).then(function (response){
+        $scope.users = response.data;
+    },function(response){
        $scope.users = response.statusText;
-        });
       });
+  });
   
 
 // //fetch alluser infos:
