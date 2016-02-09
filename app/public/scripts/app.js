@@ -24,7 +24,7 @@ angular.module('TimeShareSilex', [
     })
 
     .when('/login', {
-      templateUrl: 'components/login/templates/login.html',
+      templateUrl: 'components/users/templates/login.html',
       controller: 'loginCtrl',
       resolve: {
         'check': function($location, $rootScope) {
@@ -38,7 +38,7 @@ angular.module('TimeShareSilex', [
     })
 
     .when('/register', {
-      templateUrl: 'components/register/templates/register.html',
+      templateUrl: 'components/users/templates/register.html',
       controller: 'registerCtrl'
     })
 
