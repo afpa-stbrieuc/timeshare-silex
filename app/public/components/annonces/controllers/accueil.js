@@ -24,7 +24,7 @@ angular.module('TimeShareSilex')
     
     //get all location
     
-     $http({
+    $http({
         method : 'GET',
         url : '/api/location'
       }).then(function (response){
@@ -36,7 +36,7 @@ angular.module('TimeShareSilex')
 
 
 // show the annonces depending their categories and locations
-  $scope.showannonces = function(){
+    $scope.showannonces = function(){
       
       $http({
         method : 'GET' ,
