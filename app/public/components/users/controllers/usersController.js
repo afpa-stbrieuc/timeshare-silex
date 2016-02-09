@@ -3,15 +3,15 @@
 angular.module('TimeShareSilex')
   .controller('userCtrl', function($scope, $http) {
 
-    $scope.user = {surname:'test', lastname: 'test', town: 'test'};
+    this.user = {surname:'test', lastname: 'test', town: 'test'};
 
-    $scope.tab = 1;
+    this.tab = 1;
 
-    $scope.selectTab = function(setTab) {
+    this.selectTab = function(setTab) {
       $scope.tab = setTab;
     }
 
-    $scope.isSelectedTab = function(checkTab) {
+    this.isSelectedTab = function(checkTab) {
       return $scope.tab === checkTab;
     }
 

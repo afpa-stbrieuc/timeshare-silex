@@ -19,9 +19,10 @@ angular.module('TimeShareSilex', [
       })
 
     .when('/user', {
-        templateUrl: 'components/users/templates/user.html',
-        controller: 'userCtrl'
-      })
+      templateUrl: 'components/users/templates/user.html',
+      controller: 'userCtrl',
+      controllerAs: 'panel'
+    })
 
     .when('/login', {
         templateUrl: 'components/users/templates/login.html',

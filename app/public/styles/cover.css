@@ -117,3 +117,7 @@ input {
 .panel {
     background-color: #333;
 }
+
+input, button {
+    color: #000;
+}

@@ -1,26 +1,42 @@
 <div>
 	<div class="container">
 	<ul class="nav nav-pills">
-		<li ng-class="{active:isSelected(1)}">
-			<a href ng-click="selectTab(1)">Profil</a>
+		<li ng-class="{active:panel.isSelected(1)}">
+			<a href ng-click="panel.selectTab(1)">Profil</a>
 		</li>
-		<li ng-class="{active:isSelected(2)}">
-			<a href ng-click="selectTab(2)">Activités</a>
+		<li ng-class="{active:panel.isSelected(2)}">
+			<a href ng-click="panel.selectTab(2)">Activités</a>
 		</li>
-		<li ng-class="{active:isSelected(3)}">
-			<a href ng-click="selectTab(3)">Editer profil</a>
+		<li ng-class="{active:panel.isSelected(3)}">
+			<a href ng-click="panel.selectTab(3)">Editer profil</a>
 		</li>
 	</ul>
-	<div class="panel" ng-show="isSelectedTab(1)">
-		<p>Prénom: {{user.surname}}</p>
-		<p>Nom: {{user.lastname}}</p>
-		<p>Ville: {{user.town}}</p>
+	<div class="panel" ng-show="panel.isSelectedTab(1)">
+		<p>Prénom: {{panel.user.surname}}</p>
+		<p>Nom: {{panel.user.lastname}}</p>
+		<p>Ville: {{panel.user.town}}</p>
 	</div>	
-	<div class="panel" ng-show="isSelectedTab(2)">
+	<div class="panel" ng-show="panel.isSelectedTab(2)">
 		<p>Tab 2</p>
 	</div>
-	<div class="panel" ng-show="isSelectedTab(3)">
-		<p>Tab 3</p>
+	<div class="panel" ng-show="panel.isSelectedTab(3)">
+		<form name="userForm" role="form" ng-submit="panel.modifyUser(userForm.$valid)" novalidate>
+			<div class="form-group">
+				<label class="col-md-4 control-label">Prénom</label>
+				<div class="col-md-8">
+					<input class="form-control input-md" ng-model="panel.user.surname" placeholder="{{panel.user.surname}}" value="{{panel.user.surname}}" required>
+				</div>
+				<label class="col-md-4 control-label">Nom</label>
+				<div class="col-md-8">
+					<input class="form-control input-md" ng-model="panel.user.lastname" placeholder="{{panel.user.lastname}}" value="{{panel.user.lastname}}" required>
+				</div>
+				<label class="col-md-4 control-label">Ville</label>
+				<div class="col-md-8">
+					<input class="form-control input-md" ng-model="panel.user.town" placeholder="{{panel.user.town}}" value="{{panel.user.town}}">
+				</div>
+				<button type="submit" role="button" class="btn btn-primary col-md-push-4 col-md-4">Mettre à jour</button>
+			</div>
+		</form>
 	</div>
 </div>
 </div>
