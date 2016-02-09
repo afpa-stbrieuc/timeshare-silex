@@ -1,9 +1,7 @@
-
-
 'use strict';
 //doc for dialog: https://github.com/m-e-conroy/angular-dialog-service
 angular.module('TimeShareSilex')
-  .controller('MainCtrl', function($scope) {
+  .controller('accueilCtrl', function($scope, $http) {
 
     //fetch all annonces'
 //    $scope.annonces = Annonce.query(
@@ -15,29 +13,61 @@ angular.module('TimeShareSilex')
 //    );
     //get all categories
     
-//    $http({
-//        method : 'GET',
-//        url : '/api/categorie'
-//    }).then(function (response){
-//        $scope.categories = response.data;
-//    },function(response){
-//        $scope.categories = response.statusText;
-//    });
+
+    $scope.myCategory;
+    
+     $http({
+        method : "GET",
+        url : "/api/categorie"
+    }).then(function (response){
+        $scope.categories = response.data;
+    },function(response){
+        $scope.categories = response.statusText;
+    });
     
     //get all location
     
-//        $http({
-//        method : 'GET',
-//        url : '/api/location'
-//    }).then(function (response){
-//        $scope.locations = response.data;
-//    },function(response){
-//        $scope.locations = response.statusText;
-//    });
-  $scope.categories =['jardinage','mécanique','construction','demenagement','aide à la personne','babysitting'];
+     $http({
+        method : "GET",
+        url : "/api/location"
+    }).then(function (response){
+        $scope.locations = response.data;
+    },function(response){
+        $scope.locations = response.statusText;
+    });
+    
+
+
+// show the annonces depending their categories and locations
+  $scope.showannonces = function(){
+      
+     $http({
+        method : "GET" ,
+        url : "/api/annonces/"+ $scope.myCategory +"/"+$scope.myLocation 
+     }) .then(function (response){
+        $scope.annonces = response.data;
+    },function(response){
+        $scope.annonces = response.statusText;
+    
+     });
+      
+  };
   
-  $scope.locations = ['Lannion','Paris', 'Rennes' , 'Saint-Brieuc' , 'Nantes'];
   
-});
-  
+//  })
+//    .filter('triannonce',function($scope){
+//       return function(input1,input2){
+//         input1 = $scope.myCategory();
+//         input2 = $scope.myLocation();
+//         if(
+//            $scope.annonces.category = input1         
+//                 )
+//             
+//         
+//         return $scope.annonces;
+//         
+//         
+//       };
+              
+  });
 

@@ -1,21 +1,22 @@
 'use strict';
 //register all modules
 angular.module('TimeShareSilex', [
-    'ngRoute'
-    //  'ngCookies',
-    //  'ngResource',
-    //  'ngSanitize',
-    //  'ui.sortable',
-    //  'pascalprecht.translate',
-    //  'xeditable',
-    //  'ui.bootstrap',
-    //  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
-  ])
-  .config(['$routeProvider', function($routeProvider) {
-    $routeProvider.when('/', {
-      templateUrl: 'components/annonces/templates/accueil.html',
-      controller: 'MainCtrl'
-    })
+  'ngRoute'
+//  'ngCookies',
+//  'ngResource',
+//  'ngSanitize',
+//  'ui.sortable',
+//  'pascalprecht.translate',
+//  'xeditable',
+//  'ui.bootstrap',
+//  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
+])
+  .config(['$routeProvider', function($routeProvider){
+    $routeProvider
+      .when('/', {
+        templateUrl: 'components/annonces/templates/accueil.html',
+        controller: 'accueilCtrl'
+      })
 
     .when('/user', {
       templateUrl: 'components/users/templates/user.html',
