@@ -19,32 +19,32 @@ angular.module('TimeShareSilex', [
       })
 
     .when('/user', {
-      templateUrl: 'components/users/templates/user.html',
-      controller: 'userCtrl'
-    })
+        templateUrl: 'components/users/templates/user.html',
+        controller: 'userCtrl'
+      })
 
     .when('/login', {
-      templateUrl: 'components/users/templates/login.html',
-      controller: 'loginCtrl',
-      resolve: {
-        'check': function($location, $rootScope) {
-          if (!$rootScope.loggedIn) {
-            $location.path('/login');
-          } else {
-            $location.path('/user');
+        templateUrl: 'components/users/templates/login.html',
+        controller: 'loginCtrl',
+        resolve: {
+          'check': function($location, $rootScope) {
+            if (!$rootScope.loggedIn) {
+              $location.path('/login');
+            } else {
+              $location.path('/user');
+            }
           }
         }
-      }
-    })
+      })
 
     .when('/register', {
-      templateUrl: 'components/users/templates/register.html',
-      controller: 'registerCtrl'
-    })
+        templateUrl: 'components/users/templates/register.html',
+        controller: 'registerCtrl'
+      })
 
     .otherwise({
-      redirectTo: '/'
-    });
+        redirectTo: '/'
+      });
   }])
   //  .config(['$resourceProvider', function($resourceProvider) {
   //    // this is to allow calling GET /todos/ instead of /todos

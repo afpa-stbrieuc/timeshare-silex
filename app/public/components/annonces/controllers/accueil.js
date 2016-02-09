@@ -13,10 +13,7 @@ angular.module('TimeShareSilex')
 //    );
     //get all categories
     
-
-    $scope.myCategory;
-    
-     $http({
+    $http({
         method : "GET",
         url : "/api/categorie"
     }).then(function (response){
@@ -48,26 +45,6 @@ angular.module('TimeShareSilex')
         $scope.annonces = response.data;
     },function(response){
         $scope.annonces = response.statusText;
-    
      });
-      
   };
-  
-  
-//  })
-//    .filter('triannonce',function($scope){
-//       return function(input1,input2){
-//         input1 = $scope.myCategory();
-//         input2 = $scope.myLocation();
-//         if(
-//            $scope.annonces.category = input1         
-//                 )
-//             
-//         
-//         return $scope.annonces;
-//         
-//         
-//       };
-              
-  });
-
+});
