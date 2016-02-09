@@ -15,11 +15,17 @@ angular.module('TimeShareSilex', [
     $routeProvider
       .when('/', {
         templateUrl: 'components/annonces/templates/accueil.html',
-        controller: 'MainCtrl'
+        controller: 'accueilCtrl'
       })
+      .when('/user', {
+        templateUrl: 'components/users/templates/user.html',
+        controller: 'userCtrl'                  
+      })
+      
       .otherwise({
         redirectTo: '/'
       });
+               
   }])
 //  .config(['$resourceProvider', function($resourceProvider) {
 //    // this is to allow calling GET /todos/ instead of /todos

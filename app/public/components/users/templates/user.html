@@ -1,0 +1,14 @@
+<div class="container" ng-app="TimeShareSilex" > 
+    <div class="inner-cover"  >
+            <div class="row" id="separator"></div>
+            <ul ng-repeat="user in users">
+                <li>
+                    <h2>{{user.surname}} {{user.firstname}}</h2>
+                </li>
+                <li>Ville : {{user.town}}</li>
+                <li>Solde : {{user.timebalance}}</li>
+
+            </ul>
+
+    </div>
+</div>

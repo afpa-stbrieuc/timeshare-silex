@@ -37,6 +37,11 @@ body {
     max-width: 730px;
   }
 }
+.li{
+    text-decoration: none;
+    text-align: left;
+}
+
 .container-narrow > hr {
   margin: 30px 0;
 }
@@ -63,7 +68,7 @@ body {
 }
 
 #separator {
-    weight:100px;
+    width: 100px;
 }
 
 /* Responsive: Portrait tablets and up */
