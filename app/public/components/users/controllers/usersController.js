@@ -17,8 +17,8 @@ angular.module('TimeShareSilex')
       url : '/api/user'
     }).then(function (response){
         $scope.users = response.data;
-    },function(response){
-       $scope.users = response.statusText;
+      },function(response){
+        $scope.users = response.statusText;
       });
   });
   

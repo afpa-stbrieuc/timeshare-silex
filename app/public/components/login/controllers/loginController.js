@@ -10,8 +10,8 @@ angular.module('TimeShareSilex')
           {
           $rootScope.loggedIn = true;
           $location.path('/user');
-          } else{
-        $scope.loginError = 'Invalid username/password combination';
+        } else{
+          $scope.loginError = 'Invalid username/password combination';
         }
-      }
+      };
     });
