@@ -3,7 +3,6 @@
 angular.module('TimeShareSilex')
   .controller('userCtrl', function($scope, $http) {
 
-    //fetch all annonces'
 //    $scope.annonces = Annonce.query(
 //      function() {},
 //      function(error) { //error
@@ -13,17 +12,15 @@ angular.module('TimeShareSilex')
 //    );
     //get all categories
     
-   $http({
-       method : "GET",
-       url : "/api/user"
+    $http({
+      method : 'GET',
+      url : '/api/user'
    }).then(function (response){
        $scope.users = response.data;
    },function(response){
        $scope.users = response.statusText;
-   });
-
-  
-  });
+        });
+      });
   
 
 // //fetch alluser infos:

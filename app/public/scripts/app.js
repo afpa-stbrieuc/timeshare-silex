@@ -12,12 +12,10 @@ angular.module('TimeShareSilex', [
     //  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
   ])
   .config(['$routeProvider', function($routeProvider) {
-    $routeProvider
-
-    .when('/', {
-        templateUrl: 'components/annonces/templates/accueil.html',
-        controller: 'MainCtrl'
-      })
+    $routeProvider.when('/', {
+      templateUrl: 'components/annonces/templates/accueil.html',
+      controller: 'MainCtrl'
+    })
 
     .when('/user', {
       templateUrl: 'components/users/templates/user.html',
@@ -27,19 +25,19 @@ angular.module('TimeShareSilex', [
     .when('/login', {
       templateUrl: 'components/login/templates/login.html',
       controller: 'loginCtrl',
-        resolve:{
-          "check":function($location, $rootScope){
-            if(!$rootScope.loggedIn){
-              $location.path('/login')
-            } else{
-              $location.path('/user')
-            }
+      resolve: {
+        'check': function($location, $rootScope) {
+          if (!$rootScope.loggedIn) {
+            $location.path('/login');
+          } else {
+            $location.path('/user');
           }
+        }
       }
     })
 
     .when('/register', {
-      templateUrl: 'components/users/templates/register.html',
+      templateUrl: 'components/register/templates/register.html',
       controller: 'registerCtrl'
     })
 

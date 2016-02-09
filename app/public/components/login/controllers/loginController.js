@@ -2,18 +2,16 @@
 
 angular.module('TimeShareSilex')
 
-.controller('loginCtrl', function($scope, $location, $rootScope) 
+.controller('loginCtrl', function($scope, $location, $rootScope)
   {
-      $scope.submit = function() 
+      $scope.submit = function()
       {
-
-        if ($scope.username == 'bob' && $scope.password == '1') 
+        if ($scope.username === 'bob' && $scope.password === '1') 
           {
-            $rootScope.loggedIn = true;
-            $location.path('/user');
+          $rootScope.loggedIn = true;
+          $location.path('/user');
           } else{
-            $scope.loginError = "Invalid username/password combination";
-          }
+        $scope.loginError = 'Invalid username/password combination';
+        }
       }
-
-  });
+    });
