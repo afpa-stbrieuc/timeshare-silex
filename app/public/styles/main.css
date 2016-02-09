@@ -1,7 +1,7 @@
 /* Space out content a bit */
 body {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
@@ -19,7 +19,7 @@ body {
 /* Make the masthead heading the same height as the navigation */
 .header h3 {
   margin-top: 0;
-  margin-bottom: 0;
+  margin-bottom: 0px;
   line-height: 40px;
   padding-bottom: 19px;
 }
@@ -83,4 +83,30 @@ body {
   .jumbotron {
     border-bottom: 0;
   }
+}
+
+/****************************************** Login form**********************************************************************/
+
+
+.form-login {
+    background-color: lightgrey;
+    padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 15px;
+    border-color:#d2d2d2;
+    border-width: 5px;
+    box-shadow:0 1px 0 #cfcfcf;
+}
+
+h4 { 
+ border:0 solid #fff; 
+ border-bottom-width:1px;
+ padding-bottom:10px;
+ text-align: center;
+}
+
+.form-control {
+    border-radius: 10px;
 }

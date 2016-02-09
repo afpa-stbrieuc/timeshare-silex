@@ -3,7 +3,7 @@
 'use strict';
 //doc for dialog: https://github.com/m-e-conroy/angular-dialog-service
 angular.module('TimeShareSilex')
-  .controller('MainCtrl', function($scope, $http) {
+  .controller('MainCtrl', function($scope) {
 
     //fetch all annonces'
 //    $scope.annonces = Annonce.query(
@@ -16,8 +16,8 @@ angular.module('TimeShareSilex')
     //get all categories
     
 //    $http({
-//        method : "GET",
-//        url : "/api/categorie"
+//        method : 'GET',
+//        url : '/api/categorie'
 //    }).then(function (response){
 //        $scope.categories = response.data;
 //    },function(response){
@@ -27,17 +27,17 @@ angular.module('TimeShareSilex')
     //get all location
     
 //        $http({
-//        method : "GET",
-//        url : "/api/location"
+//        method : 'GET',
+//        url : '/api/location'
 //    }).then(function (response){
 //        $scope.locations = response.data;
 //    },function(response){
 //        $scope.locations = response.statusText;
 //    });
-  $scope.categories =["jardinage","mécanique","construction","demenagement","aide à la personne","babysitting"];
+  $scope.categories =['jardinage','mécanique','construction','demenagement','aide à la personne','babysitting'];
   
-  $scope.locations = ["Lannion","Paris", "Rennes" , "Saint-Brieuc" , "Nantes"];
+  $scope.locations = ['Lannion','Paris', 'Rennes' , 'Saint-Brieuc' , 'Nantes'];
   
-  });
+});
   
 

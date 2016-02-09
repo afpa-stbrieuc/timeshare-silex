@@ -17,6 +17,11 @@ body {
     text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
+
+input {
+    color: #000;
+}
+
 .site-wrapper {
     box-shadow: 0 0 100px rgba(0, 0, 0, 0.5) inset;
     display: table;
@@ -62,12 +67,12 @@ body {
     color: #fff;
 }
 @media (min-width: 768px) {
-.masthead-brand {
-    float: left;
-}
-.masthead-nav {
-    float: right;
-}
+    .masthead-brand {
+        float: left;
+    }
+    .masthead-nav {
+        float: right;
+    }
 }
 .cover {
     padding: 0 20px;
@@ -79,24 +84,25 @@ body {
 .mastfoot {
     color: rgba(255, 255, 255, 0.5);
 }
+
 @media (min-width: 768px) {
-.masthead {
-    position: fixed;
-    top: 0;
-}
-.mastfoot {
-    bottom: 0;
-    position: fixed;
-}
-.site-wrapper-inner {
-    vertical-align: middle;
-}
-.masthead, .mastfoot, .cover-container {
-    width: 100%;
-}
+    .masthead {
+        position: fixed;
+        top: 0;
+    }
+    .mastfoot {
+        bottom: 0;
+        position: fixed;
+    }
+    .site-wrapper-inner {
+        vertical-align: middle;
+    }
+    .masthead, .mastfoot, .cover-container {
+        width: 100%;
+    }
 }
 @media (min-width: 992px) {
-.masthead, .mastfoot, .cover-container {
-    width: 700px;
-}
+    .masthead, .mastfoot, .cover-container {
+        width: 700px;
+    }
 }
