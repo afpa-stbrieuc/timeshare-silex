@@ -40,7 +40,7 @@ angular.module('TimeShareSilex')
             $scope.sent = true;
           }, function(){
             $scope.sent = false;
-          }); 
+          });
       }
     };
 
