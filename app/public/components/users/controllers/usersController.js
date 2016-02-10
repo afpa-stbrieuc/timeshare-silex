@@ -44,7 +44,7 @@ angular.module('TimeShareSilex')
       }
     };
 
-  $http.get('/api/annonces/')
+    $http.get('/api/annonces/')
     .then(function(response) {
       vm.annonces = response.data;
     }, function() {
