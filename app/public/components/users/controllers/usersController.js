@@ -22,7 +22,7 @@ angular.module('TimeShareSilex')
       url: '/api/user/569d06ecc4936293a6f8fd90'
     }).then(function(response) {
       vm.user = response.data;
-    }, function(response) {
+    }, function() {
       vm.user = {id:'569d06ecc4936293a6f8fd90', surname:'Karine', firstname: 'Monfort', town: 'Yffiniac', timebalance:15};
     });
 
@@ -40,7 +40,7 @@ angular.module('TimeShareSilex')
             $scope.sent = true;
           }, function(){
             $scope.sent = false;
-          })   
+          }); 
       }
     };
 
