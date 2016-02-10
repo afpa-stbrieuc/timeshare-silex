@@ -37,29 +37,18 @@ angular.module('TimeShareSilex')
 
         $http.put('/api/user/'+vm.user.id, user
         ).then(function() {
-            $scope.sent = true;
+            vm.sent = true;
           }, function(){
-            $scope.sent = false;
+            vm.sent = false;
           });
       }
     };
 
+  $http.get('/api/annonces/')
+    .then(function(response) {
+      vm.annonces = response.data;
+    }, function() {
+      // error
+    });
+
   });
-
-
-// //fetch alluser infos:
-// $http({
-//   method: 'GET',
-//   url: 'api/user'
-// }).then(function successCallback(response) {
-//     // $scope callback will be called asynchronously
-//     // when the response is available
-//     $scope.users = response.data;
-
-//   }, function errorCallback(response) {
-//     // called asynchronously if an error occurs
-//     // or server returns response with an error status.
-//     $scope.users = response.statusText;
-
-//   });
-// });
