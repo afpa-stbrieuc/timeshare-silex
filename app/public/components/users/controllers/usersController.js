@@ -9,15 +9,15 @@ angular.module('TimeShareSilex')
 
     this.selectTab = function(setTab) {
       $scope.tab = setTab;
-    }
+    };
 
     this.isSelectedTab = function(checkTab) {
       return $scope.tab === checkTab;
-    }
+    };
 
     $http({
-      method: "GET",
-      url: "/api/user"
+      method: 'GET',
+      url: '/api/user'
     }).then(function(response) {
       $scope.users = response.data;
     }, function(response) {
