@@ -106,3 +106,18 @@ input {
         width: 700px;
     }
 }
+
+.nav > li > a:hover{
+    color: #000;
+}
+.nav > li > a:focus{
+    color: #000;
+}
+
+.panel {
+    background-color: #333;
+}
+
+input, button {
+    color: #000;
+}
