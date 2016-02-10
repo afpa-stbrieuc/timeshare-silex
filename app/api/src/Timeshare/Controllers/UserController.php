@@ -63,7 +63,7 @@ class UserController {
         $user->setFirstname($payload->firstname);
         $user->setSurname($payload->surname);
         $user->setTown($payload->town);
-        $user->setTimebalance($payload->timebalance);
+        $user->setTimeBalance($payload->timebalance);
         $dm->flush($user);
 
         return new JsonResponse($user);
