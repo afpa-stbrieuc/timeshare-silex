@@ -3,32 +3,37 @@
 angular.module('TimeShareSilex')
   .controller('userCtrl', function($scope, $http) {
 
-//    $scope.annonces = Annonce.query(
-//      function() {},
-//      function(error) { //error
-//          dialogs.error('Error', 'server error');
-//          console.log(error.data);
-//        }
-//    );
-    //get all categories
-    
+    this.user = {surname:'test', lastname: 'test', town: 'test'};
+
+    this.tab = 1;
+
+    this.selectTab = function(setTab) {
+      $scope.tab = setTab;
+    };
+
+    this.isSelectedTab = function(checkTab) {
+      return $scope.tab === checkTab;
+    };
+
     $http({
-      method : 'GET',
-      url : '/api/user'
-    }).then(function (response){
-        $scope.users = response.data;
-      },function(response){
-        $scope.users = response.statusText;
-      });
+      method: 'GET',
+      url: '/api/user'
+    }).then(function(response) {
+      $scope.users = response.data;
+    }, function(response) {
+      $scope.users = response.statusText;
+    });
+
+
   });
-  
+
 
 // //fetch alluser infos:
 // $http({
 //   method: 'GET',
 //   url: 'api/user'
 // }).then(function successCallback(response) {
-//     // this callback will be called asynchronously
+//     // $scope callback will be called asynchronously
 //     // when the response is available
 //     $scope.users = response.data;
 

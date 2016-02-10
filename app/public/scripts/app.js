@@ -18,12 +18,13 @@ angular.module('TimeShareSilex', [
         controller: 'accueilCtrl'
       })
 
-    .when('/user', {
+      .when('/user', {
         templateUrl: 'components/users/templates/user.html',
-        controller: 'userCtrl'
+        controller: 'userCtrl',
+        controllerAs: 'panel'
       })
 
-    .when('/login', {
+      .when('/login', {
         templateUrl: 'components/users/templates/login.html',
         controller: 'loginCtrl',
         resolve: {
@@ -37,7 +38,7 @@ angular.module('TimeShareSilex', [
         }
       })
 
-    .when('/register', {
+      .when('/register', {
         templateUrl: 'components/users/templates/register.html',
         controller: 'registerCtrl'
       })
