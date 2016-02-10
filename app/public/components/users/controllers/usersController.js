@@ -3,27 +3,45 @@
 angular.module('TimeShareSilex')
   .controller('userCtrl', function($scope, $http) {
 
-    this.user = {surname:'test', lastname: 'test', town: 'test'};
+    var vm = this;
 
-    this.tab = 1;
+    vm.tab = 1;
+    vm.sent = false;
 
-    this.selectTab = function(setTab) {
-      $scope.tab = setTab;
+    vm.selectTab = function(setTab) {
+      vm.tab = setTab;
     };
 
-    this.isSelectedTab = function(checkTab) {
-      return $scope.tab === checkTab;
+    vm.isSelectedTab = function(checkTab) {
+      return vm.tab === checkTab;
     };
 
+    
     $http({
       method: 'GET',
-      url: '/api/user'
+      url: '/api/user/569d06ecc4936293a6f8fd90'
     }).then(function(response) {
-      $scope.users = response.data;
+      vm.user = response.data;
     }, function(response) {
-      $scope.users = response.statusText;
+      vm.user = {id:'569d06ecc4936293a6f8fd90', surname:'Karine', firstname: 'Monfort', town: 'Yffiniac', timebalance:15};
     });
 
+    vm.modifyUser = function(valid) {
+      if (valid) {
+        var user = {
+                  surname:vm.user.surname,
+                  firstname:vm.user.firstname,
+                  town:vm.user.town,
+                  timebalance:vm.user.timebalance
+            };
+        $http.put('/api/user/'+vm.user.id, user
+        ).then(function(response) {
+            $scope.sent = true;
+        }, function(response){
+            $scope.sent = false;
+        })   
+      }
+    };
 
   });
 
