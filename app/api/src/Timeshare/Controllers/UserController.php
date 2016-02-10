@@ -42,10 +42,13 @@ class UserController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        $user = new User($payload->surname,
-                         $payload->firstname,
-                         $payload->town,
-                         $payload->timebalance);
+        $user = new User($payload->pseudo,
+                        $payload->surname,
+                        $payload->firstname,
+                        $payload->address,
+                        $payload->town,
+                        $payload->timebalance,
+                        $payload->email);
 
           $dm->persist($user);
           $dm->flush();
@@ -60,10 +63,13 @@ class UserController {
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
         $payload = json_decode($request->getContent());
 
+        $user->setPseudo($payload->pseudo);
         $user->setFirstname($payload->firstname);
         $user->setSurname($payload->surname);
+        $user->setAddress($payload->address);
         $user->setTown($payload->town);
         $user->setTimeBalance($payload->timebalance);
+        $user->setEmail($payload->email);
         $dm->flush($user);
 
         return new JsonResponse($user);
