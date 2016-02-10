@@ -1,0 +1,41 @@
+<div>
+	<div class="container">
+            <div class="inner-cover" >
+		<form ng-submit="inscription()">
+                    <h3 class='cover-heading'>Inscription</h3>
+                    <table>
+                       
+                        <tr>
+                            <td>
+                            <label>Nom : </label>    
+                            </td>
+                            <td>
+                            <input id="categories" name="nom" type="text" required ng-model="user.surname"/>
+                            </td>
+                        </tr>                         
+                        <tr>
+                            <td>
+                            <label>Prénom : </label>
+                            </td>
+                            <td>
+                            <input id="categories" name="prenom" type="text" required ng-model="user.firstname" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label>Adresse : </label>
+                            </td>
+                            <td>
+                            <input id="categories" name="adresse" type="text" ng-model="user.town"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                            <input id="categories" type="submit" value="Enregistrer"/>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
+</div>

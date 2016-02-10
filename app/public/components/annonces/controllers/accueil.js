@@ -15,7 +15,7 @@ angular.module('TimeShareSilex')
 //    );
     //get all categories
     
-    $scope.myCategory;
+
     
      $http({
         method : "GET",

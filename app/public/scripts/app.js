@@ -22,6 +22,11 @@ angular.module('TimeShareSilex', [
         templateUrl: 'components/users/templates/user.html',
         controller: 'userCtrl'
       })
+      
+       .when('/inscription', {
+         templateUrl: 'components/users/templates/inscription.html',
+         controller: 'inscriptionCtrl'
+      })
 
       // .when('/login', {
       //   templateUrl: 'components/login/templates/login.html',
