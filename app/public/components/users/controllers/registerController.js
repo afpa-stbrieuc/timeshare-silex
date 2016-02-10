@@ -3,7 +3,7 @@
 angular.module('TimeShareSilex')
 
   
-    .controller('inscriptionCtrl', function($scope, $http){
+    .controller('registerCtrl', function($scope, $http){
         
     $scope.inscription = function(){
         

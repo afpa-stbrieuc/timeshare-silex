@@ -32,24 +32,29 @@
                         <div class="inner"> -->
 
                             <header>
-                                <h3 class="masthead-brand" > 
-                                    <a ng-href="/#/index.html/{{hash}}"><img src="images/timeshare-logo.png" width=200></a> 
+
+                                <h3 class="masthead-brand"> 
+                                    <a ng-href="#/index.html"><img src="images/timeshare-logo.png" width=200></a> 
+
                                 </h3>
+<!--    a mettre reminder Arnaud                              {{loginError}}  {{loggedUser}} -->
                                 <nav>
                                     <ul class="nav masthead-nav">
+
                                         <li><a href="/#/">Annonces</a></li>
-                                        <li><a href="login.html">Se connecter</a></li>
-                                        <li><a href="/#/inscription">S'inscrire</a></li>
-                                        <li><a href="/#/user">voir profil</a></li>
+                                        <li><a href="#/login">Se connecter</a></li>
+                                        <li><a href="#/register">S'inscrire</a></li>
+                                        <li><a href="#/login">Mon profil</a></li>
+
                                     </ul>
                                 </nav>
-                            </header>  
+                            </header>
 
                             <div class="container" ng-view="" style="margin-top:100px;"></div>
 
-                            
-                    <!-- </div> -->
-<!--                 </div>
+
+                    <!-- </div>
+                     </div>
                 </div>
             </div> -->
     </div> 
@@ -58,7 +63,9 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/es5-shim/es5-shim.js"></script>
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.min.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-cookies/angular-cookies.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
@@ -78,7 +85,9 @@
         <script src="scripts/app.js"></script>
         <script src="components/annonces/controllers/accueil.js"></script>
         <script src="components/users/controllers/usersController.js"></script>
-        <script src="components/users/controllers/inscriptionController.js"></script>
+        <script src="components/users/controllers/registerController.js"></script>
+        <script src="components/users/controllers/loginController.js"></script>
+
 
         <!-- endbuild -->
 

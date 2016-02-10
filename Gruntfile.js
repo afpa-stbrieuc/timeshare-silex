@@ -67,7 +67,7 @@ module.exports = function(grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= project.appPublic %>/scripts/{,*/}*.js'],
+        files: ['<%= project.appPublic %>/components/{,*/}*.js','<%= project.appPublic %>/scripts/{,*/}*.js' ],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -192,7 +192,8 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= project.appPublic %>/scripts/{,*/}*.js'
+        '<%= project.appPublic %>/scripts/{,*/}*.js',
+        '<%= project.appPublic %>/components/**/*.js'
       ],
       test: {
         options: {
