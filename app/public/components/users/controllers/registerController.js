@@ -26,18 +26,7 @@ angular.module('TimeShareSilex')
                 firstname : $scope.prenom,
                 surname : $scope.nom,
                 town : $scope.ville
-            }
-        });
-      
-        
-       
-        
- 
- 
-            
-  
-    
-    
-        
-    };        
-    });
+              }
+            });
+      };
+  });

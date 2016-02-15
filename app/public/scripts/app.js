@@ -18,14 +18,14 @@ angular.module('TimeShareSilex', [
         controller: 'accueilCtrl'
       })
 
-    .when('/user', {
+      .when('/user', {
         templateUrl: 'components/users/templates/user.html',
         controller: 'userCtrl'
       })
       
-       .when('/inscription', {
-         templateUrl: 'components/users/templates/inscription.html',
-         controller: 'inscriptionCtrl'
+      .when('/inscription', {
+        templateUrl: 'components/users/templates/inscription.html',
+        controller: 'inscriptionCtrl'
       })
 
     .when('/login', {
