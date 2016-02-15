@@ -12,9 +12,18 @@ use Timeshare\Entities\User;
 class AnnonceController {
 
 
-    public function getAllAction(Application $app)
+    public function getAllAction(Application $app, Request $request)
     {
+        $userId = $request->get('userId');
+        if ($userId !== null ){
+           
+            //$user = $app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id'=>$userId));
+            
+            return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user'=>$userId)));
+        }
+        else{
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findAll());
+        }
     }
 
     public function getOneAction($id, Application $app)
@@ -118,5 +127,17 @@ class AnnonceController {
       
         
         return new JsonResponse ($annonce);
+    }
+    
+    public function annonceByAuthor($author,Application $app){
+        
+
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user' => $author));
+        
+        
+        return new JsonResponse($annonce);
+        
+                
     }
 }
