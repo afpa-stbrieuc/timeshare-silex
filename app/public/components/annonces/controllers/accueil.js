@@ -13,6 +13,7 @@ angular.module('TimeShareSilex')
 //    );
     //get all categories
     
+
     $http({
         method : 'GET',
         url : '/api/categorie'

@@ -5,5 +5,5 @@ dist
 release.zip
 dist
 app/api/cache
-cache/
+cache
 /nbproject/private/

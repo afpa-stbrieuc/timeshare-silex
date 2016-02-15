@@ -27,3 +27,8 @@ sortAction:
   path: /{category}/{lieu}
   defaults: { _controller: 'Timeshare\Controllers\AnnonceController::sortAnnonce' }
   methods:  [GET]  
+  
+sortByAuthor:
+    path: /auteur/{author}
+    defaults: { _controller: 'Timeshare\Controllers\AnnonceController::annonceByAuthor' }
+    methods:  [GET]
