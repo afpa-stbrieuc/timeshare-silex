@@ -19,7 +19,7 @@ angular.module('TimeShareSilex')
         
     $scope.inscription = function(){
         
-        var utilisateur = $http({
+        $http({
             method : 'post',
             url : '/api/user',
             data : {
@@ -27,7 +27,7 @@ angular.module('TimeShareSilex')
                 surname : $scope.nom,
                 town : $scope.ville
             }
-        })
+        });
       
         
        
@@ -39,5 +39,5 @@ angular.module('TimeShareSilex')
     
     
         
-    }        
+    };        
     });
