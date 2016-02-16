@@ -28,7 +28,7 @@ class AnnonceTest extends WebTestCase
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
-        $this->user = new User("Zorro", "toto", "jean-claude", "14 rue des Girouettes", "langueux", 10, "jc.toto@gmail.com");
+        $this->user = new User("Zorro", "mot de passe", "toto", "jean-claude", "14 rue des Girouettes", "langueux", 10, "jc.toto@gmail.com");
 
         $this->app = $app;
 

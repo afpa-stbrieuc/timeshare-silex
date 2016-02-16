@@ -43,6 +43,7 @@ class UserController {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
         $user = new User($payload->pseudo,
+                        $payload->password,
                         $payload->surname,
                         $payload->firstname,
                         $payload->address,
