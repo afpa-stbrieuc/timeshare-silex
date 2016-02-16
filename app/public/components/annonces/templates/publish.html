@@ -1,6 +1,6 @@
 <div class="row">
 	<form name="advertForm" role="form" ng-submit="publish.submitAdvert(advertForm.$valid)" novalidate>
-			<div class="form-group">
+			<div class="form-group" id="advert-form">
 				<label class="col-md-4 control-label">Nom</label>
 				<div class="col-md-8">
 					<input class="form-control input-sm" ng-model="publish.advert.name" ng-minlength="3" placeholder="Nom de l'annonce" required>
@@ -15,11 +15,11 @@
 				</div>
 				<label class="col-md-4 control-label">Date de début</label>
 				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="publish.advert.dateValiditeDebut" placeholder="Date de validité Début" required>
+					<input class="form-control input-sm" ng-model="publish.dt" placeholder="YYYY-mm-dd" uib-datepicker-popup datepicker-options="publish.dateOptions" required>
 				</div>
 				<label class="col-md-4 control-label">Date de fin</label>
 				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="publish.advert.dateValiditeFin" placeholder="Date de validité Fin" required>
+					<input class="form-control input-sm" ng-model="publish.advert.dateValiditeFin" placeholder="YYYY-mm-dd" uib-datepicker-popup required>
 				</div>
 				<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4">Publier</button>
 			</div>
@@ -27,8 +27,8 @@
 	
 </div>
 
-<p ng-show="publish.sentOK">Annonce publiée</p>
-<p ng-show="publish.sentError">Erreur: annonce non publiée</p>
+<p id="sentOK" ng-show="publish.sentOK">Annonce publiée</p>
+<p id="sentError" ng-show="publish.sentError">Erreur: annonce non publiée</p>
 
 
 

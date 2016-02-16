@@ -1,25 +1,19 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-  .controller('publishCtrl', function($http) {
+  .controller('publishCtrl', ['$http', function($http, uib) {
 
 	var vm = this;
 	vm.sentOK = false;
 	vm.sentError = false;
+	vm.dt = new Date();
   
 	vm.submitAdvert = function(valid) {
 		if (valid) {
-			var data = {
-				'name': vm.advert.name,
-				'user': { 'id': '569d06ecc4936293a6f8fd90'},
-				'location': vm.advert.location,
-				'category': vm.advert.category,
-				'dateValiditeDebut': vm.advert.dateValiditeDebut,
-				'dateValiditeFin': vm.advert.dateValiditeFin,
-				'demande': false
-			};
+			vm.advert['user'] = { 'id': '569d06ecc4936293a6f8fd90'};
+			vm.advert['demande'] = false;
 
-			$http.post('/api/annonces/', data).then(
+			$http.post('/api/annonces/', vm.advert).then(
 				function (response) {
 					if (response.status === 201) {
 						vm.sentOK = true;
@@ -32,4 +26,9 @@ angular.module('TimeShareSilex')
 
 	};
 
-});
+	vm.dateOptions = {
+		startingDay: 1,
+		formatYear: 'yy'
+	}
+
+}]);
