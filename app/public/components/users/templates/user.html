@@ -12,16 +12,22 @@
 		</li>
 	</ul>
 	<div class="panel" ng-show="panel.isSelectedTab(1)">
+	</div>
 		<p>Prénom: {{panel.user.surname}}</p>
 		<p>Nom: {{panel.user.firstname}}</p>
 		<p>Ville: {{panel.user.town}}</p>
 		<p>Timebalance: {{panel.user.timebalance}}</p>
+		<a href="#/publish"><input type="button" class="btn" value="Publier une annonce" ng-click="panel.publier()" /></a>
+	</div>
 	</div>	
 	<div class="panel" ng-show="panel.isSelectedTab(2)">
+		<div class="row">
+		<h2>Mes annonces</h2>
 		<div ng-repeat="annonce in panel.annonces|filter:panel.user.id">
 			<h2>{{annonce.name}}</h2>
 			<p>Publié le {{annonce.date|date}}, {{annonce.user.surname}} {{annonce.user.firstname}} a fait la demande du {{annonce.dateValiditeDebut}} au {{annonce.dateValiditeFin}} dans la catégorie {{annonce.category}}</p>
 		</div>
+	</div>
 	</div>
 	<div class="panel" ng-show="panel.isSelectedTab(3)">
 		<form name="userForm" role="form" ng-submit="panel.modifyUser(userForm.$valid)" novalidate>

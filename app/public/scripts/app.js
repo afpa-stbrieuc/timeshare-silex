@@ -38,6 +38,12 @@ angular.module('TimeShareSilex', [
         }
       })
 
+      .when('/publish', {
+        templateUrl: 'components/annonces/templates/publish.html',
+        controller: 'publishCtrl',
+        controllerAs: 'publish',
+      })
+
       .when('/register', {
         templateUrl: 'components/users/templates/register.html',
         controller: 'registerCtrl'
