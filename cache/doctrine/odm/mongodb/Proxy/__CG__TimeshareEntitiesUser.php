@@ -64,10 +64,10 @@ class User extends \Timeshare\Entities\User implements \Doctrine\ODM\MongoDB\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance');
+            return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'pseudo', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'address', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'email');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance');
+        return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'pseudo', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'address', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'email');
     }
 
     /**
@@ -235,6 +235,39 @@ class User extends \Timeshare\Entities\User implements \Doctrine\ODM\MongoDB\Pro
     /**
      * {@inheritDoc}
      */
+    public function getPseudo()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPseudo', array());
+
+        return parent::getPseudo();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getAddress()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getAddress', array());
+
+        return parent::getAddress();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function getEmail()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
+
+        return parent::getEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function setFirstname($firstname)
     {
 
@@ -274,6 +307,39 @@ class User extends \Timeshare\Entities\User implements \Doctrine\ODM\MongoDB\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'setTimeBalance', array($timebalance));
 
         return parent::setTimeBalance($timebalance);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setEmail($email)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setEmail', array($email));
+
+        return parent::setEmail($email);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setAddress($address)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setAddress', array($address));
+
+        return parent::setAddress($address);
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPseudo($pseudo)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPseudo', array($pseudo));
+
+        return parent::setPseudo($pseudo);
     }
 
     /**
