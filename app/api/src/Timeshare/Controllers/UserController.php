@@ -47,7 +47,6 @@ class UserController {
                         $payload->firstname,
                         $payload->address,
                         $payload->town,
-                        $payload->timebalance,
                         $payload->email);
 
           $dm->persist($user);

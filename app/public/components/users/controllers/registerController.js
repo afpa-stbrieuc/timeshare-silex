@@ -5,28 +5,32 @@ angular.module('TimeShareSilex')
   
     .controller('registerCtrl', function($scope, $http){
         
-//    $http({
-//        method : 'GET',
-//        url : '/api/user'
-//      }).then(function (response){
-//        $scope.user = response.data;
-//      },function(response){
-//        $scope.user = response.statusText;
-//      });
-      
+        $scope.user = {};
+       
+        $scope.userOk = false;
+        $scope.userError = false;
         
-
         
-    $scope.inscription = function(){
+        $scope.inscription = function(){
         
-        $http({
+          $http({
             method : 'post',
-            url : '/api/user',
-            data : {
-                firstname : $scope.prenom,
-                surname : $scope.nom,
-                town : $scope.ville
-              }
-            });
-      };
-  });
+            url : '/api/user/',
+            data : $scope.user,
+            
+          })
+            
+            .then(function(data){
+                
+                if (data.status === 201){
+                 
+                  $scope.userOk = true;
+
+                }
+                else{
+                  $scope.userError = true;
+                }
+               
+              });
+        };
+      });

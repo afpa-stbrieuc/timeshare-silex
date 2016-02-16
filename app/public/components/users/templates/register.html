@@ -10,7 +10,7 @@
                             <label>Nom : </label>    
                             </td>
                             <td>
-                            <input id="categories" name="nom" type="text" required ng-model="nom"/>
+                            <input id="categories" name="nom" type="text" required ng-model="user.surname"/>
                             </td>
                         </tr>                         
                         <tr>
@@ -18,15 +18,39 @@
                             <label>Prénom : </label>
                             </td>
                             <td>
-                            <input id="categories" name="prenom" type="text" required ng-model="prenom" />
+                            <input id="categories" name="prenom" type="text" required ng-model="user.firstname" />
                             </td>
                         </tr>
                         <tr>
                             <td>
-                            <label>Adresse : </label>
+                                <label>Pseudo: </label>
                             </td>
                             <td>
-                            <input id="categories" name="adresse" type="text" ng-model="ville"/>
+                                <input id="categories" name="pseudo" type="text" required ng-model="user.pseudo"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            <label>Ville : </label>
+                            </td>
+                            <td>
+                            <input id="categories" name="ville" type="text" required ng-model="user.town"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Adresse: </label>
+                            </td>
+                            <td>
+                                <input id ="categories" name="adresse" type="text" required ng-model="user.address"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <label>Email: </label>
+                            </td>
+                            <td>
+                                <input id="categories" name="email" type="text" required ng-model="user.email"/>
                             </td>
                         </tr>
                         <tr>
@@ -36,6 +60,8 @@
                         </tr>
                     </table>
                 </form>
+                <p ng-show="userOk">Vous avez bien été enregistré</p>
+                <p ng-show="userError">une erreur c'est produite</p>
             </div>
         </div>
 </div>
