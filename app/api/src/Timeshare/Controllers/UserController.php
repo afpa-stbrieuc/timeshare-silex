@@ -27,6 +27,11 @@ class UserController {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
     }
 
+    public function getOneUserByEmail($email, Application $app)
+    {
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('email' => $email)));
+    }
+
     public function deleteOneUser($id, Application $app)
     {
 

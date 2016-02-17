@@ -9,6 +9,11 @@ getOneUser:
   defaults: { _controller: 'Timeshare\Controllers\UserController::getOneUser' }
   methods:  [GET]
 
+getOneUser:
+  path: /{email}
+  defaults: { _controller: 'Timeshare\Controllers\UserController::getOneUserByEmail' }
+  methods:  [GET]
+
 deleteOneUser:
   path: /{id}
   defaults: { _controller: 'Timeshare\Controllers\UserController::deleteOneUser' }

@@ -35,12 +35,13 @@
                                 <h3 class="masthead-brand"> 
                                     <a ng-href="#/index.html"><img src="images/timeshare-logo.png" width=200;></a> 
                                 </h3>
-<!--    a mettre reminder Arnaud                              {{loginError}}  {{loggedUser}} -->
+
                                 <nav>
                                     <ul class="nav masthead-nav">
-                                        <li><a href="#/login">Se connecter</a></li>
-                                        <li><a href="#/register">S'inscrire</a></li>
-                                        <li><a href="#/login">Mon profil</a></li>
+
+                                        <li><a ng-show="!$rootScope.loggedIn" href="#/login">{{userLogged || "Se connecter"}}</a></li>
+                                        <li><a ng-hide="$rootScope.loggedIn" href="#/logout">Déconnexion</a></li>
+                                        <li><a ng-hide="!$rootScope.loggedIn" href="#/register">S'inscrire</a></li>
                                     </ul>
                                 </nav>
                             </header>
@@ -81,9 +82,9 @@
         <script src="components/annonces/controllers/accueil.js"></script>
         <script src="components/users/controllers/usersController.js"></script>
         <script src="components/users/controllers/loginController.js"></script>
-
+        <script src="components/users/controllers/logoutController.js"></script>
+        <script src="components/users/services/authServices.js"></script>
         <!-- endbuild -->
-
          <script src="http://localhost:35729/livereload.js"></script>
 </body>
 </html>

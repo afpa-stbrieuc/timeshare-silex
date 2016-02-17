@@ -115,3 +115,12 @@ h4 {
 .form-control {
     border-radius: 10px;
 }
+
+
+
+
+
+
+.dropdown li:hover > ul {
+    left: 0;
+}
