@@ -32,8 +32,10 @@ class ServicesTest extends WebTestCase
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
-        $this->user = new User('Zorro', 'Des Bois', 'Toto', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
-        $this->user1 = new User('orroZ', 'Des Bois', 'Bob', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
+
+        $this->user = new User('ij', 'Zorro', 'Des Bois', 'Toto', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
+        $this->user1 = new User('jo', 'orroZ', 'Des Bois', 'Bob', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
+
         $this->annonce = new Annonce('Pelouse tondre',
                                      $this->user,
                                      'blabla',

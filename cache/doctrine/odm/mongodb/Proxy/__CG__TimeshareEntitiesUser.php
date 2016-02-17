@@ -64,10 +64,10 @@ class User extends \Timeshare\Entities\User implements \Doctrine\ODM\MongoDB\Pro
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'pseudo', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'address', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'email');
+            return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'pseudo', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'password', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'address', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'email');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'pseudo', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'address', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'email');
+        return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'pseudo', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'password', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'surname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'firstname', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'address', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'town', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'timebalance', '' . "\0" . 'Timeshare\\Entities\\User' . "\0" . 'email');
     }
 
     /**
@@ -191,6 +191,17 @@ class User extends \Timeshare\Entities\User implements \Doctrine\ODM\MongoDB\Pro
     /**
      * {@inheritDoc}
      */
+    public function getPassword()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getPassword', array());
+
+        return parent::getPassword();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
     public function getFirstname()
     {
 
@@ -263,6 +274,17 @@ class User extends \Timeshare\Entities\User implements \Doctrine\ODM\MongoDB\Pro
         $this->__initializer__ && $this->__initializer__->__invoke($this, 'getEmail', array());
 
         return parent::getEmail();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setPassword($password)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setPassword', array($password));
+
+        return parent::setPassword($password);
     }
 
     /**
