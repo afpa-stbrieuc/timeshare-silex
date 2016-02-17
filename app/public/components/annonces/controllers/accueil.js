@@ -2,17 +2,8 @@
 //doc for dialog: https://github.com/m-e-conroy/angular-dialog-service
 angular.module('TimeShareSilex')
   .controller('accueilCtrl', function($scope, $http) {
-
-    //fetch all annonces'
-//    $scope.annonces = Annonce.query(
-//      function() {},
-//      function(error) { //error
-//          dialogs.error('Error', 'server error');
-//          console.log(error.data);
-//        }
-//    );
-    //get all categories
     
+    //get all categories
     $http({
         method : 'GET',
         url : '/api/categorie'
@@ -22,8 +13,7 @@ angular.module('TimeShareSilex')
         $scope.categories = response.statusText;
       });
     
-    //get all location
-    
+    //get all location    
     $http({
         method : 'GET',
         url : '/api/location'
@@ -48,3 +38,4 @@ angular.module('TimeShareSilex')
       });
     };
   });
+  

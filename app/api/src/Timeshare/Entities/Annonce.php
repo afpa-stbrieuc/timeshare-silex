@@ -31,15 +31,19 @@ class Annonce implements JsonSerializable
     /** @ODM\Field(type="date") */
     private $dateValiditeDebut;
     
+    /** @ODM\Field(type="string") */
+    private $description;
+    
     /** @ODM\Field(type="date") */
     private $dateValiditeFin;
     
     /** @ODM\Field(type="boolean") */
     private $demande;
 
-    public function __construct($name, User $user, $dateValiditeDebut, $dateValiditeFin, $location, $category, $demande) {
+    public function __construct($name, User $user, $description, $dateValiditeDebut, $dateValiditeFin, $location, $category, $demande) {
      	$this->name = $name;
      	$this->user = $user;
+        $this->description = $description;
      	$this->date = new DateTime('now');
      	//$this->dateValiditeDebut = DateTime::createFromFormat('Y-m-d H:i:s', $dateValiditeDebut);
      	//$this->dateValiditeFin = DateTime::createFromFormat('Y-m-d H:i:s', $dateValiditeFin);
@@ -49,7 +53,15 @@ class Annonce implements JsonSerializable
      	$this->category = $category;
      	$this->demande = $demande;
  	}
+         
+    function getDescription() {
+        return $this->description;
+    }
 
+    function setDescription($description) {
+        $this->description = $description;
+    }
+         
     public function getName() {
     	return $this->name;
     }
@@ -106,6 +118,7 @@ class Annonce implements JsonSerializable
 				'id' => $this->id,
 				'name' => $this->name,
 				'user' => $this->user,
+                                'description' => $this->description,
 				'date' => date_format ( $this->date, 'Y-m-d H:i:s' ),
 				'location' => $this->location,
 				'category' => $this->category,

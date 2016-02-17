@@ -14,7 +14,6 @@ html, body {
 }
 body {
     color: #fff;
-    text-align: center;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
 }
 
@@ -24,10 +23,12 @@ input {
 
 .site-wrapper {
 /*    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5) inset;*/
+    margin-left: auto;
+    margin-right: auto;
     display: table;
     height: 100%;
     min-height: 100%;
-    width: 100%;
+    width: 90%;
 }
 .site-wrapper-inner {
     display: table-cell;
@@ -41,10 +42,12 @@ input {
     padding: 30px;
 }
 .masthead-brand {
+   
     margin-bottom: 10px;
     margin-top: 10px;
 }
 .masthead-nav > li {
+     margin-right: 30px;
     display: inline-block;
 }
 .masthead-nav > li + li {
@@ -105,4 +108,19 @@ input {
     .masthead, .mastfoot, .cover-container {
         width: 700px;
     }
+}
+
+.nav > li > a:hover{
+    color: #000;
+}
+.nav > li > a:focus{
+    color: #000;
+}
+
+.panel {
+    background-color: #333;
+}
+
+input, button {
+    color: #000;
 }

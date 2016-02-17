@@ -24,7 +24,9 @@ class UserTest extends WebTestCase
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
-        $this->user = new User('Des Bois', 'Toto', 'Singapour', 200);
+
+        $this->user = new User('Zorro', 'prout', 'Toto','john', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
+
 
 		return $app;
 
