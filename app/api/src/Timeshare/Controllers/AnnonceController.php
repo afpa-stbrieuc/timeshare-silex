@@ -41,10 +41,10 @@ class AnnonceController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user));
-        if ($user === NULL) {
-            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
-        }
+        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user->id));
+//        if ($user === NULL) {
+//            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
+//        }
         $annonce = new Annonce(
         		$payload->name,
         		$user, 
@@ -105,5 +105,18 @@ class AnnonceController {
         return new JsonResponse(iterator_to_array($category, false));
 
         
+    }
+    
+    public function sortAnnonce($category,$lieu,Application $app){
+
+        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu)));
+        $user = array();
+        foreach ($annonce as $value) {
+            $user[] = $value->getUser();
+        }
+        
+      
+        
+        return new JsonResponse ($annonce);
     }
 }

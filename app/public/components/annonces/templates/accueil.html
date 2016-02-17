@@ -1,16 +1,30 @@
-<div class="inner-cover">
-    <h3 class='cover-heading'>Catégories d'annonces</h3>
-    <select id='categories'>
-        <option class="form-control"  ng-repeat="category in categories">{{ category }}</option>
-    </select>
-    <h3>Localisation</h3>
-    <select id='categories'>
-        <option class="form-control" ng-repeat="location in locations">{{ location }}</option>
-    </select>
-    <br /><br />
-    <p class="lead">
-        <a class='btn btn-lg btn-default' href='search'>Chercher</a>                                          
-    </p>
-</div>
+    <div class="inner-cover">
+        <div class="row" id="separator"></div>
+        <form ng-submit = " showannonces()">
+        <h3 class='cover-heading'>Catégories d'annonces</h3>
+        <select id='categories' ng-model="myCategory" >
+            <option class="form-control"   ng-repeat="category in categories" >{{ category }}</option>
+        </select>
+        <h3>Localisation</h3>
+        <select id='categories' ng-model="myLocation">
+            <option class="form-control"  ng-repeat="location in locations" >{{ location }}</option>
+        </select>
+        <br /><br />
+        <p id="categories">
+            <input type='submit'  value='Rechercher' >                                          
+        </p>
+        </form>
+        
+        
+        
+   <div ng-repeat="annonce in annonces">
+       
+            <p>{{annonce.name}}</p>
+            <p >{{annonce.user.surname}}</p> 
+            <p>{{annonce.date}}</p>
+       </div>
+        </div>  
+          
+
 <div class="mastfoot"></div>
      
