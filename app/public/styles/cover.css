@@ -23,11 +23,8 @@ input {
 
 .site-wrapper {
 /*    box-shadow: 0 0 100px rgba(0, 0, 0, 0.5) inset;*/
-<<<<<<< HEAD
-=======
     margin-left: auto;
     margin-right: auto;
->>>>>>> 122a6780b561b6dff590275ffacbe9b8535bca61
     display: table;
     height: 100%;
     min-height: 100%;

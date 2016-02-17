@@ -129,8 +129,6 @@ class AnnonceController {
         
         return new JsonResponse ($annonce);
     }
-<<<<<<< HEAD
-=======
     
     public function annonceByAuthor($author,Application $app){
         
@@ -143,5 +141,5 @@ class AnnonceController {
         
                 
     }
->>>>>>> 122a6780b561b6dff590275ffacbe9b8535bca61
+
 }

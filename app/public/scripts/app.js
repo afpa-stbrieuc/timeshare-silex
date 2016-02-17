@@ -1,7 +1,7 @@
 'use strict';
 //register all modules
 angular.module('TimeShareSilex', [
-  'ngRoute'
+    'ngRoute'
 //  'ngCookies',
 //  'ngResource',
 //  'ngSanitize',
@@ -11,14 +11,13 @@ angular.module('TimeShareSilex', [
 //  'ui.bootstrap',
 //  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
 ])
-  .config(['$routeProvider', function($routeProvider){
-    $routeProvider
-      .when('/', {
-        templateUrl: 'components/annonces/templates/accueil.html',
-        controller: 'accueilCtrl'
-      })
+    .config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/', {
+                templateUrl: 'components/annonces/templates/accueil.html',
+                controller: 'accueilCtrl'
+            })
 
-<<<<<<< HEAD
     .when('/user', {
         templateUrl: 'components/users/templates/user.html',
         controller: 'userCtrl'
@@ -27,26 +26,17 @@ angular.module('TimeShareSilex', [
     .when('/login', {
         templateUrl: 'components/users/templates/login.html',
         controller: 'loginCtrl',
-        resolve: {
+                resolve: {
           'check': function($location, $rootScope) {
             if (!$rootScope.loggedIn) {
               $location.path('/login');
-            } else {
+                        } else {
               $location.path('/user');
-            }
+                        }
           }
         }
       })
-
-    .when('/register', {
-        templateUrl: 'components/users/templates/register.html',
-        controller: 'registerCtrl'
-      })
-
-    .otherwise({
-        redirectTo: '/'
-      });
-=======
+    
       .when('/user', {
         templateUrl: 'components/users/templates/user.html',
         controller: 'userCtrl',
@@ -72,7 +62,7 @@ angular.module('TimeShareSilex', [
           templateUrl: 'components/users/templates/login.html',
           controller: 'loginCtrl',
           resolve: {
-            'check': function($location, $rootScope) {
+                    'check': function($location, $rootScope) {
               if (!$rootScope.loggedIn) {
                 $location.path('/login');
               } else {
@@ -96,7 +86,6 @@ angular.module('TimeShareSilex', [
     .otherwise({
           redirectTo: '/'
         });
->>>>>>> 122a6780b561b6dff590275ffacbe9b8535bca61
   }])
   //  .config(['$resourceProvider', function($resourceProvider) {
   //    // this is to allow calling GET /todos/ instead of /todos
