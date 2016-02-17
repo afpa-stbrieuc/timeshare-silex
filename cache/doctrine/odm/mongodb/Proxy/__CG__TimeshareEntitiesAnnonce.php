@@ -64,10 +64,10 @@ class Annonce extends \Timeshare\Entities\Annonce implements \Doctrine\ODM\Mongo
     public function __sleep()
     {
         if ($this->__isInitialized__) {
-            return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'user', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'name', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'date', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'location', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'category', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeDebut', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeFin', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'demande');
+            return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'user', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'name', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'date', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'location', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'category', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeDebut', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'description', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeFin', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'demande');
         }
 
-        return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'user', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'name', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'date', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'location', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'category', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeDebut', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeFin', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'demande');
+        return array('__isInitialized__', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'id', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'user', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'name', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'date', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'location', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'category', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeDebut', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'description', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'dateValiditeFin', '' . "\0" . 'Timeshare\\Entities\\Annonce' . "\0" . 'demande');
     }
 
     /**
@@ -173,6 +173,28 @@ class Annonce extends \Timeshare\Entities\Annonce implements \Doctrine\ODM\Mongo
     }
 
     
+    /**
+     * {@inheritDoc}
+     */
+    public function getDescription()
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'getDescription', array());
+
+        return parent::getDescription();
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    public function setDescription($description)
+    {
+
+        $this->__initializer__ && $this->__initializer__->__invoke($this, 'setDescription', array($description));
+
+        return parent::setDescription($description);
+    }
+
     /**
      * {@inheritDoc}
      */

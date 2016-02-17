@@ -24,39 +24,49 @@ angular.module('TimeShareSilex', [
         controllerAs: 'panel'
       })
       
-      .when('/inscription', {
-        templateUrl: 'components/users/templates/inscription.html',
-        controller: 'inscriptionCtrl'
+      .when('/annonce/:id', {
+        templateUrl: 'components/annonces/templates/annonce.html',
+        controller: 'annonceCtrl'
       })
+      
+      .when('/service', {
+          templateUrl: 'components/services/templates/service.html',
+          controller: 'serviceCtrl'
+        })
+      
+      .when('/inscription', {
+          templateUrl: 'components/users/templates/inscription.html',
+          controller: 'inscriptionCtrl'
+        })
 
       .when('/login', {
-        templateUrl: 'components/users/templates/login.html',
-        controller: 'loginCtrl',
-        resolve: {
-          'check': function($location, $rootScope) {
-            if (!$rootScope.loggedIn) {
-              $location.path('/login');
-            } else {
-              $location.path('/user');
+          templateUrl: 'components/users/templates/login.html',
+          controller: 'loginCtrl',
+          resolve: {
+            'check': function($location, $rootScope) {
+              if (!$rootScope.loggedIn) {
+                $location.path('/login');
+              } else {
+                $location.path('/user');
+              }
             }
           }
-        }
-      })
+        })
 
       .when('/publish', {
-        templateUrl: 'components/annonces/templates/publish.html',
-        controller: 'publishCtrl',
-        controllerAs: 'publish',
-      })
+          templateUrl: 'components/annonces/templates/publish.html',
+          controller: 'publishCtrl',
+          controllerAs: 'publish',
+        })
 
       .when('/register', {
-        templateUrl: 'components/users/templates/register.html',
-        controller: 'registerCtrl'
-      })
+          templateUrl: 'components/users/templates/register.html',
+          controller: 'registerCtrl'
+        })
 
     .otherwise({
-        redirectTo: '/'
-      });
+          redirectTo: '/'
+        });
   }])
   //  .config(['$resourceProvider', function($resourceProvider) {
   //    // this is to allow calling GET /todos/ instead of /todos

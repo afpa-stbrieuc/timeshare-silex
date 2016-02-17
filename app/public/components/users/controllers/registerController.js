@@ -16,7 +16,7 @@ angular.module('TimeShareSilex')
           $http({
             method : 'post',
             url : '/api/user/',
-            data : $scope.user,
+            data : $scope.user
             
           })
             

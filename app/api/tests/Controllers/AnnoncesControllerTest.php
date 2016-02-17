@@ -28,7 +28,7 @@ class AnnonceTest extends WebTestCase
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
-        $this->user = new User("Zorro", "toto", "jean-claude", "14 rue des Girouettes", "langueux", 10, "jc.toto@gmail.com");
+        $this->user = new User("Zorro", "toto", "jean-claude", "14 rue des Girouettes", "langueux", "jc.toto@gmail.com");
 
         $this->app = $app;
 
@@ -63,17 +63,19 @@ class AnnonceTest extends WebTestCase
         // create the advert
         $this->annonce = new Annonce('Pelouse tondre',
                                      $this->user,
+                                     'blablablabla',
                                      \DateTime::createFromFormat('Y-m-d H:i:s', '2016-01-17 19:37:00'),
                                      \DateTime::createFromFormat('Y-m-d H:i:s', '2016-02-17 19:37:00'),
                                      'hennebont', 
                                      'jardinage',
                                      true);
-
+        
         $resp = $client->request('POST', '/api/annonces/', array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
-            json_encode($this->annonce)
+            json_encode($this->annonce)           
         );
+        
         //verif create
         $this->assertEquals($client->getResponse()->getStatusCode(), 201);
         $data = json_decode($client->getResponse()->getContent());

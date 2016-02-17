@@ -57,6 +57,7 @@ class AnnonceController {
         $annonce = new Annonce(
         		$payload->name,
         		$user, 
+                        $payload->description,
         		new \DateTime($payload->dateValiditeDebut),
         		new \DateTime($payload->dateValiditeFin),
         		$payload->location,

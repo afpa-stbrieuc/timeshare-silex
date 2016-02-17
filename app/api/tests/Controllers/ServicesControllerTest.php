@@ -32,10 +32,11 @@ class ServicesTest extends WebTestCase
 		// Generate raw exceptions instead of HTML pages if errors occur
 		$app['exception_handler']->disable();
 
-        $this->user = new User('Zorro', 'Des Bois', 'Toto', '1450 Madison  Square', 'Singapour', 200, 'zorro@gmail.com');
-        $this->user1 = new User('orroZ', 'Des Bois', 'Bob', '1450 Madison  Square', 'Singapour', 200, 'zorro@gmail.com');
+        $this->user = new User('Zorro', 'Des Bois', 'Toto', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
+        $this->user1 = new User('orroZ', 'Des Bois', 'Bob', '1450 Madison  Square', 'Singapour', 'zorro@gmail.com');
         $this->annonce = new Annonce('Pelouse tondre',
                                      $this->user,
+                                     'blabla',
                                      \DateTime::createFromFormat('Y-m-d H:i:s', '2016-01-17 19:37:00'),
                                      \DateTime::createFromFormat('Y-m-d H:i:s', '2016-02-17 19:37:00'),
                                      'hennebont', 
@@ -93,7 +94,6 @@ class ServicesTest extends WebTestCase
         //verif create
         $this->assertEquals($client->getResponse()->getStatusCode(), 201);
         $data = json_decode($client->getResponse()->getContent());
-        var_dump($data);
         //read + verif 
         $this->assertEquals($this->service->getNote(), $data->note);
         

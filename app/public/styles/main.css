@@ -119,3 +119,20 @@ h4 {
 .form-control {
     border-radius: 10px;
 }
+
+
+#annonces.btn {
+    margin-top: 10px;
+}
+
+.annonces{
+    padding-left:15px;
+    padding-right:15px;
+    color: black;
+    margin-bottom: 15px;
+    background-color: graytext;
+    display: block;
+    border: 2px;
+    border-radius: 5px ;
+    border-color: silver
+}

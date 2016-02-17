@@ -1,27 +1,42 @@
     <div class="inner-cover">
-        <div class="row" id="separator"></div>
-        <form ng-submit = " showannonces()">
-        <h3 class='cover-heading'>Catégories d'annonces</h3>
-        <select id='categories' ng-model="myCategory" >
-            <option class="form-control"   ng-repeat="category in categories" >{{ category }}</option>
-        </select>
-        <h3>Localisation</h3>
-        <select id='categories' ng-model="myLocation">
-            <option class="form-control"  ng-repeat="location in locations" >{{ location }}</option>
-        </select>
-        <br /><br />
-        <p id="categories">
-            <input type='submit'  value='Rechercher' >                                          
-        </p>
+        <div class="row"></div>
+            <form id="annonces" class='form-group' ng-submit = " showannonces()">
+                <div class="row">
+                <div class='col-lg-5'>
+                    <label class='cover-heading'>Catégories d'annonces: </label>
+                </div>
+                <div class="col-lg-5">
+                    <select class='form-control' id='categories' ng-model="myCategory" >          
+                        <option class="form-control"   ng-repeat="category in categories" >{{ category }}</option>
+                    </select>
+                </div>
+                <div class="col-lg-5">
+                    <label>Localisation :</label>
+                </div>
+                <div class="col-lg-5">
+                    <select class='form-control' id='categories' ng-model="myLocation">
+                        <option class="form-control"  ng-repeat="location in locations" >{{ location }}</option>
+                    </select>
+                </div>
+                    </div>
+                <div class="row">
+                    <input class='btn-default btn' type='submit'  value='Rechercher' >     
+                </div>
+                    
         </form>
         
         
         
    <div ng-repeat="annonce in annonces">
        
-            <p>{{annonce.name}}</p>
-            <p >{{annonce.user.surname}}</p> 
-            <p>{{annonce.date}}</p>
+       <div class="annonces">
+           <a href="#/annonce/{{annonce.id}}">{{annonce.name}}</a>
+           
+                 <p >{{annonce.user.surname}}</p> 
+                 <p>{{annonce.date}}</p>
+                 
+            </div>
+       
        </div>
         </div>  
           
