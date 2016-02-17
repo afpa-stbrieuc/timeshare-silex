@@ -1,0 +1,34 @@
+<div class="row">
+	<form name="advertForm" role="form" ng-submit="publish.submitAdvert(advertForm.$valid)" novalidate>
+			<div class="form-group">
+				<label class="col-md-4 control-label">Nom</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="publish.advert.name" ng-minlength="3" placeholder="Nom de l'annonce" required>
+				</div>
+				<label class="col-md-4 control-label">Lieu</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="publish.advert.location" placeholder="Lieu" required>
+				</div>
+				<label class="col-md-4 control-label">Categorie</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="publish.advert.category" placeholder="Catégorie" required>
+				</div>
+				<label class="col-md-4 control-label">Date de début</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="publish.advert.dateValiditeDebut" placeholder="Date de validité Début" required>
+				</div>
+				<label class="col-md-4 control-label">Date de fin</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="publish.advert.dateValiditeFin" placeholder="Date de validité Fin" required>
+				</div>
+				<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4">Publier</button>
+			</div>
+	</form>
+	
+</div>
+
+<p ng-show="publish.sentOK">Annonce publiée</p>
+<p ng-show="publish.sentError">Erreur: annonce non publiée</p>
+
+
+

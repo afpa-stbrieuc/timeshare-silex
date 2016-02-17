@@ -92,6 +92,14 @@ class TimeshareEntitiesAnnonceHydrator implements HydratorInterface
             $hydratedData['dateValiditeDebut'] = $return;
         }
 
+        /** @Field(type="string") */
+        if (isset($data['description'])) {
+            $value = $data['description'];
+            $return = (string) $value;
+            $this->class->reflFields['description']->setValue($document, $return);
+            $hydratedData['description'] = $return;
+        }
+
         /** @Field(type="date") */
         if (isset($data['dateValiditeFin'])) {
             $value = $data['dateValiditeFin'];

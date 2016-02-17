@@ -5,5 +5,9 @@ dist
 release.zip
 dist
 app/api/cache
+<<<<<<< HEAD
 cache/
+=======
+cache
+>>>>>>> 122a6780b561b6dff590275ffacbe9b8535bca61
 /nbproject/private/
