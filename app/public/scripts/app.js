@@ -1,14 +1,14 @@
 'use strict';
 //register all modules
 angular.module('TimeShareSilex', [
-  'ngRoute'
+  'ngRoute',
 //  'ngCookies',
 //  'ngResource',
 //  'ngSanitize',
 //  'ui.sortable',
 //  'pascalprecht.translate',
 //  'xeditable',
-//  'ui.bootstrap',
+  'ui.bootstrap'
 //  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
 ])
   .config(['$routeProvider', function($routeProvider){

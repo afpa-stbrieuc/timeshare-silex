@@ -27,10 +27,14 @@ angular.module('TimeShareSilex')
                   $scope.userOk = true;
 
                 }
-                else{
-                  $scope.userError = true;
-                }
                
-              });
+              },
+            function(data){
+                    if(data.status !== 201){
+                      $scope.userError = true;
+                    }
+                  }
+            );
+               
         };
       });
