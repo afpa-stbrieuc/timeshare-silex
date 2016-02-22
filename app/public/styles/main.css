@@ -163,11 +163,26 @@ h4 {
 #pagination .active  a{
     background-color: gray;
     border-color: black;
-    
+}
+
 #advert-form .form-control {
   margin-bottom: 5px;
 }
 
 #user-change-form .form-control {
   margin-bottom: 5px;
+}
+
+#advertForm .form-control {
+ margin-bottom: 5px; 
+}
+
+.datepicker-btn {
+  margin-bottom: 5px;
+}
+
+.btn-primary {
+  background-color: lightgrey !important;
+  color: black !important;
+  border-color: lightgrey !important;
 }
