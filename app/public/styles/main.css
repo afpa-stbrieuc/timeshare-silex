@@ -136,3 +136,37 @@ h4 {
     border-radius: 5px ;
     border-color: silver
 }
+
+.annonces h3{
+    text-align: center;
+}
+
+#register-form .form-control{
+    margin-bottom: 5px;
+}
+
+#search-annonce .label{
+    
+    font-size: 1.3em;
+    text-align: right;
+}
+
+#search-annonce .form-control{
+    text-align: center;
+}
+
+.pager-right{
+    text-align: right;
+    margin-top: 10px;
+}
+
+#pagination  a{
+    color: black;
+    
+}
+
+#pagination .active  a{
+    background-color: gray;
+    border-color: black;
+    
+}

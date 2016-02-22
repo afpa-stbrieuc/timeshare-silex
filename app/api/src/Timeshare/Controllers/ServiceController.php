@@ -22,7 +22,12 @@ class ServiceController {
     //affiche un service en fonction  de son ID
     public function getOneService($id, Application $app)
     {
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Services')->findOneBy(array('id' => $id)));
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $annonce = $dm->getRepository('Timeshare\\Entities\\Services')->findOneBy(array('id' => $id));
+        if ($annonce !== NULL){
+            return new JsonResponse($annonce);
+        } 
+        return new JsonResponse(404) ;
     }
     
     //delete a service

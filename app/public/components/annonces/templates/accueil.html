@@ -1,33 +1,35 @@
     <div class="inner-cover">
         <div class="row"></div>
-            <form id="annonces" class='form-group' ng-submit = " showannonces()">
+            <form id="search-annonce" class='form-group' ng-submit = " showannonces()">
                 <div class="row">
-                <div class='col-lg-5'>
-                    <label class='cover-heading'>Catégories d'annonces: </label>
+                <div class='col-lg-3'>
+                    <label class='label'>Catégories : </label>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                     <select class='form-control' id='categories' ng-model="myCategory" >          
                         <option class="form-control"   ng-repeat="category in categories" >{{ category }}</option>
                     </select>
                 </div>
-                <div class="col-lg-5">
-                    <label>Localisation :</label>
+                <div class="col-lg-3">
+                    <label class="label">Localisation :</label>
                 </div>
-                <div class="col-lg-5">
+                <div class="col-lg-3">
                     <select class='form-control' id='categories' ng-model="myLocation">
                         <option class="form-control"  ng-repeat="location in locations" >{{ location }}</option>
                     </select>
                 </div>
                     </div>
-                <div class="row">
+                <div class="pager-right">
                     <input class='btn-default btn' type='submit'  value='Rechercher' >     
                 </div>
                     
         </form>
         
+        <h4 ng-show="noAdvert"> Il n'y as pas d'annonces de cette catégorie à cet endroit</h4>
         
         
-   <div ng-repeat="annonce in annonces">
+   <div ng-repeat="annonce in annonces.slice(((currentPage - 1) * itemsPerPage), ((currentPage) * itemsPerPage))" >
+       
        
        <div class="annonces">
            <a href="#/annonce/{{annonce.id}}">{{annonce.name}}</a>
@@ -36,8 +38,10 @@
                  <p>{{annonce.date}}</p>
                  
             </div>
+           
        
        </div>
+       <uib-pagination id="pagination" ng-show="advert" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
         </div>  
           
 
