@@ -53,7 +53,7 @@ class AnnonceController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        
+        var_dump($payload);
         // error if $payload is blank
         $errors = $app['validator']->validate($payload, new Assert\NotBlank);
         if (count($errors) > 0 ) {

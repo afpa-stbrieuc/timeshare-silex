@@ -119,7 +119,12 @@ class AnnonceTest extends WebTestCase
         $this->assertEquals($client->getResponse()->getStatusCode(), 200);
     }
 
-
+    public function testErrorForPayloadBlank() {
+        $payload = "";
+        $payload->name = 12;
+        
+        
+    }
 
     
 
