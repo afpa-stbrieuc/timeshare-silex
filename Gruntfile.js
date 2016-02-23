@@ -67,7 +67,10 @@ module.exports = function(grunt) {
         tasks: ['wiredep']
       },
       js: {
-        files: ['<%= project.appPublic %>/components/{,*/}*.js','<%= project.appPublic %>/scripts/{,*/}*.js' ],
+        files: [
+          '!<%= project.appPublic %>/bower_components/**',
+          '<%= project.appPublic %>/**/*.js'
+        ],
         tasks: ['newer:jshint:all'],
         options: {
           livereload: '<%= connect.options.livereload %>'
@@ -90,7 +93,9 @@ module.exports = function(grunt) {
         },
         files: [
           '<%= project.appApi %>/{,{config,src,tests}/**/}/*',
-          '<%= project.appPublic %>/{,*/}*.html',
+          '<%= project.appPublic %>/**/*.html',
+          '!<%= project.appPublic %>/bower_components/**',
+          '<%= project.appPublic %>/**/*.js',
           '.tmp/styles/{,*/}*.css',
           '<%= project.appPublic %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}'
         ]
@@ -192,8 +197,8 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        '<%= project.appPublic %>/scripts/{,*/}*.js',
-        '<%= project.appPublic %>/components/**/*.js'
+        '!<%= project.appPublic %>/bower_components/**',
+        '<%= project.appPublic %>/{,*/}*.js'
       ],
       test: {
         options: {
@@ -261,7 +266,7 @@ module.exports = function(grunt) {
     filerev: {
       dist: {
         src: [
-          '<%= project.distPublic %>/scripts/{,*/}*.js',
+          '<%= project.distPublic %>/**/*.js',
           '<%= project.distPublic %>/styles/{,*/}*.css',
           '<%= project.distPublic %>/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
           '<%= project.distPublic %>/styles/fonts/*'
@@ -281,7 +286,7 @@ module.exports = function(grunt) {
 
     // Performs rewrites based on rev and the useminPrepare configuration
     usemin: {
-      html: ['<%= project.distPublic %>/{,*/}*.html'],
+      html: ['<%= project.distPublic %>/**/*.html'],
       css: ['<%= project.distPublic %>/styles/{,*/}*.css'],
       options: {
         assetsDirs: ['<%= project.distPublic %>']
@@ -320,7 +325,7 @@ module.exports = function(grunt) {
         files: [{
           expand: true,
           cwd: '<%= project.distPublic %>',
-          src: ['*.html', 'views/{,*/}*.html'],
+          src: ['*.html', '**/*.html'],
           dest: '<%= project.distPublic %>'
         }]
       }
@@ -376,9 +381,11 @@ module.exports = function(grunt) {
           dest: '<%= project.distPublic %>',
           src: ['*.{ico,png,txt}',
             '*.html',
-            'views/{,*/}*.html',
+            '**/*.html',
             'images/{,*/}*.{webp}',
-            'fonts/*']
+            'fonts/*',
+            '!bower_components/**', '!test/**'
+          ]
         },
         {
           expand: true,
