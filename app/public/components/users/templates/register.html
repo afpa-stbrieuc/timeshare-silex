@@ -1,1 +1,51 @@
-Register page
+<div>
+	<div class="container">
+            <div class="inner-cover" >
+                <form class="form-group" ng-submit="inscription()">
+                    <h3 class='cover-heading'>Inscription</h3>   
+                    <div class='col-lg-4'>
+                            <label>Nom : </label>   
+                    </div>
+                    <div class='col-lg-8'>
+                            <input class ='form-control' id="categories" name="nom" type="text" required ng-model="user.surname"/>  
+                    </div>
+                    <div class='col-lg-4'>
+                            <label>Prénom : </label>   
+                    </div>
+                    <div class='col-lg-8'>
+                            <input class='form-control' id="categories" name="prenom" type="text" required ng-model="user.firstname" />                                            
+                    </div>
+                    <div class='col-lg-4'>
+                                <label>Pseudo: </label>
+                    </div>
+                    <div class='col-lg-8'>     
+                                <input class='form-control' id="categories" name="pseudo" type="text" required ng-model="user.pseudo"/>
+                    </div>                                                 
+                    <div class='col-lg-4'>     
+                            <label>Ville : </label>
+                    </div>
+                    <div class='col-lg-8'>     
+                            <input class='form-control' id="categories" name="ville" type="text" required ng-model="user.town"/>
+                    </div>
+                    <div class='col-lg-4'>
+                                <label>Adresse: </label>
+                    </div>
+                    <div class='col-lg-8'>
+                                <input class='form-control' id ="categories" name="adresse" type="text" required ng-model="user.address"/>
+                    </div>       
+                    <div class='col-lg-4'>
+                                <label>Email: </label>
+                    </div>
+                    <div class='col-lg-8'>      
+                                <input class='form-control' id="categories" name="email" type="text" required ng-model="user.email"/>
+                    </div>
+                            <input class='btn-default btn' type="submit" value="Enregistrer"/>
+                      
+                   
+                  
+                </form>
+                <p ng-show="userOk">Vous avez bien été enregistré</p>
+                <p ng-show="userError">une erreur c'est produite</p>
+            </div>
+        </div>
+</div>

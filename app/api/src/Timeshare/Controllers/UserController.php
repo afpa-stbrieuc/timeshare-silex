@@ -16,7 +16,6 @@ use Timeshare\Entities\User;
 class UserController {
 
 
-
     public function getAllUser(Application $app)
     {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findAll());
@@ -27,10 +26,10 @@ class UserController {
         return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id)));
     }
 
-    public function getOneUserByEmail($email, Application $app)
-    {
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('email' => $email)));
-    }
+    // public function getOneUserByEmail($email, Application $app)
+    // {
+    //     return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('email' => $email)));
+    // }
 
     public function deleteOneUser($id, Application $app)
     {
@@ -63,7 +62,6 @@ class UserController {
 
     public function editOneUser($id, Application $app, Request $request)
     {
-
         $dm = $app['doctrine.odm.mongodb.dm'];
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $id));
         $payload = json_decode($request->getContent());
@@ -79,4 +77,22 @@ class UserController {
 
         return new JsonResponse($user);
     }
+
+    public function userAuthentication(Application $app, Request $request)
+    {
+        $dm = $app['doctrine.odm.mongodb.dm'];
+        $payload = json_decode($request->getContent());
+        //check credentials
+        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('email' => $payload->email));
+        $passLogin = $payload->password;
+        $passdB = $user->getPassword();
+
+        if ($passLogin === $passdB){
+            return new JsonResponse($user, 200);
+            var_dump($user);
+        }else{
+             return new JsonResponse('Login error', 400);
+        }
+    }
+
 }

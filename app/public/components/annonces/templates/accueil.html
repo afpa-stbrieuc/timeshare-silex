@@ -1,20 +1,4 @@
     <div class="inner-cover">
-<<<<<<< HEAD
-        <div class="row" id="separator"></div>
-        <form ng-submit = " showannonces()">
-        <h3 class='cover-heading'>Catégories d'annonces</h3>
-        <select id='categories' ng-model="myCategory" >
-            <option class="form-control"   ng-repeat="category in categories" >{{ category }}</option>
-        </select>
-        <h3>Localisation</h3>
-        <select id='categories' ng-model="myLocation">
-            <option class="form-control"  ng-repeat="location in locations" >{{ location }}</option>
-        </select>
-        <br /><br />
-        <p id="categories">
-            <input type='submit'  value='Rechercher' >                                          
-        </p>
-=======
         <div class="row"></div>
             <form id="annonces" class='form-group' ng-submit = " showannonces()">
                 <div class="row">
@@ -38,19 +22,13 @@
                 <div class="row">
                     <input class='btn-default btn' type='submit'  value='Rechercher' >     
                 </div>
-                    
->>>>>>> 122a6780b561b6dff590275ffacbe9b8535bca61
         </form>
         
         
         
    <div ng-repeat="annonce in annonces">
        
-<<<<<<< HEAD
-            <p>{{annonce.name}}</p>
-            <p >{{annonce.user.surname}}</p> 
-            <p>{{annonce.date}}</p>
-=======
+
        <div class="annonces">
            <a href="#/annonce/{{annonce.id}}">{{annonce.name}}</a>
            
@@ -58,8 +36,6 @@
                  <p>{{annonce.date}}</p>
                  
             </div>
-       
->>>>>>> 122a6780b561b6dff590275ffacbe9b8535bca61
        </div>
         </div>  
           

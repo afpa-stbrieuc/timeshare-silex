@@ -1,8 +1,8 @@
 'use strict';
 //register all modules
 angular.module('TimeShareSilex', [
-    'ngRoute'
-//  'ngCookies',
+    'ngRoute',
+    'ngCookies'
 //  'ngResource',
 //  'ngSanitize',
 //  'ui.sortable',
@@ -26,15 +26,7 @@ angular.module('TimeShareSilex', [
     .when('/login', {
         templateUrl: 'components/users/templates/login.html',
         controller: 'loginCtrl',
-                resolve: {
-          'check': function($location, $rootScope) {
-            if (!$rootScope.loggedIn) {
-              $location.path('/login');
-                        } else {
-              $location.path('/user');
-                        }
-          }
-        }
+        controllerAs: 'vm'
       })
     
       .when('/user', {
@@ -56,20 +48,6 @@ angular.module('TimeShareSilex', [
       .when('/inscription', {
           templateUrl: 'components/users/templates/inscription.html',
           controller: 'inscriptionCtrl'
-        })
-
-      .when('/login', {
-          templateUrl: 'components/users/templates/login.html',
-          controller: 'loginCtrl',
-          resolve: {
-                    'check': function($location, $rootScope) {
-              if (!$rootScope.loggedIn) {
-                $location.path('/login');
-              } else {
-                $location.path('/user');
-              }
-            }
-          }
         })
 
       .when('/publish', {
