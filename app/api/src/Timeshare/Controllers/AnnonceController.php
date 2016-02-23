@@ -53,7 +53,7 @@ class AnnonceController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        var_dump($payload);
+        
         // error if $payload is blank
         $errors = $app['validator']->validate($payload, new Assert\NotBlank);
         if (count($errors) > 0 ) {
@@ -79,11 +79,11 @@ class AnnonceController {
         // errors for name of annonce
         $errors = $app['validator']->validate($payload->name, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return JsonResponse ("Error: The name of annonce is empty ".$payload->name, 500);
+            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 500);
         }
         $errors = $app['validator']->validate(gettype($payload->name), new Assert\Type('string'));
         if (count($errors) > 0) {
-            return JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 500);
+            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 500);
         }
         
           $dm->persist($annonce);

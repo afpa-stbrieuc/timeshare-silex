@@ -120,8 +120,30 @@ class AnnonceTest extends WebTestCase
     }
 
     public function testErrorForPayloadBlank() {
-        $payload = "";
-        $payload->name = 12;
+        
+        $client = $this->createClient();
+        
+        //create the user
+        $dm = $this->app['doctrine.odm.mongodb.dm'];
+        $dm->persist($this->user);
+        $dm->flush();
+        // create the advert
+        $this->annonce = new Annonce('',
+                                     $this->user,
+                                     'blablablabla',
+                                     \DateTime::createFromFormat('Y-m-d H:i:s', '2016-01-17 19:37:00'),
+                                     \DateTime::createFromFormat('Y-m-d H:i:s', '2016-02-17 19:37:00'),
+                                     'hennebont', 
+                                     'jardinage',
+                                     true);
+        
+        $resp = $client->request('POST', '/api/annonces/', array(),
+            array(),
+            array('CONTENT_TYPE' => 'application/json'),
+            json_encode($this->annonce)           
+        );
+        
+        $this->assertEquals($client->getResponse()->getStatusCode(), 500);
         
         
     }
