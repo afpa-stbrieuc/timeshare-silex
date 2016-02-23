@@ -5,6 +5,9 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+// validator
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Timeshare\Entities\Annonce;
 use Timeshare\Entities\User;
 
@@ -50,10 +53,23 @@ class AnnonceController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
+        
+        // error if $payload is blank
+        $errors = $app['validator']->validate($payload, new Assert\NotBlank);
+        if (count($errors) > 0 ) {
+            return new JsonResponse ("Error: Annonces is empty (Bad Gateway) ".$payload->user, 502);
+        }
+        
+        
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user->id));
-//        if ($user === NULL) {
-//            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
-//        }
+        
+        // errors gestion for user
+        if ($user === NULL) {
+            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
+        }
+        
+        
+        
         $annonce = new Annonce(
         		$payload->name,
         		$user, 
