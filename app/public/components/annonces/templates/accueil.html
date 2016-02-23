@@ -22,7 +22,6 @@
                 <div class="pager-right">
                     <input class='btn-default btn' type='submit'  value='Rechercher' >     
                 </div>
-                    
         </form>
         
         <h4 ng-show="noAdvert"> Il n'y as pas d'annonces de cette catégorie à cet endroit</h4>
@@ -31,6 +30,7 @@
    <div ng-repeat="annonce in annonces.slice(((currentPage - 1) * itemsPerPage), ((currentPage) * itemsPerPage))" >
        
        
+
        <div class="annonces">
            <a href="#/annonce/{{annonce.id}}">{{annonce.name}}</a>
            
@@ -38,8 +38,6 @@
                  <p>{{annonce.date}}</p>
                  
             </div>
-           
-       
        </div>
        <uib-pagination id="pagination" ng-show="advert" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
         </div>  

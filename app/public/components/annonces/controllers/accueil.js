@@ -28,7 +28,7 @@ angular.module('TimeShareSilex')
       },function(response){
         $scope.locations = response.statusText;
       });
-    
+
 
 
 // show the annonces depending their categories and locations
@@ -78,4 +78,4 @@ angular.module('TimeShareSilex')
              
       };
   });
-  
+

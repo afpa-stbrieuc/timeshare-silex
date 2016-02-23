@@ -118,7 +118,7 @@ class Annonce implements JsonSerializable
 				'id' => $this->id,
 				'name' => $this->name,
 				'user' => $this->user,
-                                'description' => $this->description,
+                'description' => $this->description,
 				'date' => date_format ( $this->date, 'Y-m-d H:i:s' ),
 				'location' => $this->location,
 				'category' => $this->category,

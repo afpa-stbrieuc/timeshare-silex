@@ -2,22 +2,22 @@
 
 angular.module('TimeShareSilex')
 
-.controller('loginCtrl', function($scope, $location, $rootScope, userAuth)
-  {
-      var vm = this;
-      //on met oas submit()???? vm.submit?? qui verifie si ca matche le controlleur ou services??
-      vm.login = function(){
+.controller('loginCtrl', ['$location', '$window', 'userAuth', '$cookies', function($location, $window, userAuth, $cookies) {
 
-        // if $scope.username =  username /*DBDBD de service */   &&   $scope.password = password /*DBDBDB de service*/;
-        //   {
-          // $rootScope.loggedIn = true;
-          // $rootScope.userLogged = 'Bob';
-          $location.path('/user');
-        } 
-        .then(function(){
-          $location.path
-          loginError
-          $scope.loginError = 'Invalid username/password combination';
-        }
-      };
-    });
+  var vm = this;
+
+  vm.submit = function() {
+    //console
+    console.log('submit 1', vm.userEmail);
+
+    userAuth
+      .login(vm.userEmail, vm.userPassword);
+      // .then(function(){
+      //   console.log('redirection to home');
+      //   $location.path('/accueil')
+      // })
+    console.log('submit 2', vm.userEmail, vm.userPassword);
+  };
+
+  console.log('controller login FIN', $cookies.getAll());
+}]);
