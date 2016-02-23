@@ -100,6 +100,7 @@ class AnnonceController {
         $payload = json_decode($request->getContent());
 
         $annonce->setName($payload->name);
+        $annonce->setDescription($payload->description);
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user));
         $annonce->setUser($user);
         $annonce->setDemande($payload->demande);
