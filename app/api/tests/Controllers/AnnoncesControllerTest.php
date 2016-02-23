@@ -143,7 +143,7 @@ class AnnonceTest extends WebTestCase
             json_encode($this->annonce)           
         );
         
-        $this->assertEquals($client->getResponse()->getStatusCode(), 500);
+        $this->assertEquals($client->getResponse()->getStatusCode(), 400);
         
         
     }

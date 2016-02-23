@@ -57,13 +57,13 @@ class AnnonceController {
         // error if $payload is blank
         $errors = $app['validator']->validate($payload, new Assert\NotBlank);
         if (count($errors) > 0 ) {
-            return new JsonResponse ("Error: Annonces is empty (Bad Gateway) ".$payload, 502);
+            return new JsonResponse ("Error: Annonces is empty (Bad Gateway) ".$payload, 400);
         }
         
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user->id));        
         // errors gestion for user
         if ($user === NULL) {
-            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
+            return new JsonResponse("Error: Can't find user ".$payload->user, 404);
         }
         
         $annonce = new Annonce(
@@ -79,11 +79,11 @@ class AnnonceController {
         // errors for name of annonce
         $errors = $app['validator']->validate($payload->name, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 500);
+            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 400);
         }
         $errors = $app['validator']->validate(gettype($payload->name), new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 500);
+            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 400);
         }
         
           $dm->persist($annonce);
