@@ -1,0 +1,50 @@
+<uib-alert class="alert alert-{{edit.alert.type}}" ng-show="edit.alert.msg != ''" type="{{edit.alert.type}}" dismiss-on-timeout="10000" close="edit.closeAlert()">{{edit.alert.msg}}</uib-alert>
+
+<uib-alert class="alert alert-danger" ng-show="advertForm.startDate.$error.endBeforeStart" type="danger">La date de fin doit être après la date de début</uib-alert>
+
+<uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.description.$invalid && advertForm.description.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
+
+<uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.name.$invalid && advertForm.name.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
+
+<div class="row">
+	<form name="advertForm" role="form" ng-submit="edit.submitAdvert(advertForm.$valid)" novalidate>
+			<div class="form-group" id="advert-form">
+				<label class="col-md-4 control-label">Nom</label>
+				<div class="col-md-8">
+					<input class="form-control" name="name" ng-model="edit.advert.name" ng-minlength="3" value="{{edit.advert.name}}" required>
+				</div>
+				<label class="col-md-4 control-label">Description</label>
+				<div class="col-md-8">
+					<textarea class="form-control" name="description" ng-model="edit.advert.description" ng-minlength="5" value="{{edit.advert.description}}" required></textarea>
+				</div>
+				<label class="col-md-4 control-label">Lieu</label>
+				<div class="col-md-8">
+					<input class="form-control" ng-model="edit.advert.location" value="{{edit.advert.location}}" required>
+				</div>
+				<label class="col-md-4 control-label">Categorie</label>
+				<div class="col-md-8">
+					<input class="form-control" ng-model="edit.advert.category" value="{{edit.advert.category}}" required>
+				</div>
+				<label class="col-md-4 control-label">Date de début</label>
+				<div class="col-md-8">
+					<div class="input-group">
+						<input type="text" name="startDate" class="form-control" ng-model="edit.dateValiditeDebut" uib-datepicker-popup="dd/MM/yyyy" min-date="edit.minDate" datepicker-options="edit.dateOptions" ng-required="true" is-open="popup1" ng-change="edit.validateDates()">
+						<span class="input-group-btn">
+                		<button type="button" class="btn btn-default datepicker-btn" ng-click="popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
+                		</span>
+                	</div>
+				</div>
+				<label class="col-md-4 control-label">Date de fin</label>
+				<div class="col-md-8">
+					<div class="input-group">
+						<input type="text" name="endDate" class="form-control" ng-model="edit.dateValiditeFin" min-date="edit.minDate" uib-datepicker-popup="dd/MM/yyyy" datepicker-options="edit.dateOptions" is-open="popup2" ng-required="true" ng-change="edit.validateDates()">
+						<span class="input-group-btn">
+	            		<button type="button" class="btn btn-default datepicker-btn" ng-click="popup2=true"><i class="glyphicon glyphicon-calendar"></i></button>
+	            		</span>
+	            	</div>
+				</div>
+				<button id="editbBtn" type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4" ng-disabled="edit.isDisabled">Modifier</button>
+			</div>
+	</form>
+	
+</div>

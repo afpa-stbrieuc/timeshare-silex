@@ -8,6 +8,8 @@ angular.module('TimeShareSilex')
     vm.tab = 1;
     vm.sent = false;
 
+    vm.id = '569d06ecc4936293a6f8fd90'; // hard coded user id
+
     vm.selectTab = function(setTab) {
       vm.tab = setTab;
     };
@@ -19,11 +21,11 @@ angular.module('TimeShareSilex')
     
     $http({
       method: 'GET',
-      url: '/api/user/569d06ecc4936293a6f8fd90'
+      url: '/api/user/'+vm.id
     }).then(function(response) {
       vm.user = response.data;
     }, function() {
-      vm.user = {id:'569d06ecc4936293a6f8fd90', surname:'Karine', firstname: 'Monfort', town: 'Yffiniac', timebalance:15};
+      vm.user = {id:vm.id, surname:'Karine', firstname: 'Monfort', town: 'Yffiniac', timebalance:15};
     });
 
     vm.modifyUser = function(valid) {
@@ -44,7 +46,7 @@ angular.module('TimeShareSilex')
       }
     };
 
-    $http.get('/api/annonces/')
+    $http.get('/api/annonces/?userId='+vm.id)
     .then(function(response) {
       vm.annonces = response.data;
     }, function() {

@@ -29,6 +29,12 @@ angular.module('TimeShareSilex', [
         controller: 'annonceCtrl'
       })
       
+      .when('/editAnnonce/:id', {
+        templateUrl: 'components/annonces/templates/editAnnonce.html',
+        controller: 'editCtrl',
+        controllerAs: 'edit'
+      })
+
       .when('/service', {
           templateUrl: 'components/services/templates/service.html',
           controller: 'serviceCtrl'

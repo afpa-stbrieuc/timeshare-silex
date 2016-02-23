@@ -21,9 +21,10 @@
 	<div class="panel" ng-show="panel.isSelectedTab(2)">
 		<div class="row">
 			<h2>Mes annonces</h2>
-			<div ng-repeat="annonce in panel.annonces|filter:panel.user.id">
-				<h2>{{annonce.name}}</h2>
+			<div ng-repeat="annonce in panel.annonces" class="annonces">
+				<h3>{{annonce.name}}</h3>
 				<p>Publié le {{annonce.date|date}}, {{annonce.user.surname}} {{annonce.user.firstname}} a fait la demande du {{annonce.dateValiditeDebut}} au {{annonce.dateValiditeFin}} dans la catégorie {{annonce.category}}</p>
+				<a class="btn btn-primary" href="#/editAnnonce/{{annonce.id}}">Modifier</a>
 			</div>
 		</div>
 	</div>
