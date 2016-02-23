@@ -31,6 +31,7 @@ angular.module('TimeShareSilex')
 
 		vm.submitAdvert = function(valid) {
 			if (valid) {
+
 				// fake user TODO: change to use a real user
 				vm.advert.user = {
 					'id': '569d06ecc4936293a6f8fd90'

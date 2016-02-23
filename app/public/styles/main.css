@@ -177,6 +177,11 @@ h4 {
  margin-bottom: 5px; 
 }
 
+#advert-txtarea {
+  resize: vertical;
+  max-width: 100%;
+}
+
 .datepicker-btn {
   margin-bottom: 5px;
 }
