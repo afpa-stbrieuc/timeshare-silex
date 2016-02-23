@@ -110,6 +110,9 @@ $app->register(new MongoDBODMServiceProvider(), array(
 //     // ...
 // ));
 
+// Validator
+$app->register(new Silex\Provider\ValidatorServiceProvider());                                                      
+                                                      
 
 // Exception management.
 $app->error(function(\Exception $e) use ($app) {

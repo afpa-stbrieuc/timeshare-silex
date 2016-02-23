@@ -1,14 +1,14 @@
 'use strict';
 //register all modules
 angular.module('TimeShareSilex', [
-  'ngRoute'
+  'ngRoute',
 //  'ngCookies',
 //  'ngResource',
 //  'ngSanitize',
 //  'ui.sortable',
 //  'pascalprecht.translate',
 //  'xeditable',
-//  'ui.bootstrap',
+  'ui.bootstrap'
 //  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
 ])
   .config(['$routeProvider', function($routeProvider){
@@ -38,6 +38,12 @@ angular.module('TimeShareSilex', [
         controller: 'annonceCtrl'
       })
       
+      .when('/editAnnonce/:id', {
+        templateUrl: 'components/annonces/templates/editAnnonce.html',
+        controller: 'editCtrl',
+        controllerAs: 'edit'
+      })
+
       .when('/service', {
           templateUrl: 'components/services/templates/service.html',
           controller: 'serviceCtrl'

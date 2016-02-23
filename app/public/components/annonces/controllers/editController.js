@@ -1,13 +1,11 @@
+
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', function($http, $scope) {
+	.controller('editCtrl', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
 
 		var vm = this;
 
-		vm.dateValiditeDebut = new Date(); // current date
-		vm.dateValiditeFin = new Date();
-		vm.dateValiditeFin.addMonths(1); // validity of one month by default
 		vm.minDate = new Date(); // disable use date in the past
 
 		vm.alert = {
@@ -23,6 +21,27 @@ angular.module('TimeShareSilex')
 			formatYear: 'yy'
 		};
 
+		$http({
+			method: 'GET',
+			url: '/api/annonces/' + $routeParams.id
+		}).then(function(response) {
+			if (response.status === 200) {
+				vm.advert = response.data;
+				vm.dateValiditeDebut = new Date(vm.advert.dateValiditeDebut);
+				vm.dateValiditeFin = new Date(vm.advert.dateValiditeFin);
+			} else if (response.status === 404) {
+				vm.alert = {
+					type: 'danger',
+					msg: 'Erreur: Annonce non trouvée'
+				};
+			}
+		}, function() {
+			vm.alert = {
+				type: 'danger',
+				msg: 'Erreur serveur'
+			};
+		});
+
 		vm.validateDates = function() {
 			var endDate = new Date(vm.dateValiditeFin);
 			var startDate = new Date(vm.dateValiditeDebut);
@@ -31,14 +50,6 @@ angular.module('TimeShareSilex')
 
 		vm.submitAdvert = function(valid) {
 			if (valid) {
-
-				// fake user TODO: change to use a real user
-				vm.advert.user = {
-					'id': '569d06ecc4936293a6f8fd90'
-				};
-
-				vm.advert.demande = false;
-
 				// construct ISO date string from date object
 				var d = vm.dateValiditeDebut;
 				var day = ('0' + d.getDate()).slice(-2); // force 2 digits
@@ -53,27 +64,25 @@ angular.module('TimeShareSilex')
 				year = f.getFullYear();
 				vm.advert.dateValiditeFin = year + '-' + month + '-' + day;
 
+				// API expect id and not user object !
+				vm.advert.user = vm.advert.user.id;
+
 				$http({
-					method: 'POST',
-					url: '/api/annonces/',
+					method: 'PUT',
+					url: '/api/annonces/'+vm.advert.id,
 					data: vm.advert
 				}).then(
 					function(response) {
-						if (response.status === 201) {
+						if (response.status === 200) {
 							vm.alert = {
 								type: 'success',
-								msg: 'Annonce publiée'
+								msg: 'Annonce modifée'
 							};
 							vm.isDisabled = true; // disable submit button
-						} else if (response.status === 400) {
-							vm.alert = {
-								type: 'danger',
-								msg: 'Erreur: annonce non publiée'
-							};
 						} else if (response.status === 404) {
 							vm.alert = {
 								type: 'danger',
-								msg: 'Erreur: annonce non publiée'
+								msg: 'Erreur: annonce non modifiée'
 							};
 						}
 					},

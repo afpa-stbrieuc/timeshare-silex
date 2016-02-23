@@ -1,7 +1,7 @@
 <div>
 	<div class="container">
             <div class="inner-cover" >
-                <form class="form-group" ng-submit="inscription()">
+                <form class="form-group" id="register-form" ng-submit="inscription()">
                     <h3 class='cover-heading'>Inscription</h3>   
                     <div class='col-lg-4'>
                             <label>Nom : </label>   
@@ -20,7 +20,13 @@
                     </div>
                     <div class='col-lg-8'>     
                                 <input class='form-control' id="categories" name="pseudo" type="text" required ng-model="user.pseudo"/>
-                    </div>                                                 
+                    </div> 
+                    <div class='col-lg-4'>     
+                            <label>Mot de passe : </label>
+                    </div>
+                    <div class='col-lg-8'>     
+                            <input class='form-control' id="categories" name="mdp" type="password" required ng-model="user.password"/>
+                    </div>
                     <div class='col-lg-4'>     
                             <label>Ville : </label>
                     </div>
@@ -37,10 +43,11 @@
                                 <label>Email: </label>
                     </div>
                     <div class='col-lg-8'>      
-                                <input class='form-control' id="categories" name="email" type="text" required ng-model="user.email"/>
+                                <input class='form-control' id="categories" name="email" type="email" required ng-model="user.email"/>
                     </div>
+                    <div class="pager">
                             <input class='btn-default btn' type="submit" value="Enregistrer"/>
-                      
+                    </div>
                    
                   
                 </form>

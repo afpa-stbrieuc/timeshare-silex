@@ -54,11 +54,11 @@ class Annonce implements JsonSerializable
      	$this->demande = $demande;
  	}
          
-    function getDescription() {
+    public function getDescription() {
         return $this->description;
     }
 
-    function setDescription($description) {
+    public function setDescription($description) {
         $this->description = $description;
     }
          

@@ -67,8 +67,6 @@ body {
     color: black;
 }
 
-
-
 #separator {
     width: 100px;
 }
@@ -79,14 +77,12 @@ body {
   .header,
   .marketing,
   .footer {
-      
     padding-left: 0;
     padding-right: 0;
   }
   /* Space out the masthead */
   .header {
     margin-bottom: 30px;
-   
   }
   /* Remove the bottom border on the jumbotron for visual effect */
   .jumbotron {
@@ -120,10 +116,10 @@ h4 {
     border-radius: 10px;
 }
 
-
 .dropdown li:hover > ul {
     left: 0;
 }
+
 #annonces.btn {
     margin-top: 10px;
 }
@@ -138,4 +134,64 @@ h4 {
     border: 2px;
     border-radius: 5px ;
     border-color: silver
+}
+
+.annonces h3{
+    text-align: center;
+}
+
+#register-form .form-control{
+    margin-bottom: 5px;
+}
+
+#search-annonce .label{
+    
+    font-size: 1.3em;
+    text-align: right;
+}
+
+#search-annonce .form-control{
+    text-align: center;
+}
+
+.pager-right{
+    text-align: right;
+    margin-top: 10px;
+}
+
+#pagination  a{
+    color: black;
+    
+}
+
+#pagination .active  a{
+    background-color: gray;
+    border-color: black;
+}
+
+#advert-form .form-control {
+  margin-bottom: 5px;
+}
+
+#user-change-form .form-control {
+  margin-bottom: 5px;
+}
+
+#advertForm .form-control {
+ margin-bottom: 5px; 
+}
+
+#advert-txtarea {
+  resize: vertical;
+  max-width: 100%;
+}
+
+.datepicker-btn {
+  margin-bottom: 5px;
+}
+
+.btn-primary {
+  background-color: lightgrey !important;
+  color: black !important;
+  border-color: lightgrey !important;
 }
