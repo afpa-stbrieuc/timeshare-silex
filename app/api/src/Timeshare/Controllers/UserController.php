@@ -70,6 +70,7 @@ class UserController {
         $user->setTown($payload->town);
         $user->setTimeBalance($payload->timebalance);
         $user->setEmail($payload->email);
+        $user->setPassword($payload->password);
         $dm->flush($user);
 
         return new JsonResponse($user);

@@ -30,14 +30,7 @@ angular.module('TimeShareSilex')
 
     vm.modifyUser = function(valid) {
       if (valid) {
-        var user = {
-          surname:vm.user.surname,
-          firstname:vm.user.firstname,
-          town:vm.user.town,
-          timebalance:vm.user.timebalance
-        };
-
-        $http.put('/api/user/'+vm.user.id, user
+        $http.put('/api/user/'+vm.user.id, vm.user
         ).then(function() {
             vm.sent = true;
           }, function(){

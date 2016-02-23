@@ -31,6 +31,10 @@
 	<div class="panel" ng-show="panel.isSelectedTab(3)">
 		<form name="userForm" role="form" ng-submit="panel.modifyUser(userForm.$valid)" novalidate>
 			<div class="form-group" id="user-change-form">
+				<label class="col-md-4 control-label">Pseudo</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="panel.user.pseudo" placeholder="{{panel.user.pseudo}}" value="{{panel.user.pseudo}}" required>
+				</div>
 				<label class="col-md-4 control-label">Prénom</label>
 				<div class="col-md-8">
 					<input class="form-control input-sm" ng-model="panel.user.surname" placeholder="{{panel.user.surname}}" value="{{panel.user.surname}}" required>
@@ -39,18 +43,26 @@
 				<div class="col-md-8">
 					<input class="form-control input-sm" ng-model="panel.user.firstname" placeholder="{{panel.user.firstname}}" value="{{panel.user.firstname}}" required>
 				</div>
+				<label class="col-md-4 control-label">Adresse</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" ng-model="panel.user.timebalance" placeholder="{{panel.user.address}}" value="{{panel.user.address}}" readonly>
+				</div>
 				<label class="col-md-4 control-label">Ville</label>
 				<div class="col-md-8">
 					<input class="form-control input-sm" ng-model="panel.user.town" placeholder="{{panel.user.town}}" value="{{panel.user.town}}">
 				</div>
-				<label class="col-md-4 control-label">TimeBalance</label>
+				<label class="col-md-4 control-label">Email</label>
 				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="panel.user.timebalance" placeholder="{{panel.user.timebalance}}" value="{{panel.user.timebalance}}" readonly>
+					<input class="form-control input-sm" type="email" ng-model="panel.user.email" placeholder="{{panel.user.email}}" value="{{panel.user.email}}">
+				</div>
+				<label class="col-md-4 control-label">Mot de passe</label>
+				<div class="col-md-8">
+					<input class="form-control input-sm" type="password" ng-model="panel.user.password" placeholder="{{panel.user.password}}">
 				</div>
 				<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4">Mettre à jour</button>
 			</div>
 		</form>
-
-		<p ng-show="panel.sent">Modification effectuée</p>
 	</div>
+	<p ng-show="panel.sent">Modification effectuée</p>
+	
 </div>
