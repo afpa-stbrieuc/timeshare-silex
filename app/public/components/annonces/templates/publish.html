@@ -4,14 +4,14 @@
 
 <uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.description.$invalid && advertForm.description.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
 
-<uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.name.$invalid && advertForm.name.$dirty">La description doit faire au minimum 10 caractères</uib-alert>
+<uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.name.$invalid && advertForm.name.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
 
 <div class="row">
 	<form id="advertForm" name="advertForm" role="form" ng-submit="publish.submitAdvert(advertForm.$valid)" novalidate>
 			<div class="form-group" id="advert-form">
 				<label class="col-md-4 control-label">Nom</label>
 				<div class="col-md-8">
-					<input class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="10" placeholder="Nom de l'annonce" required>
+					<input class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'annonce" required>
 				</div>
 				<label class="col-md-4 control-label">Description</label>
 				<div class="col-md-8">
