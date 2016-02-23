@@ -3,20 +3,20 @@
 angular.module('TimeShareSilex', [
     'ngRoute',
     'ngCookies'
-//  'ngResource',
-//  'ngSanitize',
-//  'ui.sortable',
-//  'pascalprecht.translate',
-//  'xeditable',
-//  'ui.bootstrap',
-//  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
-])
-    .config(['$routeProvider', function ($routeProvider) {
-        $routeProvider
-            .when('/', {
-                templateUrl: 'components/annonces/templates/accueil.html',
-                controller: 'accueilCtrl'
-            })
+    //  'ngResource',
+    //  'ngSanitize',
+    //  'ui.sortable',
+    //  'pascalprecht.translate',
+    //  'xeditable',
+    //  'ui.bootstrap',
+    //  'dialogs.main' //https://github.com/m-e-conroy/angular-dialog-service
+  ])
+  .config(['$routeProvider', function($routeProvider) {
+    $routeProvider
+      .when('/', {
+        templateUrl: 'components/annonces/templates/accueil.html',
+        controller: 'accueilCtrl'
+      })
 
     .when('/user', {
         templateUrl: 'components/users/templates/user.html',
@@ -28,42 +28,42 @@ angular.module('TimeShareSilex', [
         controller: 'loginCtrl',
         controllerAs: 'vm'
       })
-    
-      .when('/user', {
+
+    .when('/user', {
         templateUrl: 'components/users/templates/user.html',
         controller: 'userCtrl',
         controllerAs: 'panel'
       })
-      
-      .when('/annonce/:id', {
+
+    .when('/annonce/:id', {
         templateUrl: 'components/annonces/templates/annonce.html',
         controller: 'annonceCtrl'
       })
-      
-      .when('/service', {
-          templateUrl: 'components/services/templates/service.html',
-          controller: 'serviceCtrl'
-        })
-      
-      .when('/inscription', {
-          templateUrl: 'components/users/templates/inscription.html',
-          controller: 'inscriptionCtrl'
-        })
 
-      .when('/publish', {
-          templateUrl: 'components/annonces/templates/publish.html',
-          controller: 'publishCtrl',
-          controllerAs: 'publish',
-        })
+    .when('/service', {
+        templateUrl: 'components/services/templates/service.html',
+        controller: 'serviceCtrl'
+      })
 
-      .when('/register', {
-          templateUrl: 'components/users/templates/register.html',
-          controller: 'registerCtrl'
-        })
+    .when('/inscription', {
+        templateUrl: 'components/users/templates/inscription.html',
+        controller: 'inscriptionCtrl'
+      })
+
+    .when('/publish', {
+        templateUrl: 'components/annonces/templates/publish.html',
+        controller: 'publishCtrl',
+        controllerAs: 'publish',
+      })
+
+    .when('/register', {
+        templateUrl: 'components/users/templates/register.html',
+        controller: 'registerCtrl'
+      })
 
     .otherwise({
-          redirectTo: '/'
-        });
+        redirectTo: '/'
+      });
   }])
   //  .config(['$resourceProvider', function($resourceProvider) {
   //    // this is to allow calling GET /todos/ instead of /todos
