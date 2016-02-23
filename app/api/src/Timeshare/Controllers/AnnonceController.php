@@ -5,6 +5,9 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+// validator
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Timeshare\Entities\Annonce;
 use Timeshare\Entities\User;
 
@@ -50,20 +53,39 @@ class AnnonceController {
     {
         $dm = $app['doctrine.odm.mongodb.dm'];
         $payload = json_decode($request->getContent());
-        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user->id));
-//        if ($user === NULL) {
-//            return new JsonResponse("Error: Can't find user ".$payload->user, 500);
-//        }
+        
+        // error if $payload is blank
+        $errors = $app['validator']->validate($payload, new Assert\NotBlank);
+        if (count($errors) > 0 ) {
+            return new JsonResponse ("Error: Annonces is empty (Bad Gateway) ".$payload, 400);
+        }
+        
+        $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user->id));        
+        // errors gestion for user
+        if ($user === NULL) {
+            return new JsonResponse("Error: Can't find user ".$payload->user, 404);
+        }
+        
         $annonce = new Annonce(
-        		$payload->name,
-        		$user, 
-                $payload->description,
-        		new \DateTime($payload->dateValiditeDebut),
-        		new \DateTime($payload->dateValiditeFin),
-        		$payload->location,
-        		$payload->category,
-        		$payload->demande);
+            $payload->name,
+            $user, 
+            $payload->description,
+            new \DateTime($payload->dateValiditeDebut),
+            new \DateTime($payload->dateValiditeFin),
+            $payload->location,
+            $payload->category,
+            $payload->demande);
 
+        // errors for name of annonce
+        $errors = $app['validator']->validate($payload->name, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 400);
+        }
+        $errors = $app['validator']->validate(gettype($payload->name), new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 400);
+        }
+        
           $dm->persist($annonce);
           $dm->flush();
 

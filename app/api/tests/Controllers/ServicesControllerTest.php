@@ -85,7 +85,7 @@ class ServicesTest extends WebTestCase
                                       5,
                                       120
                 );
-                var_dump(json_encode($this->service));
+                //var_dump(json_encode($this->service));
         $resp = $client->request('POST', '/api/services/', array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
