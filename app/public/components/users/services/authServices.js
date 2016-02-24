@@ -3,13 +3,13 @@
 (function() {
   angular
     .module('TimeShareSilex')
-    .service('userAuth', ['$http', '$cookies', '$rootScope', function($http, $cookies, $rootScope) {
+    .service('userAuth', ['$location','$http', '$cookies', '$rootScope', function($location, $http, $cookies, $rootScope) {
 
       var isLogged = false;
       //check if any current session
       function checkIfSession() {
         var userCookie = $cookies.get('userSession', $rootScope.userSession);
-        console.log($cookies.get('userSession', $rootScope.userSession));
+        // console.log($cookies.get('userSession', $rootScope.userSession));
       }
 
       function isLogged() {
@@ -39,6 +39,7 @@
             $cookies.put('cookie', userSessionData);
             console.log($cookies.getAll());
             isLogged = true;
+            $location.path('/user');
             //cookieStr = JSON.stringify($rootScope.userSession);
           });
       }
