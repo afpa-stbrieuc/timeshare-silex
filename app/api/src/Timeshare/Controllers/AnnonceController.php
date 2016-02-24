@@ -25,8 +25,16 @@ class AnnonceController {
             return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user'=>$userId)));
         }
         else{
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findAll());
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findby(array('demande' => true)));
         }
+    }
+    
+
+    
+    public function getOffers(Application $app){
+        
+        
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('demande' => false)));
     }
 
     public function getOneAction($id, Application $app)
@@ -142,7 +150,7 @@ class AnnonceController {
     
     public function sortAnnonce($category,$lieu,Application $app){
 
-        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu)));
+        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu,'demande' => true )));
         $user = array();
         foreach ($annonce as $value) {
             $user[] = $value->getUser();
@@ -153,16 +161,17 @@ class AnnonceController {
         return new JsonResponse ($annonce);
     }
     
-    public function annonceByAuthor($author,Application $app){
-        
+        public function sortOffer($category,$lieu,Application $app){
 
-        $dm = $app['doctrine.odm.mongodb.dm'];
-        $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user' => $author));
+        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu, 'demande' => false)));
+        $user = array();
+        foreach ($annonce as $value) {
+            $user[] = $value->getUser();
+        }
         
+      
         
-        return new JsonResponse($annonce);
-        
-                
+        return new JsonResponse ($annonce);
     }
 
 }
