@@ -8,6 +8,8 @@ angular.module('TimeShareSilex')
     vm.tab = 1;
     vm.sent = false;
 
+    vm.alert = {'type': '', 'msg': ''};
+
     vm.id = '569d06ecc4936293a6f8fd90'; // hard coded user id
 
     vm.selectTab = function(setTab) {
@@ -30,20 +32,20 @@ angular.module('TimeShareSilex')
 
     vm.modifyUser = function(valid) {
       if (valid) {
-        var user = {
-          surname:vm.user.surname,
-          firstname:vm.user.firstname,
-          town:vm.user.town,
-          timebalance:vm.user.timebalance
-        };
-
-        $http.put('/api/user/'+vm.user.id, user
-        ).then(function() {
-            vm.sent = true;
+        $http.put('/api/user/'+vm.user.id, vm.user
+        ).then(function(response) {
+          if (response.status === 200)
+            vm.alert = {'type': 'success', 'msg':'Annonce modifiée'};
           }, function(){
-            vm.sent = false;
+            vm.alert = {'type': 'danger', 'msg':'Erreur Serveur'};
           });
+      } else {
+        vm.alert = {
+          type: 'danger',
+          msg: 'Un champ requis est manquant'
+        };
       }
+
     };
 
     $http.get('/api/annonces/?userId='+vm.id)
@@ -53,4 +55,7 @@ angular.module('TimeShareSilex')
       // error
     });
 
+    vm.closeAlert = function() {
+      vm.altert = {'type': '', 'msg': ''};
+    }
   });
