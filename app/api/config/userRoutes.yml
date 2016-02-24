@@ -23,4 +23,4 @@ editOneUser:
   path: /{id}
   defaults: { _controller: 'Timeshare\Controllers\UserController::editOneUser' }
   methods:  [PUT]
-
+  

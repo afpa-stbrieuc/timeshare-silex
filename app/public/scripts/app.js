@@ -35,7 +35,7 @@ angular.module('TimeShareSilex', [
         controllerAs: 'edit'
       })
 
-      .when('/service', {
+      .when('/service/:id', {
           templateUrl: 'components/services/templates/service.html',
           controller: 'serviceCtrl'
         })
