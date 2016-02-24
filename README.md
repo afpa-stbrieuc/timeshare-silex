@@ -44,7 +44,7 @@ All field are required
 * description
 * location
 * category
-* dateVeliditeDebut
+* dateValiditeDebut
 * dateValiditeFin
 * demande
 
