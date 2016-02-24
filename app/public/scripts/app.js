@@ -52,9 +52,9 @@ angular.module('TimeShareSilex', [
         })
 
     .when('/inscription', {
-        templateUrl: 'components/users/templates/inscription.html',
-        controller: 'inscriptionCtrl'
-      })
+          templateUrl: 'components/users/templates/inscription.html',
+          controller: 'inscriptionCtrl'
+        })
 
     .when('/publish', {
         templateUrl: 'components/annonces/templates/publish.html',
