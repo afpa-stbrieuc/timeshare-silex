@@ -18,15 +18,15 @@ class AnnonceController {
     public function getAllAction(Application $app, Request $request)
     {
         $userId = $request->get('userId');
+        $filter = array();
         if ($userId !== null ){
-           
-            //$user = $app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id'=>$userId));
-            
-            return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user'=>$userId)));
+            $filter['user'] = $userId;
         }
         else{
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findby(array('demande' => true)));
+            $filter['demande'] = true;
         }
+        
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findby($filter));
     }
     
 
