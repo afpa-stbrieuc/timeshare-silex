@@ -33,10 +33,10 @@
             password: userPassword
           })
           .then(function(userSessionData) {
-            $rootScope.userSession = userSessionData;
-            console.log('userAuth.login 2', userSessionData);
+            $rootScope.userSession = userSessionData.data;
+            console.log('userAuth.login 2', userSessionData.data);
             //creates cookie
-            $cookies.put('cookie', userSessionData);
+            $cookies.putObject('cookie', userSessionData.data);
             console.log($cookies.getAll());
             isLogged = true;
             //redicrection to place in logincontroller
