@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies', function($http, $scope, $routeParams, $cookies) {
+	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies', '$location', function($http, $scope, $routeParams, $cookies, $location) {
 
 		var vm = this;
 
@@ -101,9 +101,10 @@ angular.module('TimeShareSilex')
 
 		vm.closeAlert = function() {
 			vm.alert = {
-				typeDemande: '',
+				type: '',
 				msg: ''
 			};
+			$location.path('/user');
 		};
 
 	}]);
