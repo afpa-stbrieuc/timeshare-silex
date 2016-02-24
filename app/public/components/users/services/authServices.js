@@ -8,7 +8,7 @@
       var isLogged = false;
       //check if any current session
       function checkIfSession() {
-        var userCookie = $cookies.get('userSession', $rootScope.userSession);
+        // var userCookie = $cookies.getObject('cookie', $rootScope.userSession);
         // console.log($cookies.get('userSession', $rootScope.userSession));
       }
 
@@ -33,10 +33,10 @@
             password: userPassword
           })
           .then(function(userSessionData) {
-            $rootScope.userSession = userSessionData;
-            console.log('userAuth.login 2', userSessionData);
+            $rootScope.userSession = userSessionData.data;
+            console.log('userAuth.login 2', userSessionData.data);
             //creates cookie
-            $cookies.put('cookie', userSessionData);
+            $cookies.putObject('timeshareCookie', userSessionData.data);
             console.log($cookies.getAll());
             isLogged = true;
             //redicrection to place in logincontroller
