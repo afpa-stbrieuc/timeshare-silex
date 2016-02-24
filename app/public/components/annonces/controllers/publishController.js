@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies' function($http, $scope, $routeParams, $cookies) {
+	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies', function($http, $scope, $routeParams, $cookies) {
 
 		var vm = this;
 
