@@ -1,68 +1,72 @@
 <div>
 	<div class="container">
-	<ul class="nav nav-pills">
-		<li ng-class="{active:panel.isSelected(1)}">
-			<a href ng-click="panel.selectTab(1)">Profil</a>
-		</li>
-		<li ng-class="{active:panel.isSelected(2)}">
-			<a href ng-click="panel.selectTab(2)">Activités</a>
-		</li>
-		<li ng-class="{active:panel.isSelected(3)}">
-			<a href ng-click="panel.selectTab(3)">Editer profil</a>
-		</li>
-	</ul>
-	<div class="panel" ng-show="panel.isSelectedTab(1)">
-		<p>Prénom: {{panel.user.surname}}</p>
-		<p>Nom: {{panel.user.firstname}}</p>
-		<p>Ville: {{panel.user.town}}</p>
-		<p>Timebalance: {{panel.user.timebalance}}</p>
-		<a href="#/publish"><input type="button" class="btn" value="Publier une annonce" ng-click="panel.publier()" /></a>
-	</div>
-	<div class="panel" ng-show="panel.isSelectedTab(2)">
-		<div class="row">
-			<h2>Mes annonces</h2>
-			<div ng-repeat="annonce in panel.annonces" class="annonces">
-				<h3>{{annonce.name}}</h3>
-				<p>Publié le {{annonce.date|date}}, {{annonce.user.surname}} {{annonce.user.firstname}} a fait la demande du {{annonce.dateValiditeDebut}} au {{annonce.dateValiditeFin}} dans la catégorie {{annonce.category}}</p>
-				<a class="btn btn-primary" href="#/editAnnonce/{{annonce.id}}">Modifier</a>
+		<uib-alert class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}" dismiss-on-timeout="10000" close="panel.closeAlert()">{{panel.alert.msg}}</uib-alert>
+
+		<uib-alert class="alert alert-danger" type="danger" ng-show="user.password.$invalid && userForm.password.$dirty">Le mot de passe doit faire au minimum de 8 caractères</uib-alert>
+
+		<ul class="nav nav-pills">
+			<li ng-class="{active:panel.isSelected(1)}">
+				<a href ng-click="panel.selectTab(1)">Profil</a>
+			</li>
+			<li ng-class="{active:panel.isSelected(2)}">
+				<a href ng-click="panel.selectTab(2)">Activités</a>
+			</li>
+			<li ng-class="{active:panel.isSelected(3)}">
+				<a href ng-click="panel.selectTab(3)">Editer profil</a>
+			</li>
+		</ul>
+		<div class="panel" ng-show="panel.isSelectedTab(1)">
+			<p>Prénom: {{panel.user.surname}}</p>
+			<p>Nom: {{panel.user.firstname}}</p>
+			<p>Ville: {{panel.user.town}}</p>
+			<p>Timebalance: {{panel.user.timebalance}}</p>
+			<a href="#/publish"><input type="button" class="btn" value="Publier une annonce" ng-click="panel.publier()" /></a>
+		</div>
+		<div class="panel" ng-show="panel.isSelectedTab(2)">
+			<div class="row">
+				<h2>Mes annonces</h2>
+				<div ng-repeat="annonce in panel.annonces" class="annonces">
+					<h3>{{annonce.name}}</h3>
+					<p>Publié le {{annonce.date|date}}, {{annonce.user.surname}} {{annonce.user.firstname}} a fait la demande du {{annonce.dateValiditeDebut}} au {{annonce.dateValiditeFin}} dans la catégorie {{annonce.category}}</p>
+					<a class="btn btn-primary" href="#/editAnnonce/{{annonce.id}}">Modifier</a>
+				</div>
 			</div>
 		</div>
-	</div>
-	<div class="panel" ng-show="panel.isSelectedTab(3)">
-		<div ng-show="panel.sent">Modification effectuée</div>
-		<form name="userForm" role="form" ng-submit="panel.modifyUser(userForm.$valid)" novalidate>
-			<div class="form-group" id="user-change-form">
-				<label class="col-md-4 control-label">Pseudo</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="panel.user.pseudo" value="{{panel.user.pseudo}}" required>
+		<div class="panel" ng-show="panel.isSelectedTab(3)">
+			<div ng-show="panel.sent">Modification effectuée</div>
+			<form name="userForm" role="form" ng-submit="panel.modifyUser(userForm.$valid)" novalidate>
+				<div class="form-group" id="user-change-form">
+					<label class="col-md-4 control-label">Pseudo</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" ng-model="panel.user.pseudo" value="{{panel.user.pseudo}}" required>
+					</div>
+					<label class="col-md-4 control-label">Prénom</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" ng-model="panel.user.surname" value="{{panel.user.surname}}" required>
+					</div>
+					<label class="col-md-4 control-label">Nom</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" ng-model="panel.user.firstname" value="{{panel.user.firstname}}" required>
+					</div>
+					<label class="col-md-4 control-label">Adresse</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" ng-model="panel.user.address" value="{{panel.user.address}}">
+					</div>
+					<label class="col-md-4 control-label">Ville</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" ng-model="panel.user.town" value="{{panel.user.town}}">
+					</div>
+					<label class="col-md-4 control-label">Email</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" type="email" ng-model="panel.user.email" value="{{panel.user.email}}">
+					</div>
+					<label class="col-md-4 control-label">Mot de passe</label>
+					<div class="col-md-8">
+						<input class="form-control input-sm" ng-minlength="8" type="password" name="password" ng-model="panel.user.password" value="">
+					</div>
+					<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4">Mettre à jour</button>
 				</div>
-				<label class="col-md-4 control-label">Prénom</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="panel.user.surname" value="{{panel.user.surname}}" required>
-				</div>
-				<label class="col-md-4 control-label">Nom</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="panel.user.firstname" value="{{panel.user.firstname}}" required>
-				</div>
-				<label class="col-md-4 control-label">Adresse</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="panel.user.address" value="{{panel.user.address}}">
-				</div>
-				<label class="col-md-4 control-label">Ville</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" ng-model="panel.user.town" value="{{panel.user.town}}">
-				</div>
-				<label class="col-md-4 control-label">Email</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" type="email" ng-model="panel.user.email" value="{{panel.user.email}}">
-				</div>
-				<label class="col-md-4 control-label">Mot de passe</label>
-				<div class="col-md-8">
-					<input class="form-control input-sm" type="password" ng-model="panel.user.password" value="">
-				</div>
-				<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4">Mettre à jour</button>
-			</div>
-		</form>
-	</div>
+			</form>
+		</div>
 	
 </div>
