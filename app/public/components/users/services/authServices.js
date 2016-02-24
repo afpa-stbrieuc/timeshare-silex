@@ -13,14 +13,14 @@
               }
 
 
-            //logout by clearing $cookies infos
+            //logout by clearing $cookies
             function clearSession() {
                 $rootScope.userSession = {};
                 $cookies.remove('userSession');
                 console.log($cookies.get('userSession'));
               }
 
-
+            //login & setuserSession
             function login(userEmail, userPassword) {
 
                 console.log('userAuth.login 1', userEmail, userPassword);
