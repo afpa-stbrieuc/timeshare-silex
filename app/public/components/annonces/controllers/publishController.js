@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', '$cookies', function($http, $scope, $cookies) {
+	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies' function($http, $scope, $routeParams, $cookies) {
 
 		var vm = this;
 
@@ -23,6 +23,12 @@ angular.module('TimeShareSilex')
 			formatYear: 'yy'
 		};
 
+		if ($routeParams.type === 'advert') {
+			vm.isOffer = false;
+		} else if ($routeParams.type === 'demand') {
+			vm.isOffer = true;
+		}
+
 		vm.validateDates = function() {
 			var endDate = new Date(vm.dateValiditeFin);
 			var startDate = new Date(vm.dateValiditeDebut);
@@ -31,11 +37,8 @@ angular.module('TimeShareSilex')
 
 		vm.submitAdvert = function(valid) {
 			if (valid) {
-
-				// fake user TODO: change to use a real user
 				vm.advert.user = $cookies.getObject('timeshareCookie');
-
-				vm.advert.demande = false;
+				vm.advert.demande = vm.isOffer;
 
 				// construct ISO date string from date object
 				var d = vm.dateValiditeDebut;

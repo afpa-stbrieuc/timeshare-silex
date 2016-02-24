@@ -19,8 +19,9 @@
 			<p>Prénom: {{panel.user.surname}}</p>
 			<p>Nom: {{panel.user.firstname}}</p>
 			<p>Ville: {{panel.user.town}}</p>
-			<p>Timebalance: {{panel.user.timebalance}}</p>
-			<a href="#/publish"><input type="button" class="btn" value="Publier une annonce" ng-click="panel.publier()" /></a>
+			<p>Solde Temps: {{panel.user.timebalance}}h</p>
+			<a href="#/publish/advert"><input type="button" class="btn" value="Publier une annonce"/></a>
+			<a href="#/publish/demand"><input type="button" class="btn" value="Publier une offre"/></a>
 		</div>
 		<div class="panel" ng-show="panel.isSelectedTab(2)">
 			<div class="row">
