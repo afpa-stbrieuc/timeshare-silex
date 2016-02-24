@@ -25,7 +25,7 @@ angular.module('TimeShareSilex')
         $http.put('/api/user/'+vm.user.id, vm.user
         ).then(function(response) {
           if (response.status === 200)
-            vm.alert = {'type': 'success', 'msg':'Annonce modifiée'};
+            vm.alert = {'type': 'success', 'msg':'Utilisateur modifié(e)'};
           }, function(){
             vm.alert = {'type': 'danger', 'msg':'Erreur Serveur'};
           });
@@ -38,7 +38,7 @@ angular.module('TimeShareSilex')
 
     };
 
-    $http.get('/api/annonces/?userId='+vm.id)
+    $http.get('/api/annonces/?userId='+vm.user.id)
     .then(function(response) {
       vm.annonces = response.data;
     }, function() {

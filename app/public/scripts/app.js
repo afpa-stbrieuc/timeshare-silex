@@ -56,20 +56,6 @@ angular.module('TimeShareSilex', [
           controller: 'inscriptionCtrl'
         })
 
-      .when('/login', {
-          templateUrl: 'components/users/templates/login.html',
-          controller: 'loginCtrl',
-          resolve: {
-            'check': function($location, $rootScope) {
-              if (!$rootScope.loggedIn) {
-                $location.path('/login');
-              } else {
-                $location.path('/user');
-              }
-            }
-          }
-        })
-
       .when('/publish/:type', {
           templateUrl: 'components/annonces/templates/publish.html',
           controller: 'publishCtrl',
