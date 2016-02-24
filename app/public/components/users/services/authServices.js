@@ -39,6 +39,7 @@
             $cookies.put('cookie', userSessionData);
             console.log($cookies.getAll());
             isLogged = true;
+            //redicrection to place in logincontroller
             $location.path('/user');
             //cookieStr = JSON.stringify($rootScope.userSession);
           });
