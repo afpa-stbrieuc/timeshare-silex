@@ -3,7 +3,7 @@
 angular.module('TimeShareSilex')
 
   
-    .controller('registerCtrl', function($scope, $http){
+    .controller('registerCtrl',['$scope','$http','$location', function($scope, $http, $location){
         
         $scope.user = {};
        
@@ -25,6 +25,7 @@ angular.module('TimeShareSilex')
                 if (data.status === 201){
                  
                   $scope.userOk = true;
+                  $location.path('/user');
 
                 }
                
@@ -37,4 +38,4 @@ angular.module('TimeShareSilex')
             );
                
         };
-      });
+      }]);
