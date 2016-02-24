@@ -39,13 +39,13 @@ php >5.4, mongo driver installed and enabled in php.ini http://php.net/manual/fr
 
 ## Advert (Annonce)
 All field are required
-* name # string
-* user # the user having created the advert # object
-* description # string
-* location # string
-* category # string
-* dateValiditeDebut # datetime
-* dateValiditeFin # datetime
-* demande # boolean
+* name ## string
+* user # the user having created the advert ## object
+* description ## string
+* location ## string
+* category ## string
+* dateValiditeDebut ## datetime
+* dateValiditeFin ## datetime
+* demande ## boolean
 
 
