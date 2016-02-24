@@ -1,0 +1,9 @@
+getOffers:
+    path: /
+    defaults: { _controller: 'Timeshare\Controllers\AnnonceController::getOffers' }
+    methods:  [GET]
+
+sortoffer:
+  path: /{category}/{lieu}
+  defaults: { _controller: 'Timeshare\Controllers\AnnonceController::sortOffer' }
+  methods:  [GET] 

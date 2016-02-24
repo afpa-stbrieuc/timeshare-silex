@@ -3,7 +3,7 @@
 angular.module('TimeShareSilex')
         .controller('serviceCtrl', function ($scope, $http, $routeParams) {
 
-            // call a fake user
+            // call a fake user (testing)
             $http({
                 method: 'GET',
                 url: '/api/user/56c43fbf2ca65eb80d00002b'
