@@ -60,21 +60,27 @@ angular.module('TimeShareSilex')
 					data: vm.advert
 				}).then(
 					function(response) {
+						var typeDemande;
+						if (vm.isOffer) {
+							typeDemande ="offre";
+						} else {
+							typeDemande ="annonce";
+						}
 						if (response.status === 201) {
 							vm.alert = {
 								type: 'success',
-								msg: 'Annonce publiée'
+								msg: capitalize(typeDemande)+ ' publiée'
 							};
 							vm.isDisabled = true; // disable submit button
 						} else if (response.status === 400) {
 							vm.alert = {
 								type: 'danger',
-								msg: 'Erreur: annonce non publiée'
+								msg: 'Erreur: '+typeDemande+' non publiée'
 							};
 						} else if (response.status === 404) {
 							vm.alert = {
 								type: 'danger',
-								msg: 'Erreur: annonce non publiée'
+								msg: 'Erreur: '+typeDemande+' non publiée'
 							};
 						}
 					},
@@ -86,7 +92,7 @@ angular.module('TimeShareSilex')
 					});
 			} else {
 				vm.alert = {
-					type: 'danger',
+					typeDemande: 'danger',
 					msg: 'Un champ requis est manquant'
 				};
 			}
@@ -95,7 +101,7 @@ angular.module('TimeShareSilex')
 
 		vm.closeAlert = function() {
 			vm.alert = {
-				type: '',
+				typeDemande: '',
 				msg: ''
 			};
 		};
@@ -127,3 +133,7 @@ Date.prototype.addMonths = function(value) {
 	this.setDate(Math.min(n, this.getDaysInMonth()));
 	return this;
 };
+
+function capitalize(s) {
+    return s && s[0].toUpperCase() + s.slice(1);
+}
