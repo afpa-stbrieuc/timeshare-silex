@@ -46,6 +46,11 @@ angular.module('TimeShareSilex', [
         controller: 'serviceCtrl'
       })
 
+      .when('/service/:id', {
+          templateUrl: 'components/services/templates/service.html',
+          controller: 'serviceCtrl'
+        })
+
     .when('/inscription', {
         templateUrl: 'components/users/templates/inscription.html',
         controller: 'inscriptionCtrl'

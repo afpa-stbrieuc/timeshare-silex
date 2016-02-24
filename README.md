@@ -14,12 +14,14 @@ php >5.4, mongo driver installed and enabled in php.ini http://php.net/manual/fr
   npm install #this will install the required Grunt dependencies
   bower install #will load all client libraries
   composer install -d app/api #to install php apps dependencies
+
+  npm install grunt-cli # to get grunt installed
 ```
 
 ##development
 
 ```shell
-  grunt serve
+  grunt serve # to get a local running web server
 ```
 
 ##build
@@ -32,4 +34,18 @@ php >5.4, mongo driver installed and enabled in php.ini http://php.net/manual/fr
  cd app
  php -S localhost:8080 -t . api/app-dev.php
  ```
+
+# API
+
+## Advert (Annonce)
+All field are required
+* name
+* user # the user having created the advert
+* description
+* location
+* category
+* dateVeliditeDebut
+* dateValiditeFin
+* demande
+
 
