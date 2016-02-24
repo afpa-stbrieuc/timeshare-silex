@@ -56,7 +56,7 @@ angular.module('TimeShareSilex', [
           controller: 'inscriptionCtrl'
         })
 
-    .when('/publish', {
+      .when('/publish/:type', {
           templateUrl: 'components/annonces/templates/publish.html',
           controller: 'publishCtrl',
           controllerAs: 'publish',

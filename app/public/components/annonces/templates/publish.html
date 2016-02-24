@@ -11,11 +11,13 @@
 			<div class="form-group" id="advert-form">
 				<label class="col-md-4 control-label">Nom</label>
 				<div class="col-md-8">
-					<input class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'annonce" required>
+					<input ng-if="!publish.isOffer" class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'annonce" required>
+					<input ng-if="publish.isOffer" class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'offre" required>
 				</div>
 				<label class="col-md-4 control-label">Description</label>
 				<div class="col-md-8">
-					<textarea id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'annnonce" required></textarea>
+					<textarea ng-if="!publish.isOffer" id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'annnonce" required></textarea>
+					<textarea ng-if="publish.isOffer" id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'offre" required></textarea>
 				</div>
 				<label class="col-md-4 control-label">Lieu</label>
 				<div class="col-md-8">
