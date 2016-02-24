@@ -44,6 +44,7 @@
       }
 
       return {
+        isLogged: isLogged,
         checkIfSession: checkIfSession,
         login: login,
         clearSession: clearSession

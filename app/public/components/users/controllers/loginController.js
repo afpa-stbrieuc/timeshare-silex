@@ -12,10 +12,10 @@ angular.module('TimeShareSilex')
 
     userAuth
       .login(vm.userEmail, vm.userPassword)
-      // .then(function(){
+      .then(function(){
         // console.log('redirection to user', vm.userPassword);
         $location.path('/user');
-      // });
+      });
     console.log('submit 2', vm.userEmail, vm.userPassword);
   };
 
