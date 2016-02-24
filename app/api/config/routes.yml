@@ -16,5 +16,9 @@ categorie:
   
 localisation:
   prefix: /api/location
-  resource: LocalisationRoutes.yml  
-  
+  resource: LocalisationRoutes.yml 
+
+offre:
+  prefix: /api/offre
+  resource: offreRoutes.yml   
+   

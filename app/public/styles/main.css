@@ -195,3 +195,16 @@ h4 {
   color: black !important;
   border-color: lightgrey !important;
 }
+
+.button-right{
+    text-align: right;
+}
+
+.button-left{
+    text-align: left;
+}
+
+.row-align{
+    margin-left: auto !important;
+    margin-right: auto !important;
+}

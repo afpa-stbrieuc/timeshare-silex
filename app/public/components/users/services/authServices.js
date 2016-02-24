@@ -37,6 +37,7 @@
             console.log('userAuth.login 2', userSessionData.data);
             //creates cookie
             $cookies.putObject('timeshareCookie', userSessionData.data);
+
             console.log($cookies.getAll());
             isLogged = true;
             //redicrection to place in logincontroller
