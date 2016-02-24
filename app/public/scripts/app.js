@@ -57,23 +57,22 @@ angular.module('TimeShareSilex', [
       })
 
     .when('/publish', {
-        templateUrl: 'components/annonces/templates/publish.html',
-        controller: 'publishCtrl',
-        controllerAs: 'publish',
-      })
+          templateUrl: 'components/annonces/templates/publish.html',
+          controller: 'publishCtrl',
+          controllerAs: 'publish',
+        })
 
-    .when('/register', {
-        templateUrl: 'components/users/templates/register.html',
-        controller: 'registerCtrl'
-      })
+          .when('/register', {
+          templateUrl: 'components/users/templates/register.html',
+          controller: 'registerCtrl'
+        })
 
       .when('/logout', {
-        templateUrl: 'components/users/templates/login.html',
-        controller: 'logoutCtrl'
-      })
+          templateUrl: 'components/users/templates/login.html',
+          controller: 'logoutCtrl'
+        })
 
     .otherwise({
-        redirectTo: '/'
-      });
-  }])
-;
+          redirectTo: '/'
+        });
+  }]);
