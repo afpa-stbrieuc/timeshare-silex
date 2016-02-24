@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-  .controller('userCtrl', function($scope, $http) {
+  .controller('userCtrl', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
 
     var vm = this;
 
@@ -10,7 +10,7 @@ angular.module('TimeShareSilex')
 
     vm.alert = {'type': '', 'msg': ''};
 
-    vm.id = '569d06ecc4936293a6f8fd90'; // hard coded user id
+    vm.user = $cookies.getObject('timeshareCookie');
 
     vm.selectTab = function(setTab) {
       vm.tab = setTab;
@@ -19,16 +19,6 @@ angular.module('TimeShareSilex')
     vm.isSelectedTab = function(checkTab) {
       return vm.tab === checkTab;
     };
-
-    
-    $http({
-      method: 'GET',
-      url: '/api/user/'+vm.id
-    }).then(function(response) {
-      vm.user = response.data;
-    }, function() {
-      vm.user = {id:vm.id, surname:'Karine', firstname: 'Monfort', town: 'Yffiniac', timebalance:15};
-    });
 
     vm.modifyUser = function(valid) {
       if (valid) {
@@ -58,4 +48,4 @@ angular.module('TimeShareSilex')
     vm.closeAlert = function() {
       vm.altert = {'type': '', 'msg': ''};
     }
-  });
+  }]);

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', function($http, $scope) {
+	.controller('publishCtrl', ['$http', '$scope', '$cookies', function($http, $scope, $cookies) {
 
 		var vm = this;
 
@@ -33,9 +33,7 @@ angular.module('TimeShareSilex')
 			if (valid) {
 
 				// fake user TODO: change to use a real user
-				vm.advert.user = {
-					'id': '569d06ecc4936293a6f8fd90'
-				};
+				vm.advert.user = $cookies.getObject('timeshareCookie');
 
 				vm.advert.demande = false;
 
