@@ -44,8 +44,20 @@ All field are required
 * description ## string
 * location ## string
 * category ## string
-* dateValiditeDebut ## datetime
-* dateValiditeFin ## datetime
+* dateValiditeDebut ## datetime (format: Y-m-d H:i:s)
+* dateValiditeFin ## datetime (format: Y-m-d H:i:s)
 * demande ## boolean
+
+## User (utilisateur)
+All field are required
+* pseudo ## string 
+* password ## string
+* surname ## string
+* firstname ## string
+* town ## string
+* timebalance ## int (auto)
+* address ## string
+* email ## string 
+
 
 

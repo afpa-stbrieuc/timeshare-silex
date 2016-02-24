@@ -1,17 +1,10 @@
 'use strict';
 //doc for dialog: https://github.com/m-e-conroy/angular-dialog-service
 angular.module('TimeShareSilex')
-        .controller('serviceCtrl', function ($scope, $http, $routeParams) {
+        .controller('serviceCtrl',['$scope', '$http', '$routeParams', '$cookies', function ($scope, $http, $routeParams, $cookies) {
 
-            // call a fake user (testing)
-            $http({
-                method: 'GET',
-                url: '/api/user/56c43fbf2ca65eb80d00002b'
-            }).then(function(response){
-                $scope.crediteur = response.data;
-            }, function(response) {
-                $scope.crediteur = response.statusText;
-            });
+            $scope.crediteur =  $cookies.getObject('timeshareCookie');
+            
             
             //get the advert id
             $http({
@@ -44,5 +37,5 @@ angular.module('TimeShareSilex')
                 });             
             };
 
-        });
+        }]);
 
