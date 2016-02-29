@@ -1,0 +1,14 @@
+<header class="header">
+    <h3 class="masthead-brand"> 
+        <a ng-href="#/index.html"><img src="images/timeshare-logo.png" width=200></a> 
+    </h3>
+    <nav>
+        <ul class="nav masthead-nav">
+            <li><a href="/#/">Annonces</a></li>
+            <li ng-hide="isLogged"><a  href="/#/login">Se connecter</a></li>
+            <li ng-hide="isLogged"><a  href="#/register">S'inscrire</a></li>
+            <li ng-show="isLogged"><a href="#/user">Mon profil</a></li>
+            <li ng-show="isLogged"><a ng-click="logoutUser()" href="">Se déconnecter</a></li>
+        </ul>
+    </nav>
+</header>
