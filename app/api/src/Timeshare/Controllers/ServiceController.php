@@ -6,6 +6,9 @@ use Silex\Application;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 
+// validator
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Timeshare\Entities\Services;
 use Timeshare\Entities\User;
 use Timeshare\Entities\Annonce;
@@ -61,7 +64,37 @@ class ServiceController {
                                 $payload->note,
                                 $payload->time
                                 );
-
+        
+        // errors for user
+        $errors = $app['validator']->validate($service->getDebiteur(), new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The user is empty" .$service->getDebiteur(), 400);
+        }
+        
+        // errors for crediteur
+        $errors = $app['validator']->validate($service->getCrediteur(), new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The crediteur is empty" .$service->getCrediteur(), 400);
+        }
+        
+        // errors for annonce
+        $errors = $app['validator']->validate($service->getAnnonce(), new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The annonce is empty" .$service->getAnnonce(), 400);
+        }
+        
+        // errors for note
+        $errors = $app['validator']->validate($service->getNote(), new Assert\Type('integer'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The note must be a number" .$service->getNote(), 400);
+        }
+        
+        // errors for time
+        $erros  = $app['validator']->validate($service->getTime(), new Assert\DateTime);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The time must be a DateTime type" .$service->getTime(), 400);
+        }
+        
           $dm->persist($service);
           $dm->flush();
 
