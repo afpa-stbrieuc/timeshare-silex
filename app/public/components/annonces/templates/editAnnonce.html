@@ -1,3 +1,5 @@
+<ts-navigation></ts-navigation>
+
 <uib-alert class="alert alert-{{edit.alert.type}}" ng-show="edit.alert.msg != ''" type="{{edit.alert.type}}" dismiss-on-timeout="10000" close="edit.closeAlert()">{{edit.alert.msg}}</uib-alert>
 
 <uib-alert class="alert alert-danger" ng-show="advertForm.startDate.$error.endBeforeStart" type="danger">La date de fin doit être après la date de début</uib-alert>
