@@ -2,6 +2,12 @@
 //timeshare use config file
 $dbName = 'timeshare';
 
+//Allow PHP's built-in server to serve our static content 
+$filename = dirname(__DIR__).'/public'.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
+if (php_sapi_name() === 'cli-server' && is_file($filename)) {
+    return false;
+}
+
 $app = require __DIR__.'/config-init.php';
 $app['debug'] = true;
 
@@ -17,11 +23,7 @@ foreach ($app['routes'] as $name => $route) {
 }
 
 
-//Allow PHP's built-in server to serve our static content 
-$filename = dirname(__DIR__).'/public'.preg_replace('#(\?.*)$#', '', $_SERVER['REQUEST_URI']);
-if (php_sapi_name() === 'cli-server' && is_file($filename)) {
-    return false;
-}
+
 
 
 
