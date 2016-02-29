@@ -3,7 +3,7 @@
 angular.module('TimeShareSilex')
 
   
-    .controller('registerCtrl',['$scope','$http','$location','$timeout', function($scope, $http, $location,$timeout){
+    .controller('registerCtrl',['$scope','$http','$location','$timeout', 'userAuth', function($scope, $http, $location,$timeout, userAuth){
         
         $scope.user = {};
         $scope.disable = false;
@@ -28,7 +28,7 @@ angular.module('TimeShareSilex')
                   $scope.userOk = true;                 
                   $scope.disable = true;
                   $timeout(function(){
-                  $location.path('/user');
+                    userAuth.login($scope.user.email, $scope.user.password);
                   },2000 );
                   
                 }
