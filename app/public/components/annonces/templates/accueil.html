@@ -1,45 +1,49 @@
+<ts-navigation></ts-navigation>
 
-
-<div class="inner-cover">
-    <div id="search-annonce" class='form-group'>
-        <div class="row">
-            <div class='col-lg-3'>
-                <label class='label'>Catégories : </label>
+<div class="container">
+    <div class="inner-cover">
+        <div id="search-annonce" class='form-group'>
+            <div class="row">
+                <div class='col-lg-3'>
+                    <label class='label'>Catégories : </label>
+                </div>
+                <div class="col-lg-3">
+                    <select class='form-control' id='categories' ng-model="myCategory" >          
+                        <option class="form-control"   ng-repeat="category in categories" >{{ category}}</option>
+                    </select>
+                </div>
+                <div class="col-lg-3">
+                    <label class="label">Localisation :</label>
+                </div>
+                <div class="col-lg-3">
+                    <select class='form-control' id='categories' ng-model="myLocation">
+                        <option class="form-control"  ng-repeat="location in locations" >{{ location}}</option>
+                    </select>
+                </div>
             </div>
-            <div class="col-lg-3">
-                <select class='form-control' id='categories' ng-model="myCategory" >          
-                    <option class="form-control"   ng-repeat="category in categories" >{{ category}}</option>
-                </select>
-            </div>
-            <div class="col-lg-3">
-                <label class="label">Localisation :</label>
-            </div>
-            <div class="col-lg-3">
-                <select class='form-control' id='categories' ng-model="myLocation">
-                    <option class="form-control"  ng-repeat="location in locations" >{{ location}}</option>
-                </select>
-            </div>
+            <br>
+           
+            <div class="row-align">
+                    <button type="button" class="btn btn-default " ng-click="showannonces()" >Rechercher demande</button>                  
+                    <button type="button" class="btn btn-default " ng-click="showoffers()" >Rechercher offre</button>  
+            </div>   
+           
         </div>
-        <br>
 
-        <div class="row-align">
-            <button type="button" class="btn btn-default " ng-click="showannonces()" >Rechercher demande</button>                  
-            <button type="button" class="btn btn-default " ng-click="showoffers()" >Rechercher offre</button>  
-        </div>   
+        <h4 ng-show="noAdvert"> Il n'y as pas d'annonces de cette catégorie à cet endroit</h4>
 
-    </div>
-
-    <h4 ng-show="noAdvert"> Il n'y as pas d'annonces de cette catégorie à cet endroit</h4>
 
     <div ng-show ="demande">
     <div ng-repeat="annonce in annonces.slice(((currentPage - 1) * itemsPerPage), ((currentPage) * itemsPerPage))" >
 
 
-        <div class="annonces">
-            <a href="#/annonce/{{annonce.id}}">{{annonce.name}}</a>
 
-            <p >{{annonce.user.surname}}</p> 
-            <p>{{annonce.date}}</p>
+            <div class="annonces">
+                <a href="#/annonce/{{annonce.id}}">{{annonce.name}}</a>
+
+                <p >{{annonce.user.surname}}</p> 
+                <p>{{annonce.date}}</p>
+
 
         </div>
     </div>
@@ -52,6 +56,7 @@
             <p >{{offre.user.surname}}</p> 
             <p>{{offre.date}}</p>
 
+
         </div>
 
     </div>
@@ -59,7 +64,6 @@
     <uib-pagination id="pagination" ng-show="advert" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
 </div>  
 
+    <div class="mastfoot"></div>
 
-
-<div class="mastfoot"></div>
-
+</div>

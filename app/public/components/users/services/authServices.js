@@ -5,28 +5,34 @@
     .module('TimeShareSilex')
     .service('userAuth', ['$location','$http', '$cookies', '$rootScope', function($location, $http, $cookies, $rootScope) {
 
-      var isLogged = false;
+      var isLoggedIn = false;
+
       //check if any current session
       function checkIfSession() {
-        // var userCookie = $cookies.getObject('cookie', $rootScope.userSession);
+        var userCookie = $cookies.getObject('timeshareCookie');
         // console.log($cookies.get('userSession', $rootScope.userSession));
+        if (userCookie) {
+          return isLoggedIn = true;
+        } else {
+          return false;
+        }
       }
 
       function isLogged() {
-        return isLogged;
+        return isLoggedIn;
       }
 
       //logout by clearing $cookies
       function clearSession() {
         $rootScope.userSession = {};
         $cookies.remove('userSession');
-        console.log($cookies.get('userSession'));
+        //console.log($cookies.get('userSession'));
       }
 
       //login & setuserSession
       function login(userEmail, userPassword) {
 
-        console.log('userAuth.login 1', userEmail, userPassword);
+        //console.log('userAuth.login 1', userEmail, userPassword);
 
         $http.post('/api/user/login', {
             email: userEmail,
@@ -34,12 +40,12 @@
           })
           .then(function(userSessionData) {
             $rootScope.userSession = userSessionData.data;
-            console.log('userAuth.login 2', userSessionData.data);
+            //console.log('userAuth.login 2', userSessionData.data);
             //creates cookie
             $cookies.putObject('timeshareCookie', userSessionData.data);
 
-            console.log($cookies.getAll());
-            isLogged = true;
+            //console.log($cookies.getAll());
+            isLoggedIn = true;
             //redicrection to place in logincontroller
             $location.path('/user');
             //cookieStr = JSON.stringify($rootScope.userSession);
