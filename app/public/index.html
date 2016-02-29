@@ -26,39 +26,7 @@
 
   <body ng-app="TimeShareSilex">
     <div class="site-wrapper">
-<!--        <div class="site-wrapper-inner">
-                <div class="cover-container"> 
-                    <div class="masthead clearfix"> 
-                        <div class="inner"> -->
-
-                            <header>
-
-                                <h3 class="masthead-brand"> 
-                                    <a ng-href="#/index.html"><img src="images/timeshare-logo.png" width=200></a> 
-
-                                </h3>
-
-                                <nav>
-                                    <ul class="nav masthead-nav">
-<!--                                         <li><a ng-show="!$rootScope.loggedIn" href="#/login">{{userLogged || "Se connecter"}}</a></li>
-                                        <li><a ng-hide="$rootScope.loggedIn" href="#/logout">Déconnexion</a></li>
-                                        <li><a ng-hide="!$rootScope.loggedIn" href="#/register">S'inscrire</a></li> -->
-                                        <li><a href="/#/">Annonces</a></li>
-                                        <li><a href="#/login">Se connecter</a></li>
-                                        <li><a href="#/register">S'inscrire</a></li>
-                                        <li><a href="#/user">Mon profil</a></li>
-                                        <li><a href="#">Se déconnecter</a></li>
-                                    </ul>
-                                </nav>
-                            </header>
-
-                            <div class="container" ng-view="" style="margin-top:100px;"></div>
-
-
-                    <!-- </div>
-                     </div>
-                </div>
-            </div> -->
+      <div ng-view=""></div>
     </div> 
     
     
@@ -95,6 +63,8 @@
         <script src="components/annonces/controllers/annonceController.js"></script>
         <script src="components/annonces/controllers/editController.js"></script>
         <script src="components/services/controllers/serviceController.js"></script>
+        <script src="components/annonces/controllers/offresController.js"></script>
+         <script src="components/users/controllers/navController.js"></script>
 
         <!-- endbuild -->
          <script src="http://localhost:35729/livereload.js"></script>

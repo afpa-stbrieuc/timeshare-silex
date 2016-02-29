@@ -1,6 +1,7 @@
+<ts-navigation></ts-navigation>
 <div>
 	<div class="container">
-		<uib-alert class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}" dismiss-on-timeout="10000" close="panel.closeAlert()">{{panel.alert.msg}}</uib-alert>
+		<uib-alert class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}"  close="panel.closeAlert()" dismiss-on-timeout="10000">{{panel.alert.msg}}</uib-alert>
 
 		<uib-alert class="alert alert-danger" type="danger" ng-show="user.password.$invalid && userForm.password.$dirty">Le mot de passe doit faire au minimum de 8 caractères</uib-alert>
 
@@ -19,8 +20,9 @@
 			<p>Prénom: {{panel.user.surname}}</p>
 			<p>Nom: {{panel.user.firstname}}</p>
 			<p>Ville: {{panel.user.town}}</p>
-			<p>Timebalance: {{panel.user.timebalance}}</p>
-			<a href="#/publish"><input type="button" class="btn" value="Publier une annonce" ng-click="panel.publier()" /></a>
+			<p>Solde Temps: {{panel.user.timebalance}}h</p>
+			<a href="#/publish/advert"><input type="button" class="btn" value="Publier une annonce"/></a>
+			<a href="#/publish/demand"><input type="button" class="btn" value="Publier une offre"/></a>
 		</div>
 		<div class="panel" ng-show="panel.isSelectedTab(2)">
 			<div class="row">

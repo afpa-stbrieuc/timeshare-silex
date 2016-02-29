@@ -5,6 +5,8 @@ angular.module('TimeShareSilex')
     
     $scope.noAdvert = false;
     $scope.advert = false;
+    $scope.demande = false;
+    $scope.offer = false;
     
 
     
@@ -49,6 +51,8 @@ angular.module('TimeShareSilex')
           }) .then(function(response){
                   $scope.annonces=response.data;
                   $scope.advert = true;
+                  $scope.demande = true;
+                  $scope.offer =false;
                   refresh();
                 },function(response){
                 $scope.annonces = response.statusText;
@@ -63,11 +67,15 @@ angular.module('TimeShareSilex')
               if($scope.annonces.length === 0){
                 $scope.noAdvert=true;
                 $scope.advert= false;
+                $scope.offer = false;
+                
               }
               else{
                   
                 $scope.noAdvert=false;
                 $scope.advert = true;
+                $scope.demande = true;
+                $scope.offer =false;
                 refresh();
               }
 
@@ -77,5 +85,55 @@ angular.module('TimeShareSilex')
         }
              
       };
+      
+      $scope.showoffers = function(){
+                  //pagination
+        var refresh = function(){
+          $scope.totalItems = $scope.offres.length;
+          $scope.currentPage = 1;
+          $scope.itemsPerPage = 5;
+          $scope.maxSize = 5;
+        };
+        //show all adverts when search wiht empty criteria
+        if(($scope.myCategory === undefined )&&( $scope.myLocation === undefined)){
+          $http({
+            method : 'GET',
+            url : '/api/offre'
+          }) .then(function(response){
+                  $scope.offres=response.data;
+                  $scope.advert = true;
+                  $scope.demande = false;
+                  $scope.offer =true;
+                  refresh();
+                },function(response){
+                $scope.offres = response.statusText;
+              });
+        }else{
+          //show adverts with selected categories and locations criteria  
+          $http({
+              method : 'GET' ,
+              url : '/api/offre/'+ $scope.myCategory +'/'+$scope.myLocation
+            }).then(function (response){
+              $scope.offres = response.data;
+              if($scope.offres.length === 0){
+                $scope.noAdvert=true;
+                $scope.advert= false;
+                $scope.demande = false;
+              }
+              else{
+                  
+                $scope.noAdvert=false;
+                $scope.advert = true;
+                $scope.demande = false;
+                $scope.offer =true;
+                refresh();
+              }
+
+            },function(response){
+              $scope.offres = response.statusText;
+            });
+        }
+          
+      }
   });
 

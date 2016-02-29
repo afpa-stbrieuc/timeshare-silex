@@ -3,10 +3,10 @@
 angular.module('TimeShareSilex')
 
   
-    .controller('registerCtrl', function($scope, $http){
+    .controller('registerCtrl',['$scope','$http','$location','$timeout', function($scope, $http, $location,$timeout){
         
         $scope.user = {};
-       
+        $scope.disable = false;
         $scope.userOk = false;
         $scope.userError = false;
         
@@ -24,8 +24,13 @@ angular.module('TimeShareSilex')
                 
                 if (data.status === 201){
                  
-                  $scope.userOk = true;
-
+                  
+                  $scope.userOk = true;                 
+                  $scope.disable = true;
+                  $timeout(function(){
+                  $location.path('/user');
+                  },2000 );
+                  
                 }
                
               },
@@ -37,4 +42,4 @@ angular.module('TimeShareSilex')
             );
                
         };
-      });
+      }]);

@@ -18,15 +18,23 @@ class AnnonceController {
     public function getAllAction(Application $app, Request $request)
     {
         $userId = $request->get('userId');
+        $filter = array();
         if ($userId !== null ){
-           
-            //$user = $app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id'=>$userId));
-            
-            return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user'=>$userId)));
+            $filter['user'] = $userId;
         }
         else{
-        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findAll());
+            $filter['demande'] = true;
         }
+        
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findby($filter));
+    }
+    
+
+    
+    public function getOffers(Application $app){
+        
+        
+        return new JsonResponse($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('demande' => false)));
     }
 
     public function getOneAction($id, Application $app)
@@ -86,6 +94,65 @@ class AnnonceController {
             return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 400);
         }
         
+        // errors for description of annonce
+        $errors = $app['validator']->validate($payload->description, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The description of the annonce is empty" .$payload->description, 400);
+        }
+        $errors = $app['validator']->validate(gettype($payload->description), new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The description must be a alphanumerics charracters" .$payload->description, 400);        
+        }
+        
+        // errors for dateValiditeDebut
+        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeDebut is empty" .$payload->dateValiditeDebut, 400);
+        }
+        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\DateTime);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeDebut must be a DateTime type" .$payload->dateValiditeDebut, 400);
+        }
+        
+        // errors for dateValiditeFin
+        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeFin is empty" .$payload->dateValiditeFin, 400);
+        }
+        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\DateTime);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeFin must be a DateTime type" .$payload->dateValiditeFin, 400);
+        }
+        
+        // errors for location
+        $errors = $app['validator']->validate($payload->location, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The location is empty" .$payload->location, 400);
+        }
+        $errors = $app['validator']->validate($payload->location, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The location must be a string type" .$payload->location, 400);
+        }
+        
+        // errors for category
+        $errors = $app['validator']->validate($payload->category, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The category is empty" .$payload->category, 400);
+        }
+        $errors = $app['validator']->validate($payload->category, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The category must be a string type" .$payload->category, 400);
+        }
+        
+        // errors for demande
+        $errors = $app['validator']->validate($payload->demande, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The demande is empty" .$payload->demande, 400);
+        }
+        $errors = $app['validator']->validate($payload->demande, new Assert\Type('boolean'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The demande must be a boolean type" .$payload->demande, 400);
+        }
           $dm->persist($annonce);
           $dm->flush();
 
@@ -108,6 +175,77 @@ class AnnonceController {
         $annonce->setDateValiditeFin(new \DateTime($payload->dateValiditeFin));
         $annonce->setLocation($payload->location);
         $annonce->setCategory($payload->category);
+        
+                // errors for name of annonce
+        $errors = $app['validator']->validate($payload->name, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 400);
+        }
+        $errors = $app['validator']->validate(gettype($payload->name), new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 400);
+        }
+        
+        // errors for description of annonce
+        $errors = $app['validator']->validate($payload->description, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The description of the annonce is empty" .$payload->description, 400);
+        }
+        $errors = $app['validator']->validate(gettype($payload->description), new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The description must be a alphanumerics characters" .$payload->description, 400);        
+        }
+        
+        // errors for dateValiditeDebut
+        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeDebut is empty" .$payload->dateValiditeDebut, 400);
+        }
+        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\DateTime);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeDebut must be a DateTime type" .$payload->dateValiditeDebut, 400);
+        }
+        
+        // errors for dateValiditeFin
+        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeFin is empty" .$payload->dateValiditeFin, 400);
+        }
+        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\DateTime);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The dateValiditeFin must be a DateTime type" .$payload->dateValiditeFin, 400);
+        }
+        
+        // errors for location
+        $errors = $app['validator']->validate($payload->location, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The location is empty" .$payload->location, 400);
+        }
+        $errors = $app['validator']->validate($payload->location, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The location must be a string type" .$payload->location, 400);
+        }
+        
+        // errors for category
+        $errors = $app['validator']->validate($payload->category, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The category is empty" .$payload->category, 400);
+        }
+        $errors = $app['validator']->validate($payload->category, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The category must be a string type" .$payload->category, 400);
+        }
+        
+        // errors for demande
+        $errors = $app['validator']->validate($payload->demande, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The demande is empty" .$payload->demande, 400);
+        }
+        $errors = $app['validator']->validate($payload->demande, new Assert\Type('boolean'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The demande must be a boolean type" .$payload->demande, 400);
+        }
+        
         $dm->flush($annonce);
 
         return new JsonResponse($annonce);
@@ -142,7 +280,7 @@ class AnnonceController {
     
     public function sortAnnonce($category,$lieu,Application $app){
 
-        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu)));
+        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu,'demande' => true )));
         $user = array();
         foreach ($annonce as $value) {
             $user[] = $value->getUser();
@@ -153,16 +291,17 @@ class AnnonceController {
         return new JsonResponse ($annonce);
     }
     
-    public function annonceByAuthor($author,Application $app){
-        
+        public function sortOffer($category,$lieu,Application $app){
 
-        $dm = $app['doctrine.odm.mongodb.dm'];
-        $annonce = $dm->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('user' => $author));
+        $annonce = ($app['doctrine.odm.mongodb.dm']->getRepository('Timeshare\\Entities\\Annonce')->findBy(array('category' => $category,'location' => $lieu, 'demande' => false)));
+        $user = array();
+        foreach ($annonce as $value) {
+            $user[] = $value->getUser();
+        }
         
+      
         
-        return new JsonResponse($annonce);
-        
-                
+        return new JsonResponse ($annonce);
     }
 
 }

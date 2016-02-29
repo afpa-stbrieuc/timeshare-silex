@@ -8,6 +8,9 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 //utiliser l'entite user dans Timeshare\Entities\User pour choper l'objet pour effectuer ce controller
 
+// validator
+use Symfony\Component\Validator\Constraints as Assert;
+
 use Timeshare\Entities\User;
 
 
@@ -49,6 +52,41 @@ class UserController {
                         $payload->town,
                         $payload->email);
 
+        // errors for pseudo
+        $errors = $app['validator']->validate($payload->pseudo, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The pseudo must be a alphanumeric type" .$payload->pseudo, 400);
+        }
+        // errors for password
+        $errors = $app['validator']->validate($payload->password, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The password must be a alphanumeric type" .$payload->password, 400);
+        }
+        // errors for surname
+        $errors = $app['validator']->validate($payload->surname, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The surname must be a alphanumeric characters" .$payload->surname, 400);
+        }
+        // errors for firstname
+        $errors = $app['validator']->validate($payload->firstname, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The firstname must be a aphanumeric characters" .$payload->firstname, 400);          
+        }
+        // errors for address
+        $errors = $app['validator']->validate($payload->address, new Assert\NotBlank);
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The address is empty" .$payload->address, 400);
+        }
+        // errors for town
+        $errors = $app['validator']->validate($payload->town, new Assert\Type('string'));
+        if (count($errors) > 0) {
+            return new JsonResponse ("Error: The town must be a alphanumeric characters" .$payload->town, 400);
+        }
+        // errors for email
+        $errors = $app['validator']->validate($payload->email, new Assert\Email);
+        if (count($errors) >0 ) {
+            return new JsonResponse ("Error: The email is not valid" .$payload->email, 400);
+        }
           $dm->persist($user);
           $dm->flush();
 

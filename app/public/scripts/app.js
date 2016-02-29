@@ -35,6 +35,11 @@ angular.module('TimeShareSilex', [
         controller: 'annonceCtrl'
       })
       
+    .when('/offres/:id', {
+        templateUrl: 'components/annonces/templates/offre.html',
+        controller: 'offresCtrl'
+      })
+      
     .when('/editAnnonce/:id', {
         templateUrl: 'components/annonces/templates/editAnnonce.html',
         controller: 'editCtrl',
@@ -52,11 +57,11 @@ angular.module('TimeShareSilex', [
         })
 
     .when('/inscription', {
-        templateUrl: 'components/users/templates/inscription.html',
-        controller: 'inscriptionCtrl'
-      })
+          templateUrl: 'components/users/templates/inscription.html',
+          controller: 'inscriptionCtrl'
+        })
 
-    .when('/publish', {
+      .when('/publish/:type', {
           templateUrl: 'components/annonces/templates/publish.html',
           controller: 'publishCtrl',
           controllerAs: 'publish',

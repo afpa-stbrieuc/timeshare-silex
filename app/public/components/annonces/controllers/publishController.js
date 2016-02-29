@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', function($http, $scope) {
+	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies', function($http, $scope, $routeParams, $cookies) {
 
 		var vm = this;
 
@@ -23,6 +23,12 @@ angular.module('TimeShareSilex')
 			formatYear: 'yy'
 		};
 
+		if ($routeParams.type === 'advert') {
+			vm.isOffer = false;
+		} else if ($routeParams.type === 'demand') {
+			vm.isOffer = true;
+		}
+
 		vm.validateDates = function() {
 			var endDate = new Date(vm.dateValiditeFin);
 			var startDate = new Date(vm.dateValiditeDebut);
@@ -31,13 +37,8 @@ angular.module('TimeShareSilex')
 
 		vm.submitAdvert = function(valid) {
 			if (valid) {
-
-				// fake user TODO: change to use a real user
-				vm.advert.user = {
-					'id': '569d06ecc4936293a6f8fd90'
-				};
-
-				vm.advert.demande = false;
+				vm.advert.user = $cookies.getObject('timeshareCookie');
+				vm.advert.demande = vm.isOffer;
 
 				// construct ISO date string from date object
 				var d = vm.dateValiditeDebut;
@@ -59,21 +60,27 @@ angular.module('TimeShareSilex')
 					data: vm.advert
 				}).then(
 					function(response) {
+						var typeDemande;
+						if (vm.isOffer) {
+							typeDemande ="offre";
+						} else {
+							typeDemande ="annonce";
+						}
 						if (response.status === 201) {
 							vm.alert = {
 								type: 'success',
-								msg: 'Annonce publiée'
+								msg: capitalize(typeDemande)+ ' publiée'
 							};
 							vm.isDisabled = true; // disable submit button
 						} else if (response.status === 400) {
 							vm.alert = {
 								type: 'danger',
-								msg: 'Erreur: annonce non publiée'
+								msg: 'Erreur: '+typeDemande+' non publiée'
 							};
 						} else if (response.status === 404) {
 							vm.alert = {
 								type: 'danger',
-								msg: 'Erreur: annonce non publiée'
+								msg: 'Erreur: '+typeDemande+' non publiée'
 							};
 						}
 					},
@@ -85,7 +92,7 @@ angular.module('TimeShareSilex')
 					});
 			} else {
 				vm.alert = {
-					type: 'danger',
+					typeDemande: 'danger',
 					msg: 'Un champ requis est manquant'
 				};
 			}
@@ -94,7 +101,7 @@ angular.module('TimeShareSilex')
 
 		vm.closeAlert = function() {
 			vm.alert = {
-				type: '',
+				typeDemande: '',
 				msg: ''
 			};
 		};
@@ -126,3 +133,7 @@ Date.prototype.addMonths = function(value) {
 	this.setDate(Math.min(n, this.getDaysInMonth()));
 	return this;
 };
+
+function capitalize(s) {
+    return s && s[0].toUpperCase() + s.slice(1);
+}

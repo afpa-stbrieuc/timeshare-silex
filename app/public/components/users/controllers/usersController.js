@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-  .controller('userCtrl', function($scope, $http) {
+  .controller('userCtrl', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
 
     var vm = this;
 
@@ -10,7 +10,7 @@ angular.module('TimeShareSilex')
 
     vm.alert = {'type': '', 'msg': ''};
 
-    vm.id = '569d06ecc4936293a6f8fd90'; // hard coded user id
+    vm.user = $cookies.getObject('timeshareCookie');
 
     vm.selectTab = function(setTab) {
       vm.tab = setTab;
@@ -20,22 +20,13 @@ angular.module('TimeShareSilex')
       return vm.tab === checkTab;
     };
 
-    
-    $http({
-      method: 'GET',
-      url: '/api/user/'+vm.id
-    }).then(function(response) {
-      vm.user = response.data;
-    }, function() {
-      vm.user = {id:vm.id, surname:'Karine', firstname: 'Monfort', town: 'Yffiniac', timebalance:15};
-    });
-
     vm.modifyUser = function(valid) {
       if (valid) {
         $http.put('/api/user/'+vm.user.id, vm.user
         ).then(function(response) {
           if (response.status === 200)
-            vm.alert = {'type': 'success', 'msg':'Annonce modifiée'};
+            vm.alert = {'type': 'success', 'msg':'Utilisateur modifié(e)'};
+        
           }, function(){
             vm.alert = {'type': 'danger', 'msg':'Erreur Serveur'};
           });
@@ -48,7 +39,7 @@ angular.module('TimeShareSilex')
 
     };
 
-    $http.get('/api/annonces/?userId='+vm.id)
+    $http.get('/api/annonces/?userId='+vm.user.id)
     .then(function(response) {
       vm.annonces = response.data;
     }, function() {
@@ -56,6 +47,6 @@ angular.module('TimeShareSilex')
     });
 
     vm.closeAlert = function() {
-      vm.altert = {'type': '', 'msg': ''};
+      vm.alert = {'type': '', 'msg': ''};
     }
-  });
+  }]);
