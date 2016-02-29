@@ -25,8 +25,9 @@
       //logout by clearing $cookies
       function clearSession() {
         $rootScope.userSession = {};
-        $cookies.remove('userSession');
+        $cookies.remove('timeshareCookie');
         //console.log($cookies.get('userSession'));
+        isLoggedIn = false;
       }
 
       //login & setuserSession
