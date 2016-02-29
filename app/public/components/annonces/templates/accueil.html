@@ -21,17 +21,17 @@
             </div>
         </div>
         <br>
-       
+
         <div class="row-align">
-                <button type="button" class="btn btn-default " ng-click="showannonces()" >Rechercher demande</button>                  
-                <button type="button" class="btn btn-default " ng-click="showoffers()" >Rechercher offre</button>  
+            <button type="button" class="btn btn-default " ng-click="showannonces()" >Rechercher demande</button>                  
+            <button type="button" class="btn btn-default " ng-click="showoffers()" >Rechercher offre</button>  
         </div>   
-       
+
     </div>
 
     <h4 ng-show="noAdvert"> Il n'y as pas d'annonces de cette catégorie à cet endroit</h4>
 
-
+    <div ng-show ="demande">
     <div ng-repeat="annonce in annonces.slice(((currentPage - 1) * itemsPerPage), ((currentPage) * itemsPerPage))" >
 
 
@@ -42,8 +42,19 @@
             <p>{{annonce.date}}</p>
 
         </div>
+    </div>
+    </div>
+    <div ng-show="offer">
+    <div ng-repeat="offre in offres.slice(((currentPage - 1) * itemsPerPage), ((currentPage) * itemsPerPage))" >
+        <div class="annonces">
+            <a href="#/offres/{{offre.id}}">{{offre.name}}</a>
 
+            <p >{{offre.user.surname}}</p> 
+            <p>{{offre.date}}</p>
 
+        </div>
+
+    </div>
     </div>
     <uib-pagination id="pagination" ng-show="advert" items-per-page="itemsPerPage" total-items="totalItems" ng-model="currentPage" max-size="maxSize" class="pagination-sm" boundary-link-numbers="true"></uib-pagination>
 </div>  
