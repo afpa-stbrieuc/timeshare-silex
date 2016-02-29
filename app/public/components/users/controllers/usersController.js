@@ -26,6 +26,7 @@ angular.module('TimeShareSilex')
         ).then(function(response) {
           if (response.status === 200)
             vm.alert = {'type': 'success', 'msg':'Utilisateur modifié(e)'};
+        
           }, function(){
             vm.alert = {'type': 'danger', 'msg':'Erreur Serveur'};
           });
@@ -46,6 +47,6 @@ angular.module('TimeShareSilex')
     });
 
     vm.closeAlert = function() {
-      vm.altert = {'type': '', 'msg': ''};
+      vm.alert = {'type': '', 'msg': ''};
     }
   }]);

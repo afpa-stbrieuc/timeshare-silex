@@ -6,4 +6,6 @@
     <p>Descritption : {{annonce.description}}</p>
 </div>
 
-<button type="button" class="btn btn-primary btn-md" ng-click="createService()">valider </button>
+<button type="button" class="btn btn-primary btn-md" ng-click="createService()" ng-disabled="disable">valider </button>
+<p ng-show="error">Une erreur est parvenue</p>
+<p ng-show="ok">votre réponse a bien été prise en compte</p>

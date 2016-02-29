@@ -1,6 +1,6 @@
 <div>
 	<div class="container">
-		<uib-alert class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}" dismiss-on-timeout="10000" close="panel.closeAlert()">{{panel.alert.msg}}</uib-alert>
+		<uib-alert class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}"  close="panel.closeAlert()" dismiss-on-timeout="10000">{{panel.alert.msg}}</uib-alert>
 
 		<uib-alert class="alert alert-danger" type="danger" ng-show="user.password.$invalid && userForm.password.$dirty">Le mot de passe doit faire au minimum de 8 caractères</uib-alert>
 
