@@ -208,3 +208,7 @@ h4 {
     margin-left: auto !important;
     margin-right: auto !important;
 }
+
+header {
+  margin-bottom: 100px !important;
+}
