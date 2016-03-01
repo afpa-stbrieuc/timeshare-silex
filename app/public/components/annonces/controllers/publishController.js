@@ -40,9 +40,9 @@ angular.module('TimeShareSilex')
 		};
 
 		if ($routeParams.type === 'advert') {
-			vm.isOffer = false;
-		} else if ($routeParams.type === 'demand') {
 			vm.isOffer = true;
+		} else if ($routeParams.type === 'demand') {
+			vm.isOffer = false;
 		}
 
 		vm.validateDates = function() {
