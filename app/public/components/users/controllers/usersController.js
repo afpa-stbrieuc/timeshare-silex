@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-  .controller('userCtrl', ['$scope', '$http', '$cookies', function($scope, $http, $cookies) {
+  .controller('userCtrl', ['$scope', '$http', '$cookies', '$timeout', '$route', function($scope, $http, $cookies, $timeout, $route) {
 
     var vm = this;
 
     vm.tab = 1;
     vm.sent = false;
+    vm.disabled = false;
 
     vm.alert = {'type': '', 'msg': ''};
 
@@ -26,6 +27,12 @@ angular.module('TimeShareSilex')
         ).then(function(response) {
           if (response.status === 200)
             vm.alert = {'type': 'success', 'msg':'Utilisateur modifié(e)'};
+            vm.disabled = true;
+            $('#myAlert').delay(2000).fadeOut(400);
+            $cookies.putObject('timeshareCookie', vm.user);
+            $timeout(function() {
+              $route.reload('/user');
+            }, 3000);
         
           }, function(){
             vm.alert = {'type': 'danger', 'msg':'Erreur Serveur'};
@@ -46,7 +53,4 @@ angular.module('TimeShareSilex')
       // error
     });
 
-    vm.closeAlert = function() {
-      vm.alert = {'type': '', 'msg': ''};
-    }
   }]);
