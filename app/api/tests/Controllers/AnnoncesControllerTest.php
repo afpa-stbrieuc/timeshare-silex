@@ -66,8 +66,8 @@ class AnnonceTest extends WebTestCase
         $this->annonce = new Annonce('Pelouse tondre',
                                      $this->user,
                                      'blablablabla',
-                                     \DateTime::createFromFormat('Y-m-d H:i:s', '2016-01-17 19:37:00'),
-                                     \DateTime::createFromFormat('Y-m-d H:i:s', '2016-02-17 19:37:00'),
+                                     \DateTime::createFromFormat('Y-m-d', '2016-01-17'),
+                                     \DateTime::createFromFormat('Y-m-d', '2016-02-17'),
                                      'hennebont', 
                                      'jardinage',
                                      true);
@@ -75,8 +75,10 @@ class AnnonceTest extends WebTestCase
         $resp = $client->request('POST', '/api/annonces/', array(),
             array(),
             array('CONTENT_TYPE' => 'application/json'),
-            json_encode($this->annonce)           
+            json_encode($this->annonce)  
+            
         );
+//        var_dump($this->annonce);
         
         //verif create
         $this->assertEquals($client->getResponse()->getStatusCode(), 201);
@@ -85,8 +87,8 @@ class AnnonceTest extends WebTestCase
         //read + verif pour chaque attributs de Annonce:
         $this->assertEquals($this->annonce->getName(), $data->name);
 //        $this->assertEquals($this->annonce->getDate(), \DateTime::createFromFormat('Y-m-d H:i:s', $data->date));
-        $this->assertEquals($this->annonce->getDateValiditeDebut(), \DateTime::createFromFormat('Y-m-d H:i:s', $data->dateValiditeDebut));
-        $this->assertEquals($this->annonce->getDateValiditeFin(), \DateTime::createFromFormat('Y-m-d H:i:s', $data->dateValiditeFin));
+        $this->assertEquals($this->annonce->getDateValiditeDebut(), \DateTime::createFromFormat('Y-m-d', $data->dateValiditeDebut));
+        $this->assertEquals($this->annonce->getDateValiditeFin(), \DateTime::createFromFormat('Y-m-d', $data->dateValiditeFin));
         $this->assertEquals($this->annonce->getUser()->getId(), $data->user->id);
         $this->assertEquals($this->annonce->getLocation(), $data->location);
         $this->assertEquals($this->annonce->getCategory(), $data->category);
@@ -104,7 +106,7 @@ class AnnonceTest extends WebTestCase
         );
 
         
-
+       
         $this->assertEquals($client->getResponse()->getStatusCode(), 200);
 
         $data = json_decode($client->getResponse()->getContent());
