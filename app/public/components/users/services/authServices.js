@@ -48,7 +48,7 @@
             //console.log($cookies.getAll());
             isLoggedIn = true;
             //redicrection to place in logincontroller
-            $location.path('/user');
+            $location.path('/');
             //cookieStr = JSON.stringify($rootScope.userSession);
           });
       }

@@ -72,11 +72,6 @@ angular.module('TimeShareSilex', [
           controller: 'registerCtrl'
         })
 
-      .when('/logout', {
-          templateUrl: 'components/users/templates/login.html',
-          controller: 'logoutCtrl'
-        })
-
     .otherwise({
           redirectTo: '/'
         });
