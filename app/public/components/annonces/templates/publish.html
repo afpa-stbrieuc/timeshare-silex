@@ -1,58 +1,61 @@
 <ts-navigation></ts-navigation>
 
-<uib-alert class="alert alert-{{publish.alert.type}}" ng-show="publish.alert.msg != ''" type="{{publish.alert.type}}" dismiss-on-timeout="10000" close="publish.closeAlert()">{{publish.alert.msg}}</uib-alert>
+<div class="container">
 
-<uib-alert class="alert alert-danger" ng-show="advertForm.startDate.$error.endBeforeStart" type="danger">La date de fin doit être après la date de début</uib-alert>
+    <uib-alert class="alert alert-{{publish.alert.type}}" ng-show="publish.alert.msg != ''" type="{{publish.alert.type}}" dismiss-on-timeout="10000" close="publish.closeAlert()">{{publish.alert.msg}}</uib-alert>
 
-<uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.description.$invalid && advertForm.description.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
+    <uib-alert class="alert alert-danger" ng-show="advertForm.startDate.$error.endBeforeStart" type="danger">La date de fin doit être après la date de début</uib-alert>
 
-<uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.name.$invalid && advertForm.name.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
+    <uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.description.$invalid && advertForm.description.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
 
-<div class="row">
-	<form id="advertForm" name="advertForm" role="form" ng-submit="publish.submitAdvert(advertForm.$valid)" novalidate>
-			<div class="form-group" id="advert-form">
-				<label class="col-md-4 control-label">Nom</label>
-				<div class="col-md-8">
-					<input ng-if="!publish.isOffer" class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'annonce" required>
-					<input ng-if="publish.isOffer" class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'offre" required>
-				</div>
-				<label class="col-md-4 control-label">Description</label>
-				<div class="col-md-8">
-					<textarea ng-if="!publish.isOffer" id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'annnonce" required></textarea>
-					<textarea ng-if="publish.isOffer" id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'offre" required></textarea>
-				</div>
-				<label class="col-md-4 control-label">Lieu</label>
-				<div class="col-md-8">
-                                    <select class='form-control' id='categories' ng-model="publish.advert.location">
-                                        <option class="form-control"  ng-repeat="location in locations | orderBy " placeholder="Lieu" required>{{location}}</option>
-                                    </select>
-				</div>
-				<label class="col-md-4 control-label">Catégorie</label>
-				<div class="col-md-8">
-                                    <select class='form-control' id='categories' ng-model="publish.advert.category">
-                                        <option class="form-control"  placeholder="Catégorie" ng-repeat="category in categories | orderBy "  required>{{category}}</option>
-                                    </select>
-				</div>
-				<label class="col-md-4 control-label">Date de début</label>
-				<div class="col-md-8">
-					<div class="input-group">
-						<input type="text" name="startDate" class="form-control" ng-model="publish.dateValiditeDebut" uib-datepicker-popup="dd/MM/yyyy" min-date="publish.minDate" datepicker-options="publish.dateOptions" ng-required="true" is-open="popup1" ng-change="publish.validateDates()" readonly="readonly">
-						<span class="input-group-btn">
-                		<button type="button" class="btn btn-default datepicker-btn" ng-click="popup1=true"><i class="glyphicon glyphicon-calendar"></i></button>
-                		</span>
-                	</div>
-				</div>
-				<label class="col-md-4 control-label">Date de fin</label>
-				<div class="col-md-8">
-					<div class="input-group">
-						<input type="text" name="endDate" class="form-control" ng-model="publish.dateValiditeFin" min-date="publish.minDate" uib-datepicker-popup="dd/MM/yyyy" datepicker-options="publish.dateOptions" is-open="popup2" ng-required="true" ng-change="publish.validateDates()" readonly="readonly">
-						<span class="input-group-btn">
-	            		<button type="button" class="btn btn-default datepicker-btn" ng-click="popup2=true"><i class="glyphicon glyphicon-calendar"></i></button>
-	            		</span>
-	            	</div>
-				</div>
-				<button id="publishbBtn" type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4" ng-disabled="publish.isDisabled">Publier</button>
-			</div>
-	</form>
-	
+    <uib-alert class="alert alert-danger" type="danger" ng-show="advertForm.name.$invalid && advertForm.name.$dirty">La description doit faire au minimum 5 caractères</uib-alert>
+
+    <div class="row">
+        <form id="advertForm" name="advertForm" role="form" ng-submit="publish.submitAdvert(advertForm.$valid)" novalidate>
+            <div class="form-group" id="advert-form">
+                <label class="col-md-4 control-label">Nom</label>
+                <div class="col-md-8">
+                    <input ng-if="!publish.isOffer" class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'annonce" required>
+                    <input ng-if="publish.isOffer" class="form-control" name="name" ng-model="publish.advert.name" ng-minlength="5" placeholder="Nom de l'offre" required>
+                </div>
+                <label class="col-md-4 control-label">Description</label>
+                <div class="col-md-8">
+                    <textarea ng-if="!publish.isOffer" id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'annnonce" required></textarea>
+                    <textarea ng-if="publish.isOffer" id="advert-txtarea" name="description" class="form-control" ng-model="publish.advert.description" ng-minlength="5" placeholder="Description de l'offre" required></textarea>
+                </div>
+                <label class="col-md-4 control-label">Lieu</label>
+                <div class="col-md-8">
+                    <select class='form-control' id='categories' ng-model="publish.advert.location">
+                        <option class="form-control"  ng-repeat="location in locations| orderBy " placeholder="Lieu" required>{{location}}</option>
+                    </select>
+                </div>
+                <label class="col-md-4 control-label">Catégorie</label>
+                <div class="col-md-8">
+                    <select class='form-control' id='categories' ng-model="publish.advert.category">
+                        <option class="form-control"  placeholder="Catégorie" ng-repeat="category in categories| orderBy "  required>{{category}}</option>
+                    </select>
+                </div>
+                <label class="col-md-4 control-label">Date de début</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" name="startDate" class="form-control" ng-model="publish.dateValiditeDebut" uib-datepicker-popup="dd/MM/yyyy" min-date="publish.minDate" datepicker-options="publish.dateOptions" ng-required="true" is-open="popup1" ng-change="publish.validateDates()" readonly="readonly">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default datepicker-btn" ng-click="popup1 = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <label class="col-md-4 control-label">Date de fin</label>
+                <div class="col-md-8">
+                    <div class="input-group">
+                        <input type="text" name="endDate" class="form-control" ng-model="publish.dateValiditeFin" min-date="publish.minDate" uib-datepicker-popup="dd/MM/yyyy" datepicker-options="publish.dateOptions" is-open="popup2" ng-required="true" ng-change="publish.validateDates()" readonly="readonly">
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default datepicker-btn" ng-click="popup2 = true"><i class="glyphicon glyphicon-calendar"></i></button>
+                        </span>
+                    </div>
+                </div>
+                <button id="publishbBtn" type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4" ng-disabled="publish.isDisabled">Publier</button>
+            </div>
+        </form>
+
+    </div>
 </div>
