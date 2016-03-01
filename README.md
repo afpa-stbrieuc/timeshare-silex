@@ -38,7 +38,7 @@ php >5.4, mongo driver installed and enabled in php.ini http://php.net/manual/fr
 # API
 
 ## Advert (Annonce)
-All field are required
+All fields are required
 * name ## string
 * user # the user having created the advert ## object
 * description ## string
@@ -48,8 +48,22 @@ All field are required
 * dateValiditeFin ## datetime (format: Y-m-d H:i:s)
 * demande ## boolean
 
+API REST for Annonce
+* All the adverts
+	GET: /api/annonces
+* One advert by id
+	GET: /api/annonces/{id}
+* Delete on advert by id
+	DELETE: /api/annonces/{id}
+* Add an advert
+	POST: /api/annonces
+* Edit one advert by id
+	PUT: /api/{id}
+* Advert by category and location
+	GET: /api/annonces/{category}/{location}
+
 ## User (utilisateur)
-All field are required
+All fields are required
 * pseudo ## string 
 * password ## string
 * surname ## string
@@ -59,5 +73,8 @@ All field are required
 * address ## string
 * email ## string 
 
+## Services
+All fields are required
+*
 
 

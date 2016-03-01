@@ -65,13 +65,13 @@ class AnnonceController {
         // error if $payload is blank
         $errors = $app['validator']->validate($payload, new Assert\NotBlank);
         if (count($errors) > 0 ) {
-            return new JsonResponse ("Error: Annonces is empty (Bad Gateway) ".$payload, 400);
+            return new JsonResponse ("{Error: Annonces is empty (Bad Gateway) ".$payload."}", 400);
         }
         
         $user = $dm->getRepository('Timeshare\\Entities\\User')->findOneBy(array('id' => $payload->user->id));        
         // errors gestion for user
         if ($user === NULL) {
-            return new JsonResponse("Error: Can't find user ".$payload->user, 404);
+            return new JsonResponse("{Error: Can't find user ".$payload->user."}", 404);
         }
         
         $annonce = new Annonce(
@@ -87,71 +87,71 @@ class AnnonceController {
         // errors for name of annonce
         $errors = $app['validator']->validate($payload->name, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 400);
+            return new JsonResponse ("{Error: The name of annonce is empty ".$payload->name."}", 400);
         }
         $errors = $app['validator']->validate(gettype($payload->name), new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 400);
+            return new JsonResponse ("{Error: The name must be a alphanumeric characters ".$payload->name."}", 400);
         }
         
         // errors for description of annonce
         $errors = $app['validator']->validate($payload->description, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The description of the annonce is empty" .$payload->description, 400);
+            return new JsonResponse ("{Error: The description of the annonce is empty ".$payload->description."}", 400);
         }
         $errors = $app['validator']->validate(gettype($payload->description), new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The description must be a alphanumerics charracters" .$payload->description, 400);        
+            return new JsonResponse ("{Error: The description must be a alphanumerics charracters ".$payload->description."}", 400);        
         }
         
         // errors for dateValiditeDebut
         $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeDebut is empty" .$payload->dateValiditeDebut, 400);
+            return new JsonResponse ("{Error: The dateValiditeDebut is empty ".$payload->dateValiditeDebut."}", 400);
         }
         $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\Date);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeDebut must be a DateTime type" .$payload->dateValiditeDebut, 400);
+            return new JsonResponse ("{Error: The dateValiditeDebut must be a DateTime type ".$payload->dateValiditeDebut."}", 400);
         }
         
         // errors for dateValiditeFin
         $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeFin is empty" .$payload->dateValiditeFin, 400);
+            return new JsonResponse ("{Error: The dateValiditeFin is empty ".$payload->dateValiditeFin."}", 400);
         }
         $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\Date);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeFin must be a DateTime type" .$payload->dateValiditeFin, 400);
+            return new JsonResponse ("{Error: The dateValiditeFin must be a DateTime type ".$payload->dateValiditeFin."}", 400);
         }
         
         // errors for location
         $errors = $app['validator']->validate($payload->location, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The location is empty" .$payload->location, 400);
+            return new JsonResponse ("{Error: The location is empty ".$payload->location."}", 400);
         }
         $errors = $app['validator']->validate($payload->location, new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The location must be a string type" .$payload->location, 400);
+            return new JsonResponse ("{Error: The location must be a string type ".$payload->location."}", 400);
         }
         
         // errors for category
         $errors = $app['validator']->validate($payload->category, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The category is empty" .$payload->category, 400);
+            return new JsonResponse ("{Error: The category is empty ".$payload->category."}", 400);
         }
         $errors = $app['validator']->validate($payload->category, new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The category must be a string type" .$payload->category, 400);
+            return new JsonResponse ("{Error: The category must be a string type ".$payload->category."}", 400);
         }
         
         // errors for demande
         $errors = $app['validator']->validate($payload->demande, new Assert\NotNull);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The demande is empty" .$payload->demande, 400);
+            return new JsonResponse ("{Error: The demande is empty ".$payload->demande."}", 400);
         }
         $errors = $app['validator']->validate($payload->demande, new Assert\Type('boolean'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The demande must be a boolean type" .$payload->demande, 400);
+            return new JsonResponse ("{Error: The demande must be a boolean type ".$payload->demande."}", 400);
         }
           $dm->persist($annonce);
           $dm->flush();
@@ -179,71 +179,71 @@ class AnnonceController {
                 // errors for name of annonce
         $errors = $app['validator']->validate($payload->name, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The name of annonce is empty ".$payload->name, 400);
+            return new JsonResponse ("{Error: The name of annonce is empty ".$payload->name."}", 400);
         }
         $errors = $app['validator']->validate(gettype($payload->name), new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The name must be a alphanumeric characters ".$payload->name, 400);
+            return new JsonResponse ("{Error: The name must be a alphanumeric characters ".$payload->name."}", 400);
         }
         
         // errors for description of annonce
         $errors = $app['validator']->validate($payload->description, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The description of the annonce is empty" .$payload->description, 400);
+            return new JsonResponse ("{Error: The description of the annonce is empty ".$payload->description."}", 400);
         }
         $errors = $app['validator']->validate(gettype($payload->description), new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The description must be a alphanumerics characters" .$payload->description, 400);        
+            return new JsonResponse ("{Error: The description must be a alphanumerics characters ".$payload->description."}", 400);        
         }
         
         // errors for dateValiditeDebut
         $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeDebut is empty" .$payload->dateValiditeDebut, 400);
+            return new JsonResponse ("{Error: The dateValiditeDebut is empty ".$payload->dateValiditeDebut."}", 400);
         }
         $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\Date);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeDebut must be a DateTime type" .$payload->dateValiditeDebut, 400);
+            return new JsonResponse ("{Error: The dateValiditeDebut must be a DateTime type ".$payload->dateValiditeDebut."}", 400);
         }
         
         // errors for dateValiditeFin
         $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeFin is empty" .$payload->dateValiditeFin, 400);
+            return new JsonResponse ("{Error: The dateValiditeFin is empty ".$payload->dateValiditeFin."}", 400);
         }
         $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\Date);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The dateValiditeFin must be a DateTime type" .$payload->dateValiditeFin, 400);
+            return new JsonResponse ("{Error: The dateValiditeFin must be a DateTime type ".$payload->dateValiditeFin."}", 400);
         }
         
         // errors for location
         $errors = $app['validator']->validate($payload->location, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The location is empty" .$payload->location, 400);
+            return new JsonResponse ("{Error: The location is empty ".$payload->location."}", 400);
         }
         $errors = $app['validator']->validate($payload->location, new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The location must be a string type" .$payload->location, 400);
+            return new JsonResponse ("{Error: The location must be a string type ".$payload->location."}", 400);
         }
         
         // errors for category
         $errors = $app['validator']->validate($payload->category, new Assert\NotBlank);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The category is empty" .$payload->category, 400);
+            return new JsonResponse ("{Error: The category is empty ".$payload->category."}", 400);
         }
         $errors = $app['validator']->validate($payload->category, new Assert\Type('string'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The category must be a string type" .$payload->category, 400);
+            return new JsonResponse ("{Error: The category must be a string type ".$payload->category."}", 400);
         }
         
         // errors for demande
         $errors = $app['validator']->validate($payload->demande, new Assert\NotNull);
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The demande is empty" .$payload->demande, 400);
+            return new JsonResponse ("{Error: The demande is empty ".$payload->demande."}", 400);
         }
         $errors = $app['validator']->validate($payload->demande, new Assert\Type('boolean'));
         if (count($errors) > 0) {
-            return new JsonResponse ("Error: The demande must be a boolean type" .$payload->demande, 400);
+            return new JsonResponse ("{Error: The demande must be a boolean type ".$payload->demande."}", 400);
         }
         
         $dm->flush($annonce);
