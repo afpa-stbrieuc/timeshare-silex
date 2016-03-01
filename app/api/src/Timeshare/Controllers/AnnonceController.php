@@ -109,7 +109,7 @@ class AnnonceController {
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeDebut is empty" .$payload->dateValiditeDebut, 400);
         }
-        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\DateTime);
+        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\Date);
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeDebut must be a DateTime type" .$payload->dateValiditeDebut, 400);
         }
@@ -119,7 +119,7 @@ class AnnonceController {
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeFin is empty" .$payload->dateValiditeFin, 400);
         }
-        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\DateTime);
+        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\Date);
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeFin must be a DateTime type" .$payload->dateValiditeFin, 400);
         }
@@ -145,7 +145,7 @@ class AnnonceController {
         }
         
         // errors for demande
-        $errors = $app['validator']->validate($payload->demande, new Assert\NotBlank);
+        $errors = $app['validator']->validate($payload->demande, new Assert\NotNull);
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The demande is empty" .$payload->demande, 400);
         }
@@ -201,7 +201,7 @@ class AnnonceController {
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeDebut is empty" .$payload->dateValiditeDebut, 400);
         }
-        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\DateTime);
+        $errors = $app['validator']->validate($payload->dateValiditeDebut, new Assert\Date);
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeDebut must be a DateTime type" .$payload->dateValiditeDebut, 400);
         }
@@ -211,7 +211,7 @@ class AnnonceController {
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeFin is empty" .$payload->dateValiditeFin, 400);
         }
-        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\DateTime);
+        $errors = $app['validator']->validate($payload->dateValiditeFin, new Assert\Date);
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The dateValiditeFin must be a DateTime type" .$payload->dateValiditeFin, 400);
         }
@@ -237,7 +237,7 @@ class AnnonceController {
         }
         
         // errors for demande
-        $errors = $app['validator']->validate($payload->demande, new Assert\NotBlank);
+        $errors = $app['validator']->validate($payload->demande, new Assert\NotNull);
         if (count($errors) > 0) {
             return new JsonResponse ("Error: The demande is empty" .$payload->demande, 400);
         }

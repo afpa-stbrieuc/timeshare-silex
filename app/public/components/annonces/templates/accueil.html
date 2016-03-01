@@ -9,7 +9,7 @@
                 </div>
                 <div class="col-lg-3">
                     <select class='form-control' id='categories' ng-model="myCategory" >          
-                        <option class="form-control"   ng-repeat="category in categories" >{{ category}}</option>
+                        <option class="form-control"   ng-repeat="category in categories | orderBy " >{{ category}}</option>
                     </select>
                 </div>
                 <div class="col-lg-3">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="col-lg-3">
                     <select class='form-control' id='categories' ng-model="myLocation">
-                        <option class="form-control"  ng-repeat="location in locations" >{{ location}}</option>
+                        <option class="form-control"  ng-repeat="location in locations | orderBy " >{{ location}}</option>
                     </select>
                 </div>
             </div>

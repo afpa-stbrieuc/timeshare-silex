@@ -122,8 +122,8 @@ class Annonce implements JsonSerializable
 				'date' => date_format ( $this->date, 'Y-m-d H:i:s' ),
 				'location' => $this->location,
 				'category' => $this->category,
-				'dateValiditeDebut' => date_format ( $this->dateValiditeDebut, 'Y-m-d H:i:s' ),
-				'dateValiditeFin' => date_format ( $this->dateValiditeFin, 'Y-m-d H:i:s' ),
+				'dateValiditeDebut' => date_format ( $this->dateValiditeDebut, 'Y-m-d' ),
+				'dateValiditeFin' => date_format ( $this->dateValiditeFin, 'Y-m-d' ),
 				'demande' => $this->demande,
 		);
 	}
