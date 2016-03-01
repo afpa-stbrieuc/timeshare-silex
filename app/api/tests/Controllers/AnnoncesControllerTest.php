@@ -63,11 +63,13 @@ class AnnonceTest extends WebTestCase
         $dm->persist($this->user);
         $dm->flush();
         // create the advert
+        $ddd = \DateTime::createFromFormat('Y-m-d', '2016-03-17');
+        $ddf = \DateTime::createFromFormat('Y-m-d', '2016-04-17');
         $this->annonce = new Annonce('Pelouse tondre',
                                      $this->user,
                                      'blablablabla',
-                                     \DateTime::createFromFormat('Y-m-d', '2016-03-17'),
-                                     \DateTime::createFromFormat('Y-m-d', '2016-04-17'),
+                                     $ddd,
+                                     $ddf,
                                      'hennebont', 
                                      'jardinage',
                                      true);
@@ -87,8 +89,8 @@ class AnnonceTest extends WebTestCase
         //read + verif pour chaque attributs de Annonce:
         $this->assertEquals($this->annonce->getName(), $data->name);
 //        $this->assertEquals($this->annonce->getDate(), \DateTime::createFromFormat('Y-m-d H:i:s', $data->date));
-        $this->assertEquals($this->annonce->getDateValiditeDebut(), \DateTime::createFromFormat('Y-m-d', $data->dateValiditeDebut));
-        $this->assertEquals($this->annonce->getDateValiditeFin(), \DateTime::createFromFormat('Y-m-d', $data->dateValiditeFin));
+        $this->assertEquals($this->annonce->getDateValiditeDebut(), $ddd);
+        $this->assertEquals($this->annonce->getDateValiditeFin(), $ddf);
         $this->assertEquals($this->annonce->getUser()->getId(), $data->user->id);
         $this->assertEquals($this->annonce->getLocation(), $data->location);
         $this->assertEquals($this->annonce->getCategory(), $data->category);
