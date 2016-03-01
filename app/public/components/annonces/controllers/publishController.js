@@ -4,7 +4,23 @@ angular.module('TimeShareSilex')
 	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies', function($http, $scope, $routeParams, $cookies) {
 
 		var vm = this;
+                $scope.categories = [
+                'Jardinage',
+                'Mécanique',
+                'Construction',
+                'Bricolage',
+                'Transport',
+                'Cours'
+                ];
 
+                $scope.locations = [
+                'Hennebont',
+                'Paris',
+                'Tregastel',
+                'Saint-Brieuc',
+                'Brest'
+                ];
+                
 		vm.dateValiditeDebut = new Date(); // current date
 		vm.dateValiditeFin = new Date();
 		vm.dateValiditeFin.addMonths(1); // validity of one month by default

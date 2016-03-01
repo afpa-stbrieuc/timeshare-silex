@@ -66,8 +66,8 @@ class AnnonceTest extends WebTestCase
         $this->annonce = new Annonce('Pelouse tondre',
                                      $this->user,
                                      'blablablabla',
-                                     \DateTime::createFromFormat('Y-m-d', '2016-01-17'),
-                                     \DateTime::createFromFormat('Y-m-d', '2016-02-17'),
+                                     \DateTime::createFromFormat('Y-m-d', '2016-03-17'),
+                                     \DateTime::createFromFormat('Y-m-d', '2016-04-17'),
                                      'hennebont', 
                                      'jardinage',
                                      true);
