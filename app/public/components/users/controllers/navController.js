@@ -1,14 +1,18 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('navCtrl', ['$scope', '$location', 'userAuth', function($scope, $location, userAuth) {
+	.controller('navCtrl', ['$scope', '$location', '$route', 'userAuth', function($scope, $location, $route, userAuth) {
 		//userAuth doesn't work
 		$scope.isLogged = userAuth.checkIfSession();
 		
 		$scope.logoutUser = function() {
 			console.log('test');
 			userAuth.clearSession();
-			$location.path('/');
+			if ($location.path() === '/') {
+				$route.reload();
+			} else {
+				$location.path('/');
+			}
 		}
 	}])
 	.directive('tsNavigation', function() {
