@@ -1,7 +1,7 @@
 <ts-navigation></ts-navigation>
 <div>
 	<div class="container">
-		<uib-alert class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}"  close="panel.closeAlert()" dismiss-on-timeout="10000">{{panel.alert.msg}}</uib-alert>
+		<uib-alert id="myAlert" class="alert alert-{{panel.alert.type}}" ng-show="panel.alert.msg != ''" type="{{panel.alert.type}}">{{panel.alert.msg}}</uib-alert>
 
 		<uib-alert class="alert alert-danger" type="danger" ng-show="user.password.$invalid && userForm.password.$dirty">Le mot de passe doit faire au minimum de 8 caractères</uib-alert>
 
@@ -66,7 +66,7 @@
 					<div class="col-md-8">
 						<input class="form-control input-sm" ng-minlength="8" type="password" name="password" ng-model="panel.user.password" value="">
 					</div>
-					<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4">Mettre à jour</button>
+					<button type="submit" role="button" class="btn btn-primary col-md-push-5 col-md-4" ng-disabled="panel.disabled">Mettre à jour</button>
 				</div>
 			</form>
 		</div>
