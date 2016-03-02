@@ -77,7 +77,7 @@ All fields are required
 
 ## Services
 It is created when a user answer to an advert.
-All fields are required
+All fields are required.
 * time # the time that will be gained by the user answering the advert
 * note # given by the user posting the advert
 * debiteur # the user reference object posting the advert
