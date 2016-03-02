@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-  .controller('userCtrl', ['$scope', '$http', '$cookies', '$timeout', '$route', function($scope, $http, $cookies, $timeout, $route) {
+  .controller('userCtrl', ['$scope', '$http', '$cookies', '$timeout', '$route','$window', function($scope, $http, $cookies, $timeout, $route,$window) {
 
     var vm = this;
 
@@ -52,5 +52,7 @@ angular.module('TimeShareSilex')
     }, function() {
       // error
     });
+    
+
 
   }]);
