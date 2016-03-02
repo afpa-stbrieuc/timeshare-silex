@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies', function($http, $scope, $routeParams, $cookies) {
+	.controller('publishCtrl', ['$http', '$scope', '$routeParams', '$cookies','$location','$timeout', function($http, $scope, $routeParams, $cookies, $location, $timeout) {
 
 		var vm = this;
                 $scope.categories = [
@@ -88,6 +88,9 @@ angular.module('TimeShareSilex')
 								msg: capitalize(typeDemande)+ ' publiée'
 							};
 							vm.isDisabled = true; // disable submit button
+                                                        $timeout(function(){
+                                                            $location.path('/user');
+                                                        },3000);
 						} else if (response.status === 400) {
 							vm.alert = {
 								type: 'danger',

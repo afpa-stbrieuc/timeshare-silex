@@ -2,7 +2,7 @@
 'use strict';
 
 angular.module('TimeShareSilex')
-	.controller('editCtrl', ['$http', '$scope', '$routeParams', function($http, $scope, $routeParams) {
+	.controller('editCtrl', ['$http', '$scope', '$routeParams','$window','$location', function($http, $scope, $routeParams,$window,$location) {
 
 		var vm = this;
 
@@ -100,6 +100,30 @@ angular.module('TimeShareSilex')
 			}
 
 		};
+                
+                
+                vm.delete = function () {
+
+                    vm.deleteUser = $window.confirm('Etes vous sur de vouloir supprimer votre annonce?');
+                    if (vm.deleteUser) {
+
+                        $http({
+                            method: 'DELETE',
+                            url: '/api/annonces/' + $routeParams.id
+                        }).then(function (response) {
+                            if (response.status === 200) {
+                                $location.path('/user');
+                            }
+                            else {
+                                vm.alert = {
+                                    type: 'danger',
+                                    msg: 'Erreur: annonce non modifiée'
+                                };
+
+                            }
+                        });
+                    }
+                };
 
 		vm.closeAlert = function() {
 			vm.alert = {

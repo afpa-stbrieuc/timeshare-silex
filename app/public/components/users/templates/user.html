@@ -30,8 +30,7 @@
 				<div ng-repeat="annonce in panel.annonces" class="annonces">
 					<h3>{{annonce.name}}</h3>
 					<p>Publié le {{annonce.date|date}}, {{annonce.user.surname}} {{annonce.user.firstname}} a fait la demande du {{annonce.dateValiditeDebut}} au {{annonce.dateValiditeFin}} dans la catégorie {{annonce.category}}</p>
-					<a class="btn btn-primary" href="#/editAnnonce/{{annonce.id}}">Modifier</a>
-                                        <button type="button" class="btn btn-default " ng-click="delete()" >Supprimer</button>   
+					<a class="btn btn-primary" href="#/editAnnonce/{{annonce.id}}">Modifier</a>                                       
 				</div>
 			</div>
 		</div>
