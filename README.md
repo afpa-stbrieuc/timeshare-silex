@@ -38,6 +38,7 @@ php >5.4, mongo driver installed and enabled in php.ini http://php.net/manual/fr
 # API
 
 ## Advert (Annonce)
+It is an advert posted on the site
 All fields are required
 * name ## string
 * user # the user having created the advert ## object
@@ -63,6 +64,7 @@ API REST for Annonce
 	GET: /api/annonces/{category}/{location}
 
 ## User (utilisateur)
+It is a user registered on the site to post advert
 All fields are required
 * pseudo ## string 
 * password ## string
@@ -74,7 +76,12 @@ All fields are required
 * email ## string 
 
 ## Services
-All fields are required
-*
+It is created when a user answer to an advert.
+All fields are required.
+* time # the time that will be gained by the user answering the advert
+* note # given by the user posting the advert
+* debiteur # the user reference object posting the advert
+* crediteur # the user answering the advert and to be credited the time
+* annonce # a reference to the advert which is answered to
 
 
